@@ -3,6 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ZupZup.iml" filepath="$PROJECT_DIR$/.idea/modules/ZupZup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ZupZup.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ZupZup.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ZupZup.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ZupZup.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ZupZup.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ZupZup.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ZupZup.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ZupZup.app.unitTest.iml" />
     </modules>
   </component>
 </project>
