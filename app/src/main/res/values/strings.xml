@@ -4,11 +4,11 @@
 
     <!-- bottom nav title -->
     <string name="bottom_nav_title_home">Home</string>
-    <string name="bottom_nav_title_search">Search</string>
-    <string name="bottom_nav_title_notification">Notification</string>
-    <string name="bottom_nav_title_person">Person</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bottom_nav_title_map">Map</string>
 
+    <!-- Store Fragment -->
+    <string name="fragment_store_title">가게</string>
+    <string name="fragment_store_bread_desert_category">빵/디저트</string>
+    <string name="fragment_store_food_category">식료품</string>
 
 </resources>

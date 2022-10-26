@@ -8,5 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="bg_store_card">B3000000</color>
+    <color name="main">#FFBD00</color>
+    <color name="warm_gray1">#FBF7F1</color>
+    <color name="warm_gray2">#EAE5DF</color>
+    <color name="warm_gray3">#C8BCAB</color>
+    <color name="warm_gray4">#AFA08A</color>
 </resources>

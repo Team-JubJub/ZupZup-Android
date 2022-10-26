@@ -1,13 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="store"
+            type="com.example.zupzup.domain.models.StoreModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@drawable/frame_rectangle_corner_12"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv_store_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{store.storeType}"
+            android:textColor="@color/warm_gray4"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="카페" />
+
+        <TextView
+            android:id="@+id/tv_store_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{store.storeName}"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_store_type"
+            tools:text="번아웃 커피 금정점" />
+
+        <TextView
+            android:id="@+id/tv_store_sales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:text="@{String.valueOf(store.storeSalesInfo) + '%'}"
+            android:textColor="@color/main"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_store_name"
+            tools:text="40%" />
+
+        <ImageView
+            android:id="@+id/iv_store_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:background="@drawable/ic_store_timer"
+            app:layout_constraintBottom_toBottomOf="@id/tv_store_sales"
+            app:layout_constraintStart_toEndOf="@id/tv_store_sales"
+            app:layout_constraintTop_toTopOf="@id/tv_store_sales" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@{store.storeOpenTime}"
+            android:textColor="@color/warm_gray3"
+            app:layout_constraintBottom_toBottomOf="@id/iv_store_timer"
+            app:layout_constraintStart_toEndOf="@id/iv_store_timer"
+            app:layout_constraintTop_toTopOf="@id/iv_store_timer"
+            tools:text="12:00 ~ 19:00" />
+
+        <ImageView
+            android:id="@+id/iv_select_store"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_right_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
