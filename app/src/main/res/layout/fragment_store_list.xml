@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.example.zupzup.ui.viewmodel.StoreViewModel" />
+            type="com.example.zupzup.ui.viewmodel.StoreListViewModel" />
 
     </data>
 
@@ -15,7 +16,7 @@
         android:layout_height="match_parent"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="46dp"
-        tools:context=".ui.fragment.StoreFragment">
+        tools:context=".ui.fragment.StoreListFragment">
 
         <TextView
             android:id="@+id/tv_fragment_store_title"
@@ -27,28 +28,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_store_category_bread_desert"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fragment_store_bread_desert_category"
-            android:textColor="@color/warm_gray3"
-            android:textSize="17sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_fragment_store_title" />
-
-        <TextView
-            android:id="@+id/tv_store_category_beverage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/fragment_store_food_category"
-            android:textColor="@color/warm_gray3"
-            android:textSize="17sp"
-            app:layout_constraintBottom_toBottomOf="@id/tv_store_category_bread_desert"
-            app:layout_constraintStart_toEndOf="@id/tv_store_category_bread_desert"
-            app:layout_constraintTop_toTopOf="@id/tv_store_category_bread_desert" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_store_list"
             android:layout_width="match_parent"
@@ -58,8 +37,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_store_category_bread_desert"
-            app:uiState="@{viewModel.storeUiState}" />
+            app:layout_constraintTop_toBottomOf="@id/tv_fragment_store_title"
+            app:storeListUiState="@{viewModel.storeUiState}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

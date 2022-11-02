@@ -10,5 +10,7 @@
     <string name="fragment_store_title">가게</string>
     <string name="fragment_store_bread_desert_category">빵/디저트</string>
     <string name="fragment_store_food_category">식료품</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

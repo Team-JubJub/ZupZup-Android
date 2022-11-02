@@ -2,9 +2,11 @@
   <library name="Gradle: androidx.databinding:viewbinding:7.2.2@aar">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/03b95eccd3758b77abb5c38422b6156f/transformed/viewbinding-7.2.2/res" />
-      <root url="jar://$PROJECT_DIR$/../.gradle/caches/transforms-3/81ebd0deaf156e3cee9415e5a052861e/transformed/viewbinding-7.2.2/jars/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/81ebd0deaf156e3cee9415e5a052861e/transformed/viewbinding-7.2.2/res" />
-      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/81ebd0deaf156e3cee9415e5a052861e/transformed/viewbinding-7.2.2/AndroidManifest.xml" />
+      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/d557e391cf79464a5db6e6125b66770b/transformed/viewbinding-7.2.2/res" />
+      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/8e92ef9927a7cd700bf6fef5f70b268a/transformed/viewbinding-7.2.2/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/transforms-3/8e92ef9927a7cd700bf6fef5f70b268a/transformed/viewbinding-7.2.2/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/8e92ef9927a7cd700bf6fef5f70b268a/transformed/viewbinding-7.2.2/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

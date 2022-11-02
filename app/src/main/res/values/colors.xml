@@ -9,6 +9,9 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="main">#FFBD00</color>
+    <color name="a">#E49318</color>
+    <color name="text">#1E1E1E</color>
+    <color name="gray2">#E2D9CE</color>
     <color name="warm_gray1">#FBF7F1</color>
     <color name="warm_gray2">#EAE5DF</color>
     <color name="warm_gray3">#C8BCAB</color>
