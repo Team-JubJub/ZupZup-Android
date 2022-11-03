@@ -4,23 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="kotlin.jvm.functions.Function1"/>
+        <import type="kotlin.Unit"/>
+
         <variable
-            name="store"
-            type="com.example.zupzup.domain.models.StoreModel" />
+            name="storeHeader"
+            type="com.example.zupzup.domain.models.StoreHeaderModel" />
+        <variable
+            name="navigateToStoreDetail"
+            type="Function1&lt;Integer, Unit>" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/frame_rectangle_corner_12"
+        android:background="@drawable/frame_rectangle_corner_12_warmgray2"
         android:padding="16dp">
 
         <TextView
             android:id="@+id/tv_store_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{store.storeType}"
+            android:text="@{storeHeader.storeType}"
             android:textColor="@color/warm_gray4"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@{store.storeName}"
+            android:text="@{storeHeader.storeName}"
             android:textColor="@color/black"
             android:textSize="17sp"
             android:textStyle="bold"
@@ -45,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="27dp"
-            android:text="@{String.valueOf(store.storeSalesInfo) + '%'}"
+            android:text="@{String.valueOf(storeHeader.storeSalesInfo) + '%'}"
             android:textColor="@color/main"
             android:textSize="17sp"
             android:textStyle="bold"
@@ -67,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:text="@{store.storeOpenTime}"
+            android:text="@{storeHeader.storeOpenTime}"
             android:textColor="@color/warm_gray3"
             app:layout_constraintBottom_toBottomOf="@id/iv_store_timer"
             app:layout_constraintStart_toEndOf="@id/iv_store_timer"
@@ -79,6 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_right_arrow"
+            android:onClick="@{_ -> navigateToStoreDetail.invoke(storeHeader.storeId)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

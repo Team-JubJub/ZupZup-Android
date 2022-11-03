@@ -3,11 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/frag_store">
+    app:startDestination="@id/frag_store_list">
 
     <fragment
-        android:id="@+id/frag_store"
-        android:name="com.example.zupzup.ui.fragment.StoreFragment"
+        android:id="@+id/frag_store_list"
+        android:name="com.example.zupzup.ui.fragment.StoreListFragment"
         android:label="fragment_store"
-        tools:layout="@layout/fragment_store" />
+        tools:layout="@layout/fragment_store_list" >
+        <action
+            android:id="@+id/action_frag_store_list_to_frag_store_detail"
+            app:destination="@id/frag_store_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/frag_store_detail"
+        android:name="com.example.zupzup.ui.fragment.StoreDetailFragment"
+        tools:layout="@layout/fragment_store_detail"
+        android:label="StoreDetailFragment" >
+        <argument
+            android:name="storeId"
+            app:argType="integer"
+            app:nullable="false"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>

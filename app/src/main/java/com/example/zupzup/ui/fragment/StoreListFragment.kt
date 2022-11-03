@@ -6,26 +6,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.zupzup.databinding.FragmentStoreBinding
-import com.example.zupzup.ui.adaper.StoreListRecyclerViewAdapter
-import com.example.zupzup.ui.viewmodel.StoreViewModel
+import com.example.zupzup.databinding.FragmentStoreListBinding
+import com.example.zupzup.ui.adaper.storelist.StoreListRecyclerViewAdapter
+import com.example.zupzup.ui.viewmodel.StoreListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class StoreFragment : Fragment() {
+class StoreListFragment : Fragment() {
 
-    private var _binding: FragmentStoreBinding? = null
+    private var _binding: FragmentStoreListBinding? = null
     private val binding get() = _binding!!
 
-    private val storeViewModel: StoreViewModel by viewModels()
+    private val storeListViewModel: StoreListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        _binding = FragmentStoreBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentStoreListBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -33,13 +33,14 @@ class StoreFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.viewModel = storeViewModel
-        storeViewModel.getStoreList()
+        binding.viewModel = storeListViewModel
+        storeListViewModel.getStoreList()
     }
 
     private fun initRecyclerView() {
         with(binding.rcvStoreList) {
-            adapter = StoreListRecyclerViewAdapter()
+            adapter =
+                StoreListRecyclerViewAdapter { storeId: Int -> navigateStoreDetailFragment(storeId) }
             layoutManager = LinearLayoutManager(requireContext())
         }
     }
@@ -50,4 +51,9 @@ class StoreFragment : Fragment() {
         _binding = null
     }
 
+    private fun navigateStoreDetailFragment(storeId: Int) {
+        val action =
+            StoreListFragmentDirections.actionFragStoreListToFragStoreDetail(storeId = storeId)
+        findNavController().navigate(action)
+    }
 }
