@@ -3,7 +3,7 @@ package com.example.zupzup.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.zupzup.domain.DataResult
-import com.example.zupzup.domain.models.StoreHeaderModel
+import com.example.zupzup.domain.models.StoreHeaderInfoModel
 import com.example.zupzup.domain.usecase.GetStoreListUseCase
 import com.example.zupzup.ui.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,8 +17,8 @@ class StoreListViewModel @Inject constructor(
     private val getStoreListUseCase: GetStoreListUseCase
 ) : ViewModel() {
 
-    private var _storeUiState = MutableStateFlow<UiState<List<StoreHeaderModel>>>(UiState.Loading)
-    val storeUiState: StateFlow<UiState<List<StoreHeaderModel>>> get() = _storeUiState
+    private var _storeUiState = MutableStateFlow<UiState<List<StoreHeaderInfoModel>>>(UiState.Loading)
+    val storeUiState: StateFlow<UiState<List<StoreHeaderInfoModel>>> get() = _storeUiState
 
     fun getStoreList() {
         viewModelScope.launch {

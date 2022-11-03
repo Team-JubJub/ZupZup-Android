@@ -4,7 +4,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.zupzup.domain.models.StoreHeaderModel
+import com.example.zupzup.domain.models.StoreHeaderInfoModel
 import com.example.zupzup.domain.models.StoreModel
 import com.example.zupzup.ui.UiState
 import com.example.zupzup.ui.adaper.storedetail.StoreDetailBodyAdapter
@@ -14,7 +14,7 @@ import com.example.zupzup.ui.adaper.storelist.StoreListRecyclerViewAdapter
 @BindingAdapter("storeListUiState")
 fun bindStoreListRecyclerView(
     recyclerView: RecyclerView,
-    uiState: UiState<List<StoreHeaderModel>>?
+    uiState: UiState<List<StoreHeaderInfoModel>>?
 ) {
     val adapter = recyclerView.adapter as StoreListRecyclerViewAdapter
     when (uiState) {
@@ -30,7 +30,7 @@ fun bindStoreDetailRecyclerView(recyclerView: RecyclerView, uiState: UiState<Sto
     val bodyAdapter = StoreDetailBodyAdapter()
     when (uiState) {
         is UiState.Success -> {
-            headerAdapter.submitList(listOf(uiState.data.headerInfo))
+            headerAdapter.submitList(listOf(uiState.data.toDetailHeaderModel()))
             bodyAdapter.submitList(uiState.data.merchandiseList)
             val adapter = ConcatAdapter(headerAdapter, bodyAdapter)
             recyclerView.adapter = adapter
