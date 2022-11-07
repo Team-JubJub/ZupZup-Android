@@ -11,7 +11,7 @@ class StoreDataSourceImpl @Inject constructor() : StoreDataSource {
     }
 
     override suspend fun getStoreDetailById(storeId: Int): Result<Store> {
-        val store = TestData.storeList.find { it.storeId == storeId }
+        val store = TestData.storeList.find { it.storeID == storeId }
         return Result.success(store!!)
     }
 }

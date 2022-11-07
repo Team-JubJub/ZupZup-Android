@@ -6,27 +6,27 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zupzup.databinding.ItemStoreCardBinding
-import com.example.zupzup.domain.models.StoreHeaderModel
+import com.example.zupzup.domain.models.StoreHeaderInfoModel
 import com.example.zupzup.ui.adaper.storelist.StoreListRecyclerViewAdapter.StoreViewHolder
 
 class StoreListRecyclerViewAdapter(
     private val navigateStoreDetail: (Int) -> Unit
 ) :
-    ListAdapter<StoreHeaderModel, StoreViewHolder>(DiffCallBack) {
+    ListAdapter<StoreHeaderInfoModel, StoreViewHolder>(DiffCallBack) {
 
-    object DiffCallBack : DiffUtil.ItemCallback<StoreHeaderModel>() {
+    object DiffCallBack : DiffUtil.ItemCallback<StoreHeaderInfoModel>() {
         override fun areItemsTheSame(
-            oldItem: StoreHeaderModel,
-            newItem: StoreHeaderModel
+            oldItem: StoreHeaderInfoModel,
+            newItem: StoreHeaderInfoModel
         ): Boolean {
-            return oldItem.storeId == newItem.storeId
+            return oldItem.storeID == newItem.storeID
         }
 
         override fun areContentsTheSame(
-            oldItem: StoreHeaderModel,
-            newItem: StoreHeaderModel
+            oldItem: StoreHeaderInfoModel,
+            newItem: StoreHeaderInfoModel
         ): Boolean {
-            return oldItem.storeId == newItem.storeId
+            return oldItem.storeID == newItem.storeID
         }
     }
 
@@ -34,7 +34,7 @@ class StoreListRecyclerViewAdapter(
         private val binding: ItemStoreCardBinding,
         private val navigateToStoreDetail: (Int) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: StoreHeaderModel) {
+        fun bind(item: StoreHeaderInfoModel) {
             binding.storeHeader = item
             binding.navigateToStoreDetail = navigateToStoreDetail
             binding.executePendingBindings()

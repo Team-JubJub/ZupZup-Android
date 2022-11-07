@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="storeHeader"
-            type="com.example.zupzup.domain.models.StoreHeaderModel" />
+            name="storeDetailHeader"
+            type="com.example.zupzup.domain.models.StoreDetailHeaderModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="34sp"
-            android:text="@{storeHeader.storeName}"
+            android:text="@{storeDetailHeader.headerInfo.name}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="가게 이름" />
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/warm_gray3"
             android:textSize="15sp"
-            android:text="@{storeHeader.storeAddress}"
+            android:text="@{storeDetailHeader.address}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_store_name"
             tools:text="가게 주소" />
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:textSize="15sp"
-                android:text="@{storeHeader.storeOpenTime}"
+                android:text="@{storeDetailHeader.headerInfo.openTime}"
                 app:layout_constraintStart_toStartOf="@id/tv_store_open_time_title"
                 app:layout_constraintTop_toBottomOf="@id/tv_store_open_time_title"
                 tools:text="가게 영업시간 들어가는 자리" />
@@ -129,7 +129,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:textSize="15sp"
-                app:eventList = "@{storeHeader.storeEventList}"
+                app:eventList = "@{storeDetailHeader.eventList}"
                 app:layout_constraintStart_toStartOf="@id/tv_store_event_title"
                 app:layout_constraintTop_toBottomOf="@id/tv_store_event_title"
                 tools:text="이벤트 들어가는 자리" />
