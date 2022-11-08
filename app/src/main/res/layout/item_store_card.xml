@@ -12,7 +12,7 @@
             type="com.example.zupzup.domain.models.StoreHeaderInfoModel" />
         <variable
             name="navigateToStoreDetail"
-            type="Function1&lt;Integer, Unit>" />
+            type="Function1&lt;Long, Unit>" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

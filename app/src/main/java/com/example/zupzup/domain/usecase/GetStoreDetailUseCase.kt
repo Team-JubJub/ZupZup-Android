@@ -8,6 +8,6 @@ import javax.inject.Inject
 class GetStoreDetailUseCase @Inject constructor(
     private val storeRepository: StoreRepository
 ) {
-    suspend operator fun invoke(storeId : Int): DataResult<StoreModel> =
+    suspend operator fun invoke(storeId : Long): DataResult<StoreModel> =
         storeRepository.getStoreDetailById(storeId)
 }

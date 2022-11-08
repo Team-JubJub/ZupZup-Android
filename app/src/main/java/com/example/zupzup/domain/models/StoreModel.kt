@@ -2,7 +2,7 @@ package com.example.zupzup.domain.models
 
 
 data class StoreModel(
-    val storeID: Int,
+    val storeID: Long,
     val headerInfo: StoreHeaderInfoModel,
     val address : String,
     val eventList : List<String>,

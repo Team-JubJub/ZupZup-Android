@@ -21,7 +21,7 @@ class StoreDetailViewModel @Inject constructor(
     val storeDetailUiState: StateFlow<UiState<StoreModel>> get() = _storeDetailUiState
 
 
-    fun getStoreDetailById(storeId: Int) {
+    fun getStoreDetailById(storeId: Long) {
         viewModelScope.launch {
             _storeDetailUiState.emit(UiState.Loading)
             getStoreDetailUseCase.invoke(storeId).apply {

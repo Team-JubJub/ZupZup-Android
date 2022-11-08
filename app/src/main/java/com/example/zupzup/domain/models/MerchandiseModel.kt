@@ -1,9 +1,9 @@
 package com.example.zupzup.domain.models
 
 data class MerchandiseModel (
-    val id : Int,
-    val imgUrl : String,
-    val name : String,
-    val price : Int,
-    val sales : Int,
+    val itemId : Long = 0,
+    val storeId : Long = 0,
+    val itemName : String = "",
+    val price : Int = 0,
+    val discountRate : Int = 0
 )

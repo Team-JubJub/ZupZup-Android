@@ -10,7 +10,7 @@ import com.example.zupzup.domain.models.StoreHeaderInfoModel
 import com.example.zupzup.ui.adaper.storelist.StoreListRecyclerViewAdapter.StoreViewHolder
 
 class StoreListRecyclerViewAdapter(
-    private val navigateStoreDetail: (Int) -> Unit
+    private val navigateStoreDetail: (Long) -> Unit
 ) :
     ListAdapter<StoreHeaderInfoModel, StoreViewHolder>(DiffCallBack) {
 
@@ -32,7 +32,7 @@ class StoreListRecyclerViewAdapter(
 
     class StoreViewHolder(
         private val binding: ItemStoreCardBinding,
-        private val navigateToStoreDetail: (Int) -> Unit
+        private val navigateToStoreDetail: (Long) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: StoreHeaderInfoModel) {
             binding.storeHeader = item
