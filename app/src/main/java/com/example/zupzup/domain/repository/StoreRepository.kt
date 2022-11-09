@@ -6,5 +6,5 @@ import com.example.zupzup.domain.models.StoreModel
 
 interface StoreRepository {
     suspend fun getStoreList(): DataResult<List<StoreHeaderInfoModel>>
-    suspend fun getStoreDetailById(storeId : Int): DataResult<StoreModel>
+    suspend fun getStoreDetailById(storeId : Long): DataResult<StoreModel>
 }

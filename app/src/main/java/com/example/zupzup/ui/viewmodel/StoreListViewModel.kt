@@ -20,7 +20,11 @@ class StoreListViewModel @Inject constructor(
     private var _storeUiState = MutableStateFlow<UiState<List<StoreHeaderInfoModel>>>(UiState.Loading)
     val storeUiState: StateFlow<UiState<List<StoreHeaderInfoModel>>> get() = _storeUiState
 
-    fun getStoreList() {
+    init {
+        getStoreList()
+    }
+
+    private fun getStoreList() {
         viewModelScope.launch {
             _storeUiState.emit(UiState.Loading)
             getStoreListUseCase.invoke().apply {

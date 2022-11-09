@@ -22,8 +22,8 @@
         android:label="StoreDetailFragment" >
         <argument
             android:name="storeId"
-            app:argType="integer"
+            app:argType="long"
             app:nullable="false"
-            android:defaultValue="0" />
+            android:defaultValue="0L" />
     </fragment>
 </navigation>

@@ -19,14 +19,14 @@ class StoreDetailBodyAdapter :
             oldItem: MerchandiseModel,
             newItem: MerchandiseModel
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.itemId == newItem.itemId
         }
 
         override fun areContentsTheSame(
             oldItem: MerchandiseModel,
             newItem: MerchandiseModel
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.itemId == newItem.itemId
         }
     }
 

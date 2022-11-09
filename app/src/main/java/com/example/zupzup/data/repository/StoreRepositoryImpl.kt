@@ -18,7 +18,7 @@ class StoreRepositoryImpl @Inject constructor(
         storeDataSource.getStoreList()
             .onSuccess {
                 dataResult = DataResult.Success(it.map { store ->
-                    store.headerInfo.toModel(store.storeID, store.merchandiseList)
+                    store.headerInfo.toModel(store.storeId, store.merchandiseList)
                 })
             }.onFailure {
                 dataResult = DataResult.Failure(it)
@@ -26,7 +26,7 @@ class StoreRepositoryImpl @Inject constructor(
         return dataResult
     }
 
-    override suspend fun getStoreDetailById(storeId: Int): DataResult<StoreModel> {
+    override suspend fun getStoreDetailById(storeId: Long): DataResult<StoreModel> {
         storeDataSource.getStoreDetailById(storeId)
             .onSuccess {
                 dataResult2 = DataResult.Success(it.toModel())

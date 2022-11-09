@@ -34,13 +34,12 @@ class StoreListFragment : Fragment() {
         initRecyclerView()
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = storeListViewModel
-        storeListViewModel.getStoreList()
     }
 
     private fun initRecyclerView() {
         with(binding.rcvStoreList) {
             adapter =
-                StoreListRecyclerViewAdapter { storeId: Int -> navigateStoreDetailFragment(storeId) }
+                StoreListRecyclerViewAdapter { storeId: Long -> navigateStoreDetailFragment(storeId) }
             layoutManager = LinearLayoutManager(requireContext())
         }
     }
@@ -51,7 +50,7 @@ class StoreListFragment : Fragment() {
         _binding = null
     }
 
-    private fun navigateStoreDetailFragment(storeId: Int) {
+    private fun navigateStoreDetailFragment(storeId: Long) {
         val action =
             StoreListFragmentDirections.actionFragStoreListToFragStoreDetail(storeId = storeId)
         findNavController().navigate(action)
