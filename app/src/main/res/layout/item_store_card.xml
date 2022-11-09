@@ -6,7 +6,6 @@
     <data>
         <import type="kotlin.jvm.functions.Function1"/>
         <import type="kotlin.Unit"/>
-
         <variable
             name="storeHeader"
             type="com.example.zupzup.domain.models.StoreHeaderInfoModel" />

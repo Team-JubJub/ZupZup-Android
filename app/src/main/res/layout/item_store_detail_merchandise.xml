@@ -9,6 +9,13 @@
             name="merchandise"
             type="com.example.zupzup.domain.models.MerchandiseModel" />
 
+        <variable
+            name="idx"
+            type="Integer" />
+
+        <variable
+            name="helper"
+            type="com.example.zupzup.ui.utils.AmountManageHelper" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,6 +52,7 @@
             android:id="@+id/tv_merchandise_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="0"
             android:layout_marginEnd="16dp"
             android:textColor="@color/text"
             android:textSize="18sp"
@@ -97,8 +105,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
-            android:textColor="@color/text"
             android:text="@{String.valueOf(merchandise.price * (100 - merchandise.discountRate) / 100) + '원'}"
+            android:textColor="@color/text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/tv_merchandise_price"
             app:layout_constraintTop_toBottomOf="@id/tv_merchandise_name"

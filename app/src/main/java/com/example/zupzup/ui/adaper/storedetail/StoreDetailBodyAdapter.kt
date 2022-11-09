@@ -8,8 +8,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zupzup.databinding.ItemStoreDetailMerchandiseBinding
 import com.example.zupzup.domain.models.MerchandiseModel
+import com.example.zupzup.ui.utils.AmountManageHelper
 
-class StoreDetailBodyAdapter :
+class StoreDetailBodyAdapter(
+    private val amountManageHelper: AmountManageHelper,
+) :
     ListAdapter<MerchandiseModel, StoreDetailBodyAdapter.StoreDetailBodyViewHolder>(
         DiffCallBack
     ) {
@@ -30,12 +33,38 @@ class StoreDetailBodyAdapter :
         }
     }
 
-    class StoreDetailBodyViewHolder(private val binding: ItemStoreDetailMerchandiseBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: MerchandiseModel) {
-            binding.merchandise = item
-            binding.tvMerchandisePrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-            binding.executePendingBindings()
+    class StoreDetailBodyViewHolder(
+        private val binding: ItemStoreDetailMerchandiseBinding,
+        private val amountManageHelper: AmountManageHelper,
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(
+            item: MerchandiseModel,
+        ) {
+            with(binding) {
+                merchandise = item
+                idx = bindingAdapterPosition
+                helper = amountManageHelper
+                tvMerchandisePrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+
+                btnIncreaseAmount.setOnClickListener {
+                    val curAmount = tvMerchandiseAmount.text.toString().toInt()
+                    if(curAmount  < 10 ) {
+                        amountManageHelper.increase(bindingAdapterPosition)
+                        tvMerchandiseAmount.text = (curAmount.inc()).toString()
+                    }
+                }
+
+                btnDecreaseAmount.setOnClickListener {
+                    val curAmount = tvMerchandiseAmount.text.toString().toInt()
+                    if(curAmount  > 0 ) {
+                        amountManageHelper.decrease(bindingAdapterPosition)
+                        tvMerchandiseAmount.text = (curAmount.dec()).toString()
+                    }
+                }
+
+                executePendingBindings()
+
+            }
         }
     }
 
@@ -49,12 +78,12 @@ class StoreDetailBodyAdapter :
                 parent,
                 false
             )
-        return StoreDetailBodyViewHolder(binding)
+        return StoreDetailBodyViewHolder(binding, amountManageHelper)
     }
 
     override fun onBindViewHolder(
         holder: StoreDetailBodyViewHolder,
-        position: Int
+        position: Int,
     ) {
         val merchandise = getItem(position)
         holder.bind(merchandise)

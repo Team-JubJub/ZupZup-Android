@@ -3,7 +3,9 @@ package com.example.zupzup.data.datasource
 import com.example.zupzup.data.datamodel.Store
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.ktx.toObject
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class StoreDataSourceImpl @Inject constructor(
@@ -11,10 +13,12 @@ class StoreDataSourceImpl @Inject constructor(
 ) : StoreDataSource {
     override suspend fun getStoreList(): Result<List<Store>> {
         return try {
-            val storeList = storeRef.get().await().documents.mapNotNull {
-                it.toObject<Store>()
+            withContext(Dispatchers.IO) {
+                val storeList = storeRef.get().await().documents.mapNotNull {
+                    it.toObject<Store>()
+                }
+                Result.success(storeList)
             }
-            Result.success(storeList)
         } catch (e: Exception) {
             Result.failure(e)
         }

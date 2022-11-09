@@ -1,5 +1,6 @@
 package com.example.zupzup.ui.utils
 
+import android.util.Log
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.ConcatAdapter
@@ -24,10 +25,15 @@ fun bindStoreListRecyclerView(
     }
 }
 
-@BindingAdapter("storeDetailUiState")
-fun bindStoreDetailRecyclerView(recyclerView: RecyclerView, uiState: UiState<StoreModel>?) {
+@BindingAdapter("storeDetailUiState", "amountManageHelper")
+fun bindStoreDetailRecyclerView(
+    recyclerView: RecyclerView,
+    uiState: UiState<StoreModel>?,
+    amountManageHelper: AmountManageHelper
+) {
+    Log.d("TAG", "bindStoreDetailRecyclerView: ")
     val headerAdapter = StoreDetailHeaderAdapter()
-    val bodyAdapter = StoreDetailBodyAdapter()
+    val bodyAdapter = StoreDetailBodyAdapter(amountManageHelper)
     when (uiState) {
         is UiState.Success -> {
             headerAdapter.submitList(listOf(uiState.data.toDetailHeaderModel()))
@@ -39,11 +45,11 @@ fun bindStoreDetailRecyclerView(recyclerView: RecyclerView, uiState: UiState<Sto
 }
 
 @BindingAdapter("eventList")
-fun bindEventListToTextView(textView: TextView, eventList : List<String>) {
+fun bindEventListToTextView(textView: TextView, eventList: List<String>) {
     var event = ""
     eventList.forEachIndexed { index, s ->
         event += s
-        if(index < eventList.size - 1) {
+        if (index < eventList.size - 1) {
             event += "\n"
         }
     }
