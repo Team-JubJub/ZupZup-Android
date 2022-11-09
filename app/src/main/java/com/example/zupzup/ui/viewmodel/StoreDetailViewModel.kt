@@ -1,5 +1,6 @@
 package com.example.zupzup.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.zupzup.domain.DataResult
@@ -20,13 +21,18 @@ class StoreDetailViewModel @Inject constructor(
     private var _storeDetailUiState = MutableStateFlow<UiState<StoreModel>>(UiState.Loading)
     val storeDetailUiState: StateFlow<UiState<StoreModel>> get() = _storeDetailUiState
 
+    private var amountList = mutableListOf<Int>()
 
     fun getStoreDetailById(storeId: Long) {
         viewModelScope.launch {
             _storeDetailUiState.emit(UiState.Loading)
             getStoreDetailUseCase.invoke(storeId).apply {
                 if (this is DataResult.Success) {
-                    _storeDetailUiState.emit(UiState.Success(data))
+                    with(data) {
+                        _storeDetailUiState.emit(UiState.Success(this))
+                        amountList = MutableList(this.merchandiseList.size) { 0 }
+                    }
+
                 } else if (this is DataResult.Failure) {
                     _storeDetailUiState.emit(UiState.Error(1))
                 }
@@ -34,4 +40,17 @@ class StoreDetailViewModel @Inject constructor(
 
         }
     }
+
+    fun getAmountList() : List<Int> {
+        return amountList
+    }
+
+    fun increaseAmount(idx: Int) {
+        amountList[idx] += 1
+    }
+
+    fun decreaseAmount(idx: Int) {
+        amountList[idx] -= 1
+    }
+
 }

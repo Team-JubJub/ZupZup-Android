@@ -7,7 +7,9 @@
         <variable
             name="viewModel"
             type="com.example.zupzup.ui.viewmodel.StoreDetailViewModel" />
-
+        <variable
+            name="helper"
+            type="com.example.zupzup.ui.utils.AmountManageHelper" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,11 +23,13 @@
             android:id="@+id/rcv_store_detail"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:storeDetailUiState="@{viewModel.storeDetailUiState}"
             app:layout_constraintBottom_toTopOf="@id/btn_make_reservation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:storeDetailUiState="@{viewModel.storeDetailUiState}"
+            app:amountManageHelper="@{helper}"/>
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_make_reservation"

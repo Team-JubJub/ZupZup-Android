@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zupzup.databinding.FragmentStoreDetailBinding
+import com.example.zupzup.ui.utils.AmountManageHelper
 import com.example.zupzup.ui.viewmodel.StoreDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,12 +36,17 @@ class StoreDetailFragment : Fragment() {
         setViewModelBinding()
         initRcvLayoutManager()
         getStoreDetailById()
-
     }
 
     private fun setViewModelBinding() {
-        binding.viewModel = storeDetailViewModel
-        binding.lifecycleOwner = viewLifecycleOwner
+        with(binding) {
+            viewModel = storeDetailViewModel
+            lifecycleOwner = viewLifecycleOwner
+            helper = AmountManageHelper(
+                storeDetailViewModel::increaseAmount,
+                storeDetailViewModel::decreaseAmount
+            )
+        }
     }
 
     private fun initRcvLayoutManager() {
