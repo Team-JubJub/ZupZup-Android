@@ -17,6 +17,15 @@
                             <option name="y" value="-53" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_frag_store_detail_to_reservationFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -37,6 +46,18 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="reservationFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-19" />
+                            <option name="y" value="-172" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

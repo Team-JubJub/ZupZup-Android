@@ -5,5 +5,6 @@ data class MerchandiseModel(
     val storeId: Long = 0,
     val itemName: String = "",
     val price: Int = 0,
-    val discountRate: Int = 0,
+    val discounted: Int = 0,
+    val discountRate : Int = 0
 )

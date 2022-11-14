@@ -39,10 +39,11 @@ class StoreDetailBodyAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(
             item: MerchandiseModel,
+            position: Int
         ) {
             with(binding) {
                 merchandise = item
-                idx = bindingAdapterPosition
+                idx = position
                 helper = amountManageHelper
                 tvMerchandisePrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
 
@@ -86,6 +87,6 @@ class StoreDetailBodyAdapter(
         position: Int,
     ) {
         val merchandise = getItem(position)
-        holder.bind(merchandise)
+        holder.bind(merchandise, position)
     }
 }

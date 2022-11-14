@@ -2,7 +2,8 @@ package com.example.zupzup.ui.utils
 
 class AmountManageHelper(
     private val increaseAmount: (Int) -> Unit,
-    private val decreaseAmount: (Int) -> Unit
+    private val decreaseAmount: (Int) -> Unit,
+    private val getAmountListFromViewModel : () -> List<Int>
 ) {
     fun increase(idx : Int) {
         increaseAmount(idx)
@@ -10,5 +11,9 @@ class AmountManageHelper(
 
     fun decrease(idx : Int) {
         decreaseAmount(idx)
+    }
+
+    fun getAmountList() : List<Int> {
+        return getAmountListFromViewModel()
     }
 }

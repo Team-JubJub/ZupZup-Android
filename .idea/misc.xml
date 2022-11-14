@@ -18,6 +18,7 @@
         <entry key="app/src/main/res/drawable/ic_store_timer.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/ic_timer_24.xml" value="0.1615" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1703277587890625" />
+        <entry key="app/src/main/res/layout/fragment_reservation.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_store.xml" value="0.15364583333333334" />
         <entry key="app/src/main/res/layout/fragment_store_detail.xml" value="0.20978611316366635" />
         <entry key="app/src/main/res/layout/fragment_store_list.xml" value="0.19610507246376813" />
