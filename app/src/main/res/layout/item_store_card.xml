@@ -69,12 +69,14 @@
             app:layout_constraintTop_toTopOf="@id/tv_store_sales" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:text="@{storeHeader.openTime}"
             android:textColor="@color/warm_gray3"
             app:layout_constraintBottom_toBottomOf="@id/iv_store_timer"
+            app:layout_constraintEnd_toStartOf="@+id/iv_select_store"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@id/iv_store_timer"
             app:layout_constraintTop_toTopOf="@id/iv_store_timer"
             tools:text="12:00 ~ 19:00" />

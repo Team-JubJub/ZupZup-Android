@@ -6,9 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zupzup.databinding.FragmentStoreDetailBinding
+import com.example.zupzup.domain.models.CartModel
+import com.example.zupzup.domain.models.MerchandiseModel
+import com.example.zupzup.domain.models.StoreModel
+import com.example.zupzup.ui.UiState
 import com.example.zupzup.ui.utils.AmountManageHelper
 import com.example.zupzup.ui.viewmodel.StoreDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,6 +26,7 @@ class StoreDetailFragment : Fragment() {
 
     private val storeDetailViewModel: StoreDetailViewModel by viewModels()
     private val args: StoreDetailFragmentArgs by navArgs()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,15 +42,18 @@ class StoreDetailFragment : Fragment() {
         setViewModelBinding()
         initRcvLayoutManager()
         getStoreDetailById()
+        navigateToReservationFragment()
     }
 
     private fun setViewModelBinding() {
         with(binding) {
             viewModel = storeDetailViewModel
             lifecycleOwner = viewLifecycleOwner
+
             helper = AmountManageHelper(
                 storeDetailViewModel::increaseAmount,
-                storeDetailViewModel::decreaseAmount
+                storeDetailViewModel::decreaseAmount,
+                storeDetailViewModel::getAmountList
             )
         }
     }
@@ -58,5 +67,36 @@ class StoreDetailFragment : Fragment() {
         storeDetailViewModel.getStoreDetailById(storeId)
     }
 
+    private fun navigateToReservationFragment() {
+        binding.btnMakeReservation.setOnClickListener {
+            if (storeDetailViewModel.storeDetailUiState.value is UiState.Success<StoreModel>) {
+                val uiState =
+                    storeDetailViewModel.storeDetailUiState.value as UiState.Success<StoreModel>
+                val storeModel = uiState.data
+                val storeId = storeModel.storeID
+                val storeName = storeModel.headerInfo.name
+                val storeAddress = storeModel.address
+                val cartList = makeCartList(storeModel.merchandiseList)
+                val action = StoreDetailFragmentDirections.actionFragStoreDetailToFragReservation(
+                    cartList,
+                    storeId,
+                    storeName,
+                    storeAddress
+                )
+                findNavController().navigate(action)
+            }
+        }
+    }
+
+    private fun makeCartList(merchandiseList: List<MerchandiseModel>): Array<CartModel> {
+        val amountList = storeDetailViewModel.getAmountList()
+        val cartList = arrayListOf<CartModel>()
+        amountList.forEachIndexed { amount, idx ->
+            if (amount > 0) {
+                cartList.add(merchandiseList[idx].toCartModel(amount))
+            }
+        }
+        return cartList.toTypedArray()
+    }
 
 }

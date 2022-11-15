@@ -9,7 +9,7 @@
         android:id="@+id/frag_store_list"
         android:name="com.example.zupzup.ui.fragment.StoreListFragment"
         android:label="fragment_store"
-        tools:layout="@layout/fragment_store_list" >
+        tools:layout="@layout/fragment_store_list">
         <action
             android:id="@+id/action_frag_store_list_to_frag_store_detail"
             app:destination="@id/frag_store_detail" />
@@ -18,12 +18,40 @@
     <fragment
         android:id="@+id/frag_store_detail"
         android:name="com.example.zupzup.ui.fragment.StoreDetailFragment"
-        tools:layout="@layout/fragment_store_detail"
-        android:label="StoreDetailFragment" >
+        android:label="StoreDetailFragment"
+        tools:layout="@layout/fragment_store_detail">
         <argument
             android:name="storeId"
+            android:defaultValue="0L"
             app:argType="long"
-            app:nullable="false"
-            android:defaultValue="0L" />
+            app:nullable="false" />
+        <action
+            android:id="@+id/action_frag_store_detail_to_frag_reservation"
+            app:destination="@id/frag_reservation" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/frag_reservation"
+        android:name="com.example.zupzup.ui.fragment.ReservationFragment"
+        android:label="fragment_reservation"
+        tools:layout="@layout/fragment_reservation">
+        <argument
+            android:name="storeId"
+            android:defaultValue="0L"
+            app:argType="long"
+            app:nullable="false" />
+        <argument
+            android:name="storeName"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="storeAddress"
+            android:defaultValue=""
+            app:argType="string"/>
+        <argument
+            android:name="cartList"
+            app:argType="com.example.zupzup.domain.models.CartModel[]" />
+
     </fragment>
 </navigation>
