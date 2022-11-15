@@ -48,7 +48,10 @@
         <argument
             android:name="storeAddress"
             android:defaultValue=""
-            app:argType="string"
-            app:nullable="false" />
+            app:argType="string"/>
+        <argument
+            android:name="cartList"
+            app:argType="com.example.zupzup.domain.models.CartModel[]" />
+
     </fragment>
 </navigation>

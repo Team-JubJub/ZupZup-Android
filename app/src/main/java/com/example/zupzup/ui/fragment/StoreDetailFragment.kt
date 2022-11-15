@@ -1,7 +1,6 @@
 package com.example.zupzup.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zupzup.databinding.FragmentStoreDetailBinding
+import com.example.zupzup.domain.models.CartModel
+import com.example.zupzup.domain.models.MerchandiseModel
 import com.example.zupzup.domain.models.StoreModel
 import com.example.zupzup.ui.UiState
 import com.example.zupzup.ui.utils.AmountManageHelper
@@ -25,7 +26,6 @@ class StoreDetailFragment : Fragment() {
 
     private val storeDetailViewModel: StoreDetailViewModel by viewModels()
     private val args: StoreDetailFragmentArgs by navArgs()
-
 
 
     override fun onCreateView(
@@ -76,18 +76,27 @@ class StoreDetailFragment : Fragment() {
                 val storeId = storeModel.storeID
                 val storeName = storeModel.headerInfo.name
                 val storeAddress = storeModel.address
-                //val bundle = ma   keCartList()
+                val cartList = makeCartList(storeModel.merchandiseList)
                 val action = StoreDetailFragmentDirections.actionFragStoreDetailToFragReservation(
+                    cartList,
                     storeId,
                     storeName,
                     storeAddress
                 )
-
                 findNavController().navigate(action)
             }
         }
     }
 
-    //private fun makeCartList() : List<CartModel>
+    private fun makeCartList(merchandiseList: List<MerchandiseModel>): Array<CartModel> {
+        val amountList = storeDetailViewModel.getAmountList()
+        val cartList = arrayListOf<CartModel>()
+        amountList.forEachIndexed { amount, idx ->
+            if (amount > 0) {
+                cartList.add(merchandiseList[idx].toCartModel(amount))
+            }
+        }
+        return cartList.toTypedArray()
+    }
 
 }
