@@ -17,7 +17,8 @@ class StoreListViewModel @Inject constructor(
     private val getStoreListUseCase: GetStoreListUseCase
 ) : ViewModel() {
 
-    private var _storeUiState = MutableStateFlow<UiState<List<StoreHeaderInfoModel>>>(UiState.Loading)
+    private var _storeUiState =
+        MutableStateFlow<UiState<List<StoreHeaderInfoModel>>>(UiState.Loading)
     val storeUiState: StateFlow<UiState<List<StoreHeaderInfoModel>>> get() = _storeUiState
 
     init {
@@ -28,10 +29,13 @@ class StoreListViewModel @Inject constructor(
         viewModelScope.launch {
             _storeUiState.emit(UiState.Loading)
             getStoreListUseCase.invoke().apply {
-                if (this is DataResult.Success) {
-                    _storeUiState.emit(UiState.Success(data))
-                } else if (this is DataResult.Failure) {
-                    _storeUiState.emit(UiState.Error(1))
+                when (this) {
+                    is DataResult.Success -> {
+                        _storeUiState.emit(UiState.Success(data))
+                    }
+                    is DataResult.Failure -> {
+                        _storeUiState.emit(UiState.Error(1))
+                    }
                 }
             }
         }

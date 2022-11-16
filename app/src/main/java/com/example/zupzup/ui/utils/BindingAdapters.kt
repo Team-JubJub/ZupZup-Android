@@ -1,13 +1,15 @@
 package com.example.zupzup.ui.utils
 
-import android.util.Log
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.zupzup.domain.models.CartModel
+import com.example.zupzup.domain.models.ReservationModel
 import com.example.zupzup.domain.models.StoreHeaderInfoModel
 import com.example.zupzup.domain.models.StoreModel
 import com.example.zupzup.ui.UiState
+import com.example.zupzup.ui.adaper.reservation.ReservationBindingHelper
 import com.example.zupzup.ui.adaper.storedetail.StoreDetailBodyAdapter
 import com.example.zupzup.ui.adaper.storedetail.StoreDetailHeaderAdapter
 import com.example.zupzup.ui.adaper.storelist.StoreListRecyclerViewAdapter
@@ -31,7 +33,6 @@ fun bindStoreDetailRecyclerView(
     uiState: UiState<StoreModel>?,
     amountManageHelper: AmountManageHelper
 ) {
-    Log.d("TAG", "bindStoreDetailRecyclerView: ")
     val headerAdapter = StoreDetailHeaderAdapter()
     val bodyAdapter = StoreDetailBodyAdapter(amountManageHelper)
     when (uiState) {
@@ -54,4 +55,32 @@ fun bindEventListToTextView(textView: TextView, eventList: List<String>) {
         }
     }
     textView.text = event
+}
+
+@BindingAdapter("totalAmount")
+fun bindTotalAmountToTextView(textView: TextView, cartList: List<CartModel>) {
+    textView.text = cartList.sumOf { it.amount }.toString() + "개"
+}
+
+@BindingAdapter("totalPrice")
+fun bindTotalPriceToTextView(textView: TextView, cartList: List<CartModel>) {
+    textView.text = cartList.sumOf { it.amount * it.salesPrice }.toString() + "원"
+}
+
+@BindingAdapter("reservationHeaderUiState", "bindingHelper")
+fun bindReservationRecyclerView(
+    recyclerView: RecyclerView,
+    headerInfoState: UiState<ReservationModel>?,
+    bindingHelper: ReservationBindingHelper
+) {
+    when (headerInfoState) {
+        is UiState.Success -> {
+            with(headerInfoState.data) {
+                bindingHelper.setHeader(reservationHeaderInfo)
+                bindingHelper.setFooter(visitTime, customer)
+                bindingHelper.setCartList(reservationHeaderInfo.cartList)
+            }
+        }
+        else -> {}
+    }
 }

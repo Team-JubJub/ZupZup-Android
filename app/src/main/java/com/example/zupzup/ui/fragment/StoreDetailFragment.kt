@@ -1,6 +1,7 @@
 package com.example.zupzup.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -91,7 +92,7 @@ class StoreDetailFragment : Fragment() {
     private fun makeCartList(merchandiseList: List<MerchandiseModel>): Array<CartModel> {
         val amountList = storeDetailViewModel.getAmountList()
         val cartList = arrayListOf<CartModel>()
-        amountList.forEachIndexed { amount, idx ->
+        amountList.forEachIndexed { idx, amount ->
             if (amount > 0) {
                 cartList.add(merchandiseList[idx].toCartModel(amount))
             }
