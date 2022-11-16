@@ -39,7 +39,7 @@
             android:layout_marginBottom="34dp"
             android:background="@drawable/frame_rectangle_corner_14_main"
             android:padding="16dp"
-            android:text="에약하기"
+            android:text="예약하기"
             android:textColor="@color/text"
             android:textSize="17sp"
             android:textStyle="bold"

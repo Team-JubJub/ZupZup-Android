@@ -3,6 +3,7 @@ package com.example.zupzup.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.zupzup.domain.DataResult
+import com.example.zupzup.domain.models.StoreHeaderInfoModel
 import com.example.zupzup.domain.models.StoreModel
 import com.example.zupzup.domain.usecase.GetStoreDetailUseCase
 import com.example.zupzup.ui.UiState
@@ -43,7 +44,6 @@ class StoreDetailViewModel @Inject constructor(
             }
         }
     }
-
     fun getAmountList(): List<Int> {
         return amountList
     }
