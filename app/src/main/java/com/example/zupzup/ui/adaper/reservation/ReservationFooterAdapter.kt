@@ -7,26 +7,30 @@ import com.example.zupzup.databinding.ItemReservationVisitInfoBinding
 import com.example.zupzup.domain.models.CustomerModel
 
 class ReservationFooterAdapter(
-    private var visitTime: String = "",
-    private val customer: CustomerModel? = null
+    private var visitTime: Int = 0,
+    private val customer: CustomerModel? = null,
+    private val showSetVisitTimeBottomSheet: () -> Unit
 ) :
     RecyclerView.Adapter<ReservationFooterAdapter.ReservationFooterViewHolder>(
     ) {
 
-    fun setReservationFooter(newVisitTime: String, customer: CustomerModel?) {
+    fun setReservationFooter(newVisitTime: Int, customer: CustomerModel?) {
         visitTime = newVisitTime
-        notifyDataSetChanged()
-        //notifyItemChanged(0)
+        notifyItemChanged(0)
     }
 
     class ReservationFooterViewHolder(
         private val binding: ItemReservationVisitInfoBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(
-            visitTime: String,
-            customer: CustomerModel?
+            newVisitTime: Int,
+            customer: CustomerModel?,
+            showSetVisitTimeBottomSheet : () -> Unit
         ) {
-            binding.visitTime = visitTime
+            with(binding) {
+                visitTime = newVisitTime
+                showSetVisitTimeBottomSheetBtnOnClick = showSetVisitTimeBottomSheet
+            }
         }
     }
 
@@ -47,7 +51,7 @@ class ReservationFooterAdapter(
         holder: ReservationFooterViewHolder,
         position: Int,
     ) {
-        holder.bind(visitTime, customer)
+        holder.bind(visitTime, customer, showSetVisitTimeBottomSheet)
     }
 
     override fun getItemCount(): Int {

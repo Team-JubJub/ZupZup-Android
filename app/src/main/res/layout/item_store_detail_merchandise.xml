@@ -26,20 +26,20 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="0dp"
+            android:layout_width="84dp"
             android:layout_height="0dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/frame_rectangle_left_corner_14_warmgray2"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tv_merchandise_name"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
         <ImageButton
             android:id="@+id/btn_increase_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginVertical="24.5dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/frame_circle_warmgray2"
@@ -64,40 +64,28 @@
 
         <ImageButton
             android:id="@+id/btn_decrease_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginVertical="24.5dp"
             android:layout_marginEnd="16dp"
-            android:padding="4dp"
             android:background="@drawable/frame_circle_warmgray2"
+            android:padding="4dp"
             android:src="@drawable/ic_minus_white_20"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/tv_merchandise_amount"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_merchandise_sales"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:text="@{String.valueOf(merchandise.discountRate) + '%'}"
-            android:textColor="@color/text"
-            android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="@id/tv_merchandise_amount"
-            app:layout_constraintEnd_toStartOf="@id/btn_decrease_amount"
-            app:layout_constraintTop_toTopOf="@id/tv_merchandise_amount"
-            tools:text="45%" />
-
-        <TextView
             android:id="@+id/tv_merchandise_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="8dp"
             android:text="@{String.valueOf(merchandise.price) + '원'}"
             android:textColor="@color/warm_gray3"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tv_merchandise_sales"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_merchandise_sales_price"
+            app:layout_constraintStart_toEndOf="@+id/tv_merchandise_sales_price"
+            app:layout_constraintTop_toTopOf="@+id/tv_merchandise_sales_price"
             tools:text="4000원" />
 
         <TextView
@@ -105,12 +93,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
             android:text="@{String.valueOf(merchandise.discounted) + '원'}"
             android:textColor="@color/text"
+            android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tv_merchandise_price"
+            app:layout_constraintStart_toStartOf="@+id/tv_merchandise_name"
             app:layout_constraintTop_toBottomOf="@id/tv_merchandise_name"
             tools:text="3000원" />
 
@@ -118,11 +106,12 @@
             android:id="@+id/tv_merchandise_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="@{merchandise.itemName}"
             android:textColor="@color/text"
             android:textSize="17sp"
-            app:layout_constraintStart_toStartOf="@id/tv_merchandise_sales_price"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="상품이름" />
 

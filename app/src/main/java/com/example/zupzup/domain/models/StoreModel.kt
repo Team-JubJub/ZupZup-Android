@@ -6,7 +6,8 @@ data class StoreModel(
     val headerInfo: StoreHeaderInfoModel,
     val address : String,
     val eventList : List<String>,
-    val merchandiseList: List<MerchandiseModel>
+    val merchandiseList: List<MerchandiseModel>,
+    val saleTime : Pair<Int,Int>
 ) {
 
     fun toDetailHeaderModel() : StoreDetailHeaderModel{

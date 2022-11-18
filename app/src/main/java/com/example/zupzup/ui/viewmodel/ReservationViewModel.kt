@@ -23,7 +23,7 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
 
     private val headerInfo = MutableStateFlow<ReservationHeaderModel?>(null)
 
-    private val visitTime = MutableStateFlow("")
+    private val visitTime = MutableStateFlow(0)
 
     private val customer = MutableStateFlow<CustomerModel?>(null)
 
@@ -32,7 +32,7 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
             _reservationUiState.emit(UiState.Loading)
             combine(headerInfo, visitTime, customer) { headerInfo, visitTime, customer ->
 
-                if(headerInfo != null) {
+                if (headerInfo != null) {
                     _reservationUiState.emit(
                         UiState.Success(
                             ReservationModel(
@@ -44,13 +44,7 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
                     )
                 }
 
-            }.collect{}
-        }
-    }
-
-    fun a() {
-        viewModelScope.launch {
-            visitTime.emit("123")
+            }.collect {}
         }
     }
 
@@ -58,11 +52,31 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
         storeId: Long,
         storeName: String,
         storeAddress: String,
-        cartList: List<CartModel>
+        cartList: List<CartModel>,
+        start: Int,
+        end: Int
     ) {
         viewModelScope.launch {
-            headerInfo.emit(ReservationHeaderModel(storeId, storeName, storeAddress, cartList))
+            headerInfo.emit(
+                ReservationHeaderModel(
+                    storeId,
+                    storeName,
+                    storeAddress,
+                    cartList,
+                    Pair(start, end)
+                )
+            )
         }
+    }
+
+    fun setVisitTime(newVisitTime : Int) {
+        viewModelScope.launch {
+            visitTime.emit(newVisitTime)
+        }
+    }
+
+    fun getSelectedVisitTime() : Int {
+        return visitTime.value
     }
 
 }

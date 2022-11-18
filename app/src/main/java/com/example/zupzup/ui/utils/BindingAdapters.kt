@@ -1,6 +1,7 @@
 package com.example.zupzup.ui.utils
 
 import android.widget.TextView
+import android.widget.TimePicker
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -82,5 +83,33 @@ fun bindReservationRecyclerView(
             }
         }
         else -> {}
+    }
+}
+
+@BindingAdapter("visitTime")
+fun bindVisitTimeToTextView(
+    textView: TextView,
+    visitTime: Int
+) {
+    textView.text = visitTime.toTimeString()
+}
+
+@BindingAdapter("startTime", "endTime")
+fun bindSaleTimeToTextView(
+    textView: TextView,
+    startTime: Int,
+    endTime: Int
+) {
+    textView.text = "할인시간 : ${startTime.toTimeString()} ~ ${endTime.toTimeString()}"
+}
+
+@BindingAdapter("selectedTime")
+fun bindSelectedTimeToTimePicker(
+    timePicker: TimePicker,
+    selectedTime: Int,
+) {
+    if (selectedTime != 0) {
+        timePicker.hour = selectedTime / 100
+        timePicker.minute = selectedTime % 100
     }
 }

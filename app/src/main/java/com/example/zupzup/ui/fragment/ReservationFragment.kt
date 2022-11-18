@@ -34,10 +34,12 @@ class ReservationFragment : Fragment() {
     }
 
     private val footerAdapter: ReservationFooterAdapter by lazy {
-        ReservationFooterAdapter()
+        ReservationFooterAdapter {
+            showSetVisitTimeBottomSheet()
+        }
     }
 
-    private val cartListAdapter : ReservationCartListAdapter by lazy {
+    private val cartListAdapter: ReservationCartListAdapter by lazy {
         ReservationCartListAdapter()
     }
 
@@ -59,9 +61,14 @@ class ReservationFragment : Fragment() {
         initRecyclerView()
         initBinding()
         setArgumentToViewModel()
-        binding.btnRegisterReservation.setOnClickListener {
-            reservationViewModel.a()
-        }
+    }
+
+    private fun showSetVisitTimeBottomSheet() {
+        VisitTimeSetBottomSheet(
+            Pair(args.start, args.end),
+            reservationViewModel.getSelectedVisitTime(),
+            reservationViewModel::setVisitTime
+        ).show(parentFragmentManager, null)
     }
 
     private fun initBinding() {
@@ -88,7 +95,7 @@ class ReservationFragment : Fragment() {
     private fun setArgumentToViewModel() {
         with(args) {
             reservationViewModel.setHeaderInfo(
-                storeId, storeName, storeAddress, cartList.toList()
+                storeId, storeName, storeAddress, cartList.toList(), start, end
             )
         }
     }
