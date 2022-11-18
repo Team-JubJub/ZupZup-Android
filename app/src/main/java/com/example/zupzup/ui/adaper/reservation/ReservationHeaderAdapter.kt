@@ -2,16 +2,15 @@ package com.example.zupzup.ui.adaper.reservation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zupzup.databinding.ItemReservationStoreInfoBinding
-import com.example.zupzup.domain.models.CartModel
 import com.example.zupzup.domain.models.ReservationHeaderModel
 
 class ReservationHeaderAdapter(
     private var reservationHeaderModel: ReservationHeaderModel = ReservationHeaderModel(
         0, "", "",
-        listOf()
+        listOf(),
+        Pair(0,0)
     )
 ) :
     RecyclerView.Adapter<ReservationHeaderAdapter.ReservationHeaderViewHolder>() {

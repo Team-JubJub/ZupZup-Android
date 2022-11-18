@@ -6,14 +6,14 @@ import com.example.zupzup.domain.models.ReservationHeaderModel
 
 class ReservationBindingHelper(
     private val setHeaderData: (ReservationHeaderModel) -> Unit,
-    private val setFooterData: (String, CustomerModel?) -> Unit,
+    private val setFooterData: (Int, CustomerModel?) -> Unit,
     private val setCartListData : (List<CartModel>) -> Unit
 ) {
     fun setHeader(headerInfo: ReservationHeaderModel) {
         setHeaderData(headerInfo)
     }
 
-    fun setFooter(visitTime: String, customer: CustomerModel?) {
+    fun setFooter(visitTime: Int, customer: CustomerModel?) {
         setFooterData(visitTime, customer)
     }
 

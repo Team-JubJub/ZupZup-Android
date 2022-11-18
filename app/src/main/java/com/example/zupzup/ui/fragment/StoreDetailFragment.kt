@@ -1,7 +1,6 @@
 package com.example.zupzup.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -78,11 +77,14 @@ class StoreDetailFragment : Fragment() {
                 val storeName = storeModel.headerInfo.name
                 val storeAddress = storeModel.address
                 val cartList = makeCartList(storeModel.merchandiseList)
+                val saleTime = storeModel.saleTime
                 val action = StoreDetailFragmentDirections.actionFragStoreDetailToFragReservation(
-                    cartList,
                     storeId,
                     storeName,
-                    storeAddress
+                    storeAddress,
+                    cartList,
+                    saleTime.first,
+                    saleTime.second
                 )
                 findNavController().navigate(action)
             }

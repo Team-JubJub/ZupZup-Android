@@ -37,21 +37,25 @@
         tools:layout="@layout/fragment_reservation">
         <argument
             android:name="storeId"
-            android:defaultValue="0L"
             app:argType="long"
             app:nullable="false" />
         <argument
             android:name="storeName"
-            android:defaultValue=""
             app:argType="string"
             app:nullable="false" />
         <argument
             android:name="storeAddress"
-            android:defaultValue=""
             app:argType="string"/>
+
         <argument
             android:name="cartList"
             app:argType="com.example.zupzup.domain.models.CartModel[]" />
+        <argument
+            android:name="start"
+            app:argType="integer" />
+        <argument
+            android:name="end"
+            app:argType="integer" />
 
     </fragment>
 </navigation>
