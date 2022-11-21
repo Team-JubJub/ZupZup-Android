@@ -14,6 +14,7 @@ import com.example.zupzup.ui.adaper.reservation.ReservationBindingHelper
 import com.example.zupzup.ui.adaper.storedetail.StoreDetailBodyAdapter
 import com.example.zupzup.ui.adaper.storedetail.StoreDetailHeaderAdapter
 import com.example.zupzup.ui.adaper.storelist.StoreListRecyclerViewAdapter
+import com.example.zupzup.ui.custom.CustomClearEditText
 
 @BindingAdapter("storeListUiState")
 fun bindStoreListRecyclerView(

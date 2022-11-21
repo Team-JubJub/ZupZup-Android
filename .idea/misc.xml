@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../layout/custom_preview.xml" value="0.1816123188405797" />
         <entry key="app/src/main/res/drawable/frame_39.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/frame_circle_wramgray2.xml" value="0.1615" />
+        <entry key="app/src/main/res/drawable/frame_edittext_bottom_main.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/frame_rectangle_16.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/frame_rectangle_bottom_corner_12_gray0.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/frame_rectangle_bottom_corner_12_grayo.xml" value="0.1615" />
@@ -23,9 +25,11 @@
         <entry key="app/src/main/res/drawable/frame_rectangle_top_corner_12_warmgray1.xml" value="0.1095" />
         <entry key="app/src/main/res/drawable/frame_rectangle_top_corner_12_warmgray2.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/ic_cart.xml" value="0.1615" />
+        <entry key="app/src/main/res/drawable/ic_cart_white_30.xml" value="0.1665" />
         <entry key="app/src/main/res/drawable/ic_clock.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/ic_increase_arrow.xml" value="0.1235" />
         <entry key="app/src/main/res/drawable/ic_increase_right_arrow.xml" value="0.1615" />
+        <entry key="app/src/main/res/drawable/ic_right_arrow_warmgray4.xml" value="0.1665" />
         <entry key="app/src/main/res/drawable/ic_store.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/ic_store_timer.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/ic_timer_24.xml" value="0.1615" />
@@ -33,12 +37,13 @@
         <entry key="app/src/main/res/drawable/ic_timer_white_16.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/ic_timer_white_30.xml" value="0.1615" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1703277587890625" />
+        <entry key="app/src/main/res/layout/fragment_customer_info_set_bottom_sheet.xml" value="0.6511581420898438" />
         <entry key="app/src/main/res/layout/fragment_reservation.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_set_visit_time_bottom_sheet.xml" value="0.4603461002957995" />
         <entry key="app/src/main/res/layout/fragment_store.xml" value="0.15364583333333334" />
         <entry key="app/src/main/res/layout/fragment_store_detail.xml" value="0.20978611316366635" />
         <entry key="app/src/main/res/layout/fragment_store_list.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/fragment_visit_time_set_bottom_sheet.xml" value="0.155" />
+        <entry key="app/src/main/res/layout/fragment_visit_time_set_bottom_sheet.xml" value="0.49029052734375" />
         <entry key="app/src/main/res/layout/item_reservation_cart_list.xml" value="0.26141421553017424" />
         <entry key="app/src/main/res/layout/item_reservation_store_info.xml" value="0.2639319157254868" />
         <entry key="app/src/main/res/layout/item_reservation_visit_info.xml" value="0.33217100920500575" />

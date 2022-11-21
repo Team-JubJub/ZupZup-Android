@@ -14,3 +14,14 @@ fun Int.toTimeString(): String {
 
     return text
 }
+
+fun String.toOnlyStringFormat(): String {
+    return replace("-", "")
+}
+
+fun String.toPhoneNumberFormat() : String {
+    if(this.length == 13) {
+        return this.format("%s-%s-%s", this.substring(0,3), this.substring(3,6), this.substring(6))
+    }
+    return ""
+}
