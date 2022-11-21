@@ -25,7 +25,7 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
 
     private val visitTime = MutableStateFlow(0)
 
-    private val customer = MutableStateFlow<CustomerModel?>(null)
+    private val customer = MutableStateFlow<CustomerModel>(CustomerModel("",""))
 
     init {
         viewModelScope.launch {
@@ -69,15 +69,26 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
         }
     }
 
-    fun setVisitTime(newVisitTime : Int) {
+    fun setVisitTime(newVisitTime: Int) {
         viewModelScope.launch {
             visitTime.emit(newVisitTime)
         }
     }
 
-    fun getSelectedVisitTime() : Int {
+    fun getSelectedVisitTime(): Int {
         return visitTime.value
     }
+
+    fun setCustomerInfo(newCustomer: CustomerModel) {
+        viewModelScope.launch {
+            customer.emit(newCustomer)
+        }
+    }
+
+    fun getCustomerInfo() : CustomerModel {
+        return customer.value
+    }
+
 
 }
 

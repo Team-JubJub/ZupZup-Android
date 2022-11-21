@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="kotlin.jvm.functions.Function2" />
+        <import type="kotlin.Unit" />
+
+        <variable
+            name="setCustomerInfoBtnClick"
+            type="Function2&lt; String, String, Unit>" />
+
+        <variable
+            name="name"
+            type="String" />
+
+        <variable
+            name="phoneNumber"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/frame_rectangle_top_corner_12_warmgray1"
+        android:paddingHorizontal="16dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        tools:context=".ui.fragment.VisitTimeSetBottomSheet">
+
+        <TextView
+            android:id="@+id/tv_set_customer_info_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:text="개인 정보"
+            android:textColor="@color/text"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tv_customer_info_name_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="이름"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_set_customer_info_label" />
+
+        <com.example.zupzup.ui.custom.CustomClearEditText
+            android:id="@+id/etv_customer_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/main"
+            android:hint="김OO"
+            android:inputType="text"
+            android:maxLength="10"
+            android:paddingStart="8dp"
+            android:text="@={name}"
+            android:textColor="@color/text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_customer_info_name_label" />
+
+        <TextView
+            android:id="@+id/tv_customer_phone_number_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:text="전화번호"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/tv_customer_info_name_label"
+            app:layout_constraintTop_toBottomOf="@id/etv_customer_name" />
+
+        <com.example.zupzup.ui.custom.CustomClearEditText
+            android:id="@+id/etv_customer_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/main"
+            android:hint="010-0000-0000"
+            android:inputType="phone"
+            android:maxLength="13"
+            android:paddingStart="8dp"
+            android:text="@={phoneNumber}"
+            android:textColor="@color/text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_customer_phone_number_label" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_set_customer_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:background="@drawable/frame_rectangle_corner_14_main"
+            android:padding="16dp"
+            android:text="개인정보 입력하기"
+            android:textColor="@color/text"
+            android:textSize="17sp"
+            android:onClick="@{() -> setCustomerInfoBtnClick.invoke(name,phoneNumber)}"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etv_customer_phone_number" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

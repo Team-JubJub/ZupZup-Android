@@ -13,8 +13,16 @@
             type="Function0&lt; Unit>" />
 
         <variable
+            name="showSetCustomerInfoBottomSheetBtnOnClick"
+            type="Function0&lt; Unit>" />
+
+        <variable
             name="visitTime"
             type="Integer" />
+
+        <variable
+            name="customer"
+            type="com.example.zupzup.domain.models.CustomerModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -117,6 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:hint="김OO"
+                android:text="@{customer.name}"
                 android:textColor="@color/text"
                 android:textColorHint="@color/text"
                 android:textSize="17sp"
@@ -129,6 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:hint="010-0000-0000"
+                android:text="@{customer.phoneNumber}"
                 android:textColor="@color/warm_gray4"
                 android:textColorHint="@color/warm_gray4"
                 android:textSize="13sp"
@@ -140,6 +150,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:background="@color/transparent"
+                android:onClick="@{() -> showSetCustomerInfoBottomSheetBtnOnClick.invoke()}"
                 android:src="@drawable/ic_right_arrow_warmgray4"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
