@@ -5,6 +5,7 @@ import com.example.zupzup.domain.models.CustomerModel
 import com.example.zupzup.domain.models.ReservationHeaderModel
 
 class ReservationBindingHelper(
+    private val navigateToReservationProcess : () -> Unit,
     private val setHeaderData: (ReservationHeaderModel) -> Unit,
     private val setFooterData: (Int, CustomerModel) -> Unit,
     private val setCartListData : (List<CartModel>) -> Unit
@@ -19,5 +20,9 @@ class ReservationBindingHelper(
 
     fun setCartList(cartList : List<CartModel>) {
         setCartListData(cartList)
+    }
+
+    fun navigateToReservationProcessFragment() {
+        navigateToReservationProcess()
     }
 }

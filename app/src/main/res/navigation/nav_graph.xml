@@ -56,6 +56,14 @@
         <argument
             android:name="end"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_frag_reservation_to_frag_reservation_process"
+            app:destination="@id/frag_reservation_process" />
 
     </fragment>
+    <fragment
+        android:id="@+id/frag_reservation_process"
+        android:name="com.example.zupzup.ui.fragment.ReservationProcessFragment"
+        android:label="ReservationProcessFragment"
+        tools:layout="@layout/fragment_reservation_process"/>
 </navigation>

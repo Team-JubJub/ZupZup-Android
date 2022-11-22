@@ -22,6 +22,7 @@
         <entry key="app/src/main/res/drawable/frame_rectangle_corner_14_black.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/frame_rectangle_corner_14_gray.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/frame_rectangle_corner_14_main.xml" value="0.1615" />
+        <entry key="app/src/main/res/drawable/frame_rectangle_corner_14_warmgray2.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/frame_rectangle_corner_14_white.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/frame_rectangle_corner_6_main.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/frame_rectangle_corner_8_wramgray3.xml" value="0.1615" />
@@ -51,6 +52,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1703277587890625" />
         <entry key="app/src/main/res/layout/fragment_customer_info_set_bottom_sheet.xml" value="0.6511581420898438" />
         <entry key="app/src/main/res/layout/fragment_reservation.xml" value="0.5715109562528307" />
+        <entry key="app/src/main/res/layout/fragment_reservation_process.xml" value="0.5221441117544023" />
         <entry key="app/src/main/res/layout/fragment_set_visit_time_bottom_sheet.xml" value="0.4603461002957995" />
         <entry key="app/src/main/res/layout/fragment_store.xml" value="0.15364583333333334" />
         <entry key="app/src/main/res/layout/fragment_store_detail.xml" value="0.20978611316366635" />
