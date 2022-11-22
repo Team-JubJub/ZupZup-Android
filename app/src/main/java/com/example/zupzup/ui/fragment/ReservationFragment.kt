@@ -35,11 +35,10 @@ class ReservationFragment : Fragment() {
 
     private val footerAdapter: ReservationFooterAdapter by lazy {
         ReservationFooterAdapter(
-            0, reservationViewModel.getCustomerInfo(), ::showSetVisitTimeBottomSheet,
-            ::showSetCustomerInfoBottomSheet
+            0, reservationViewModel.getCustomerInfo(),
+            reservationViewModel::setIsApprove, ::showSetVisitTimeBottomSheet,
+            ::showSetCustomerInfoBottomSheet, ::showTermsDetailDialog
         )
-
-
     }
 
     private val cartListAdapter: ReservationCartListAdapter by lazy {
@@ -111,6 +110,11 @@ class ReservationFragment : Fragment() {
                 storeId, storeName, storeAddress, cartList.toList(), start, end
             )
         }
+    }
+
+    private fun showTermsDetailDialog() {
+        val dialog = TermsDetailDialogFragment()
+        dialog.show(parentFragmentManager, null)
     }
 
     override fun onDestroyView() {

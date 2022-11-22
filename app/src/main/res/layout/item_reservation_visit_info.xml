@@ -9,11 +9,19 @@
         <import type="kotlin.Unit" />
 
         <variable
+            name="approveCheckboxOnClick"
+            type="Function0&lt; Unit>" />
+
+        <variable
             name="showSetVisitTimeBottomSheetBtnOnClick"
             type="Function0&lt; Unit>" />
 
         <variable
             name="showSetCustomerInfoBottomSheetBtnOnClick"
+            type="Function0&lt; Unit>" />
+
+        <variable
+            name="showTermsDetailTextViewOnClick"
             type="Function0&lt; Unit>" />
 
         <variable
@@ -155,6 +163,55 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_approve_personal_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/frame_rectangle_corner_14_black"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraint_reservation_customer_info">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="9dp"
+                android:text="개인정보 이용 동의"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_approve_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:onClick="@{_ -> showTermsDetailTextViewOnClick.invoke()}"
+                android:text="자세히"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/checkbox_is_approve"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckBox
+                android:id="@+id/checkbox_is_approve"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/selector_permission_personal_info_checkbox"
+                android:button="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="@{_ -> approveCheckboxOnClick.invoke()}" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.zupzup.ui.utils
 
+import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.TimePicker
 import androidx.databinding.BindingAdapter
