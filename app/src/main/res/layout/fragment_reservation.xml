@@ -41,6 +41,7 @@
             android:background="@drawable/selector_button_enabled"
             android:padding="16dp"
             android:text="예약 완료하기"
+            android:onClick="@{ _ -> bindingHelper.navigateToReservationProcessFragment()}"
             android:textColor="@color/text"
             android:textSize="17sp"
             android:textStyle="bold"

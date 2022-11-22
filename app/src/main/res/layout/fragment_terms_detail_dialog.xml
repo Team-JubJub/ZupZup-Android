@@ -17,6 +17,7 @@
         <TextView
             android:id="@+id/tv_terms_detail"
             android:layout_width="match_parent"
+            android:scrollbars="vertical"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
