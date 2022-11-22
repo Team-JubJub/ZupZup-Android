@@ -1,6 +1,7 @@
 package com.example.zupzup.data.datasource
 
-import com.example.zupzup.data.datamodel.Store
+import android.util.Log
+import com.example.zupzup.data.dto.Store
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.ktx.toObject
 import kotlinx.coroutines.Dispatchers
@@ -15,8 +16,10 @@ class StoreDataSourceImpl @Inject constructor(
         return try {
             withContext(Dispatchers.IO) {
                 val storeList = storeRef.get().await().documents.mapNotNull {
+                    Log.d("TAG", "${it.data} ")
                     it.toObject<Store>()
                 }
+                //Log.d("TAG", "${storeList}: ")
                 Result.success(storeList)
             }
         } catch (e: Exception) {

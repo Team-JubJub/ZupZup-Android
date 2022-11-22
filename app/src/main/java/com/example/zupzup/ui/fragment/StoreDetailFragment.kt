@@ -75,8 +75,8 @@ class StoreDetailFragment : Fragment() {
                 val uiState =
                     storeDetailViewModel.storeDetailUiState.value as UiState.Success<StoreModel>
                 val storeModel = uiState.data
-                val storeId = storeModel.storeID
-                val storeName = storeModel.headerInfo.name
+                val storeId = storeModel.storeId
+                val storeName = storeModel.name
                 val storeAddress = storeModel.address
                 val cartList = makeCartList(storeModel.merchandiseList)
                 val saleTime = storeModel.saleTime

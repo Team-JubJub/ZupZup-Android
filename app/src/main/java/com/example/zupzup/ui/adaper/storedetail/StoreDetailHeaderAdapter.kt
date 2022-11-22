@@ -19,14 +19,14 @@ class StoreDetailHeaderAdapter :
             oldItem: StoreDetailHeaderModel,
             newItem: StoreDetailHeaderModel
         ): Boolean {
-            return oldItem.headerInfo.storeID == newItem.headerInfo.storeID
+            return oldItem.name == oldItem.name
         }
 
         override fun areContentsTheSame(
             oldItem: StoreDetailHeaderModel,
             newItem: StoreDetailHeaderModel
         ): Boolean {
-            return oldItem.headerInfo.storeID == newItem.headerInfo.storeID
+            return oldItem.name == oldItem.name
         }
     }
 

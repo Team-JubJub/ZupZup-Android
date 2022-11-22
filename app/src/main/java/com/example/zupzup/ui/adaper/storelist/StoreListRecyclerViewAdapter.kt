@@ -19,14 +19,14 @@ class StoreListRecyclerViewAdapter(
             oldItem: StoreHeaderInfoModel,
             newItem: StoreHeaderInfoModel
         ): Boolean {
-            return oldItem.storeID == newItem.storeID
+            return oldItem.storeId == newItem.storeId
         }
 
         override fun areContentsTheSame(
             oldItem: StoreHeaderInfoModel,
             newItem: StoreHeaderInfoModel
         ): Boolean {
-            return oldItem.storeID == newItem.storeID
+            return oldItem.storeId == newItem.storeId
         }
     }
 

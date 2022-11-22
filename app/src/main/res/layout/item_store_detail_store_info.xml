@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="34sp"
-            android:text="@{storeDetailHeader.headerInfo.name}"
+            android:text="@{storeDetailHeader.name}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="가게 이름" />
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:textSize="15sp"
-                android:text="@{storeDetailHeader.headerInfo.openTime}"
+                android:text="@{storeDetailHeader.openTime}"
                 app:layout_constraintStart_toStartOf="@id/tv_store_open_time_title"
                 app:layout_constraintTop_toBottomOf="@id/tv_store_open_time_title"
                 tools:text="가게 영업시간 들어가는 자리" />

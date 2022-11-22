@@ -18,7 +18,7 @@ class StoreRepositoryImpl @Inject constructor(
         storeDataSource.getStoreList()
             .onSuccess {
                 dataResult = DataResult.Success(it.map { store ->
-                    store.headerInfo.toModel(store.storeId, store.merchandiseList)
+                    store.toHeaderInfoModel()
                 })
             }.onFailure {
                 dataResult = DataResult.Failure(it)

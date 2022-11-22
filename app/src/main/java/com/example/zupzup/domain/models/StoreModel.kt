@@ -2,19 +2,24 @@ package com.example.zupzup.domain.models
 
 
 data class StoreModel(
-    val storeID: Long,
-    val headerInfo: StoreHeaderInfoModel,
-    val address : String,
-    val eventList : List<String>,
+    val storeId: Long,
+    val name: String,
+    val openTime: String,
+    val location: Pair<Double, Double>,
+    val address: String,
+    val eventList: List<String>,
     val merchandiseList: List<MerchandiseModel>,
-    val saleTime : Pair<Int,Int>
+    val saleTime: Pair<Int, Int>
 ) {
 
-    fun toDetailHeaderModel() : StoreDetailHeaderModel{
+    fun toDetailHeaderModel(): StoreDetailHeaderModel {
         return StoreDetailHeaderModel(
-            headerInfo = headerInfo,
+            name = name,
             address = address,
-            eventList = eventList
+            openTime = openTime,
+            location = location,
+            eventList = eventList,
+            saleTime = saleTime
         )
     }
 }
