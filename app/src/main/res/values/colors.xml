@@ -11,6 +11,7 @@
 
     <color name="main">#E49318</color>
     <color name="text">#1E1E1E</color>
+    <color name="gray">#FF8F8F8F</color>
     <color name="gray2">#E2D9CE</color>
     <color name="gray_0">#F1EEE9</color>
     <color name="warm_gray1">#FBF7F1</color>

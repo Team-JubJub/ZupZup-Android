@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$PROJECT_DIR$/../Library/Android/sdk/icons/material/materialiconsoutlined/cancel/outline_cancel_24.xml" />
+                                      <entry key="url" value="file:$PROJECT_DIR$/../Library/Android/sdk/icons/material/materialicons/check/baseline_check_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,8 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="e49318" />
-                            <entry key="outputName" value="ic_edit_text_clear" />
+                            <entry key="color" value="1e1e1e" />
+                            <entry key="outputName" value="ic_check" />
                           </map>
                         </option>
                       </PersistentState>

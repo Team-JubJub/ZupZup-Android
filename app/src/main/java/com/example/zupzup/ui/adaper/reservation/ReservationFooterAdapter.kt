@@ -9,8 +9,10 @@ import com.example.zupzup.domain.models.CustomerModel
 class ReservationFooterAdapter(
     private var visitTime: Int,
     private var customer: CustomerModel,
+    private var setIsApproveToViewModel : () -> Unit,
     private val showSetVisitTimeBottomSheet: () -> Unit,
-    private val showSetCustomerInfoBottomSheet: () -> Unit
+    private val showSetCustomerInfoBottomSheet: () -> Unit,
+    private val showTermsDetailDialog: () -> Unit
 ) :
     RecyclerView.Adapter<ReservationFooterAdapter.ReservationFooterViewHolder>(
     ) {
@@ -27,12 +29,16 @@ class ReservationFooterAdapter(
         fun bind(
             newVisitTime: Int,
             newCustomer: CustomerModel,
+            setIsApproveToViewModel: () -> Unit,
             showSetVisitTimeBottomSheet: () -> Unit,
-            showSetCustomerInfoBottomSheet: () -> Unit
+            showSetCustomerInfoBottomSheet: () -> Unit,
+            showTermsDetailDialog: () -> Unit
         ) {
             with(binding) {
                 visitTime = newVisitTime
                 customer = newCustomer
+                approveCheckboxOnClick = setIsApproveToViewModel
+                showTermsDetailTextViewOnClick = showTermsDetailDialog
                 showSetVisitTimeBottomSheetBtnOnClick = showSetVisitTimeBottomSheet
                 showSetCustomerInfoBottomSheetBtnOnClick = showSetCustomerInfoBottomSheet
             }
@@ -59,8 +65,10 @@ class ReservationFooterAdapter(
         holder.bind(
             visitTime,
             customer,
+            setIsApproveToViewModel,
             showSetVisitTimeBottomSheet,
-            showSetCustomerInfoBottomSheet
+            showSetCustomerInfoBottomSheet,
+            showTermsDetailDialog
         )
     }
 
