@@ -3,7 +3,6 @@ package com.example.zupzup.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.zupzup.domain.DataResult
-import com.example.zupzup.domain.models.StoreHeaderInfoModel
 import com.example.zupzup.domain.models.StoreModel
 import com.example.zupzup.domain.usecase.GetStoreDetailUseCase
 import com.example.zupzup.ui.UiState
@@ -22,6 +21,9 @@ class StoreDetailViewModel @Inject constructor(
 
     private var _storeDetailUiState = MutableStateFlow<UiState<StoreModel>>(UiState.Loading)
     val storeDetailUiState: StateFlow<UiState<StoreModel>> get() = _storeDetailUiState
+
+    private var _isCartEmpty = MutableStateFlow<Boolean>(true)
+    val isCartEmpty: StateFlow<Boolean> get() = _isCartEmpty
 
     private var amountList = mutableListOf<Int>()
 
@@ -44,16 +46,25 @@ class StoreDetailViewModel @Inject constructor(
             }
         }
     }
+
     fun getAmountList(): List<Int> {
         return amountList
     }
 
     fun increaseAmount(idx: Int) {
+        viewModelScope.launch {
+            _isCartEmpty.emit(false)
+        }
         amountList[idx] += 1
     }
 
     fun decreaseAmount(idx: Int) {
         amountList[idx] -= 1
+        if (amountList.sum() == 0) {
+            viewModelScope.launch {
+                _isCartEmpty.emit(true)
+            }
+        }
     }
 
 }

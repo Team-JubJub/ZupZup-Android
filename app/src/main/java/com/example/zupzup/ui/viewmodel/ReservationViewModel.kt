@@ -76,10 +76,6 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
         }
     }
 
-    fun getIsApprove(): Boolean {
-        return isApprove.value
-    }
-
     fun setHeaderInfo(
         storeId: Long,
         storeName: String,
