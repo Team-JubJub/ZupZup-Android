@@ -3,6 +3,7 @@ package com.example.zupzup.ui.fragment
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +26,7 @@ class TermsDetailDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.tvTermsDetail.movementMethod = ScrollingMovementMethod()
         binding.tvTermsDetail.text =
             "<개인정보 수집 동의>\n" +
                     "\n" +
@@ -40,8 +41,6 @@ class TermsDetailDialogFragment : DialogFragment() {
                     "단, 관련 법령에 의하여 일정 기간 보관이 필요한 경우에는 해당 기간 동안 보관함\n" +
                     "\n" +
                     "4. 동의 거부권 등에 대한 고지: 정보주체는 개인정보의 수집 및 이용 동의를 거부할 권리가 있으나, 이 경우 상품 및 서비스 예약이 제한될 수 있습니다.\n" +
-                    "\n" +
-                    "개인정보 제공 동의\n" +
                     "\n" +
                     "<개인정보 제공 동의>\n" +
                     "\n" +

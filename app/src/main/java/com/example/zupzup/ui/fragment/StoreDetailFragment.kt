@@ -33,7 +33,7 @@ class StoreDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentStoreDetailBinding.inflate(layoutInflater, container, false)
         return _binding!!.root
@@ -74,24 +74,22 @@ class StoreDetailFragment : Fragment() {
             if (storeDetailViewModel.storeDetailUiState.value is UiState.Success<StoreModel>) {
                 val uiState =
                     storeDetailViewModel.storeDetailUiState.value as UiState.Success<StoreModel>
-                val storeModel = uiState.data
-                val storeId = storeModel.storeId
-                val storeName = storeModel.name
-                val storeAddress = storeModel.address
-                val cartList = makeCartList(storeModel.merchandiseList)
-                val saleTime = storeModel.saleTime
-                val action = StoreDetailFragmentDirections.actionFragStoreDetailToFragReservation(
-                    storeId,
-                    storeName,
-                    storeAddress,
-                    cartList,
-                    saleTime.first,
-                    saleTime.second
-                )
-                if (cartList.isEmpty()) {
-                    Toast.makeText(requireContext(), "상품을 선택해주세요 !", LENGTH_SHORT).show()
-                } else {
-                    findNavController().navigate(action)
+                with(uiState.data) {
+                    val cartList = makeCartList(merchandiseList)
+                    val action =
+                        StoreDetailFragmentDirections.actionFragStoreDetailToFragReservation(
+                            storeId,
+                            name,
+                            address,
+                            cartList,
+                            saleTime.first,
+                            saleTime.second
+                        )
+                    if (cartList.isEmpty()) {
+                        Toast.makeText(requireContext(), "상품을 선택해주세요 !", LENGTH_SHORT).show()
+                    } else {
+                        findNavController().navigate(action)
+                    }
                 }
             }
         }
