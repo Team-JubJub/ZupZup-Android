@@ -30,7 +30,7 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
 
     private val customer = MutableStateFlow(CustomerModel("", ""))
 
-    private val isApprove = MutableStateFlow(false)
+    private val isAgree = MutableStateFlow(false)
 
     init {
         viewModelScope.launch {
@@ -39,8 +39,8 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
                 headerInfo,
                 visitTime,
                 customer,
-                isApprove
-            ) { headerInfo, visitTime, customer, isApprove ->
+                isAgree
+            ) { headerInfo, visitTime, customer, isAgree ->
 
                 if (headerInfo != null) {
                     _reservationUiState.emit(
@@ -48,14 +48,15 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
                             ReservationModel(
                                 headerInfo,
                                 visitTime,
-                                customer
+                                customer,
+                                isAgree
                             )
                         )
                     )
                 }
 
                 if (headerInfo != null && visitTime > 0 && customer.name.isNotEmpty() && customer.phoneNumber.isNotEmpty()
-                    && isApprove
+                    && isAgree
                 ) {
                     _isAllInput.emit(true)
                 } else {
@@ -65,14 +66,9 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
         }
     }
 
-    fun setIsApprove()  {
+    fun setIsAgree() {
         viewModelScope.launch {
-            if(isApprove.value) {
-                isApprove.emit(false)
-            }
-            else{
-                isApprove.emit(true)
-            }
+            isAgree.emit(!isAgree.value)
         }
     }
 

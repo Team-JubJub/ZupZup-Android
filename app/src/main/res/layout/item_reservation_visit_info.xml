@@ -31,6 +31,10 @@
         <variable
             name="customer"
             type="com.example.zupzup.domain.models.CustomerModel" />
+
+        <variable
+            name="isAgree"
+            type="Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -208,6 +212,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/selector_permission_personal_info_checkbox"
                 android:button="@null"
+                android:checked="@{isAgree}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
