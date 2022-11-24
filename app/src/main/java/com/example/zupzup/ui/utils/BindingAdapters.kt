@@ -80,7 +80,7 @@ fun bindReservationRecyclerView(
         is UiState.Success -> {
             with(headerInfoState.data) {
                 bindingHelper.setHeader(reservationHeaderInfo)
-                bindingHelper.setFooter(visitTime, customer)
+                bindingHelper.setFooter(visitTime, customer, isAgree)
                 bindingHelper.setCartList(reservationHeaderInfo.cartList)
             }
         }

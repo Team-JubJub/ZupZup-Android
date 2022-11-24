@@ -27,7 +27,8 @@ class ReservationProcessViewModel @Inject constructor(
                 ReservationModel(
                     reservationHeaderInfo,
                     visitTime,
-                    customer
+                    customer,
+                    true
                 )
             ).collect()
         }

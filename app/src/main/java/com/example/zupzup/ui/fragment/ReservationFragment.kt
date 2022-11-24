@@ -38,7 +38,7 @@ class ReservationFragment : Fragment() {
 
     private val footerAdapter: ReservationFooterAdapter by lazy {
         ReservationFooterAdapter(
-            0, reservationViewModel.getCustomerInfo(),
+            0, reservationViewModel.getCustomerInfo(), false,
             reservationViewModel::setIsApprove, ::showSetVisitTimeBottomSheet,
             ::showSetCustomerInfoBottomSheet, ::showTermsDetailDialog
         )
