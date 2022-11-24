@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.zupzup.domain.DataResult
 import com.example.zupzup.domain.models.StoreModel
-import com.example.zupzup.domain.usecase.GetStoreDetailUseCase
+import com.example.zupzup.domain.usecase.GetStoreDetailUseCaseImpl
 import com.example.zupzup.ui.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class StoreDetailViewModel @Inject constructor(
-    private val getStoreDetailUseCase: GetStoreDetailUseCase
+    private val getStoreDetailUseCase: GetStoreDetailUseCaseImpl
 ) : ViewModel() {
 
     private var isInitialState: Boolean = false
