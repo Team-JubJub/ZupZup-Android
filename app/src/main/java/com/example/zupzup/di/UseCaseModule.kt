@@ -1,7 +1,6 @@
 package com.example.zupzup.di
 
-import com.example.zupzup.domain.usecase.MakeReservationOnFireBaseUseCase
-import com.example.zupzup.domain.usecase.MakeReservationOnFireBaseUseCaseImpl
+import com.example.zupzup.domain.usecase.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -17,4 +16,16 @@ abstract class UseCaseModule {
     abstract fun bindMakeReservationOnFireBaseUseCase(
         makeReservationOnFireBaseUseCaseImpl: MakeReservationOnFireBaseUseCaseImpl
     ): MakeReservationOnFireBaseUseCase
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindGetStoreListUseCase(
+        getStoreListUseCaseImpl: GetStoreListUseCaseImpl
+    ): GetStoreListUseCase
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindGetStoreDetailUseCase(
+        getStoreDetailUseCaseImpl: GetStoreDetailUseCaseImpl
+    ): GetStoreDetailUseCase
 }
