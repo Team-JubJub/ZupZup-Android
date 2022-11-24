@@ -1,5 +1,7 @@
 package com.example.zupzup.di
 
+import com.example.zupzup.data.datasource.ReservationDataSource
+import com.example.zupzup.data.datasource.ReservationDataSourceImpl
 import com.example.zupzup.data.datasource.StoreDataSource
 import com.example.zupzup.data.datasource.StoreDataSourceImpl
 import dagger.Binds
@@ -17,4 +19,10 @@ abstract class DataSourceModule {
     abstract fun bindStoreDataSource(
         storeDataSourceImpl: StoreDataSourceImpl
     ): StoreDataSource
+
+    @Binds
+    @Singleton
+    abstract fun bindReservationDataSource(
+        reservationDataSourceImpl: ReservationDataSourceImpl
+    ): ReservationDataSource
 }
