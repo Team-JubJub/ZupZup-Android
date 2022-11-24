@@ -1,6 +1,8 @@
 package com.example.zupzup.data.repository
 
+import com.example.zupzup.data.datasource.ReservationDataSource
 import com.example.zupzup.data.datasource.StoreDataSource
+import com.example.zupzup.data.dto.Reservation
 import com.example.zupzup.domain.DataResult
 import com.example.zupzup.domain.models.StoreHeaderInfoModel
 import com.example.zupzup.domain.models.StoreModel
@@ -8,32 +10,32 @@ import com.example.zupzup.domain.repository.StoreRepository
 import javax.inject.Inject
 
 class StoreRepositoryImpl @Inject constructor(
-    private val storeDataSource: StoreDataSource,
+    private val storeDataSource: StoreDataSource
 ) : StoreRepository {
 
-    private lateinit var dataResult: DataResult<List<StoreHeaderInfoModel>>
-    private lateinit var dataResult2: DataResult<StoreModel>
+    private lateinit var storeListResult: DataResult<List<StoreHeaderInfoModel>>
+    private lateinit var storeDetailResult: DataResult<StoreModel>
 
     override suspend fun getStoreList(): DataResult<List<StoreHeaderInfoModel>> {
         storeDataSource.getStoreList()
             .onSuccess {
-                dataResult = DataResult.Success(it.map { store ->
+                storeListResult = DataResult.Success(it.map { store ->
                     store.toHeaderInfoModel()
                 })
             }.onFailure {
-                dataResult = DataResult.Failure(it)
+                storeListResult = DataResult.Failure(it)
             }
-        return dataResult
+        return storeListResult
     }
 
     override suspend fun getStoreDetailById(storeId: Long): DataResult<StoreModel> {
         storeDataSource.getStoreDetailById(storeId)
             .onSuccess {
-                dataResult2 = DataResult.Success(it.toModel())
+                storeDetailResult = DataResult.Success(it.toModel())
             }
             .onFailure {
-                dataResult2 = DataResult.Failure(it)
+                storeDetailResult = DataResult.Failure(it)
             }
-        return dataResult2
+        return storeDetailResult
     }
 }
