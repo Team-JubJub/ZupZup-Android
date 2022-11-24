@@ -62,17 +62,13 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
                 } else {
                     _isAllInput.emit(false)
                 }
-            }.collect{}
+            }.collect {}
         }
     }
 
-    fun setIsApprove() {
+    fun setIsAgree() {
         viewModelScope.launch {
-            if (isAgree.value) {
-                isAgree.emit(false)
-            } else {
-                isAgree.emit(true)
-            }
+            isAgree.emit(!isAgree.value)
         }
     }
 
