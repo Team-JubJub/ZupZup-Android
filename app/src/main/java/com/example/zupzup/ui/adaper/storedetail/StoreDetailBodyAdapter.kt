@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zupzup.databinding.ItemStoreDetailMerchandiseBinding
 import com.example.zupzup.domain.models.MerchandiseModel
-import com.example.zupzup.ui.utils.AmountManageHelper
+import com.example.zupzup.ui.bindinghelper.AmountManageHelper
 
 class StoreDetailBodyAdapter(
     private val amountManageHelper: AmountManageHelper,

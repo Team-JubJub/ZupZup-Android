@@ -1,6 +1,7 @@
 package com.example.zupzup.ui.utils
 
-import android.widget.CheckBox
+import android.util.Log
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.TimePicker
 import androidx.databinding.BindingAdapter
@@ -11,11 +12,11 @@ import com.example.zupzup.domain.models.ReservationModel
 import com.example.zupzup.domain.models.StoreHeaderInfoModel
 import com.example.zupzup.domain.models.StoreModel
 import com.example.zupzup.ui.UiState
-import com.example.zupzup.ui.adaper.reservation.ReservationBindingHelper
 import com.example.zupzup.ui.adaper.storedetail.StoreDetailBodyAdapter
 import com.example.zupzup.ui.adaper.storedetail.StoreDetailHeaderAdapter
 import com.example.zupzup.ui.adaper.storelist.StoreListRecyclerViewAdapter
-import com.example.zupzup.ui.custom.CustomClearEditText
+import com.example.zupzup.ui.bindinghelper.AmountManageHelper
+import com.example.zupzup.ui.bindinghelper.ReservationBindingHelper
 
 @BindingAdapter("storeListUiState")
 fun bindStoreListRecyclerView(
@@ -113,5 +114,23 @@ fun bindSelectedTimeToTimePicker(
     if (selectedTime != 0) {
         timePicker.hour = selectedTime / 100
         timePicker.minute = selectedTime % 100
+    }
+}
+
+@BindingAdapter("progressUiState")
+fun bindProgressStateToProgressBar(
+    progressBar: ProgressBar,
+    progressUiState: UiState<Int>?
+) {
+    when(progressUiState) {
+        is UiState.Loading -> {
+            progressBar.isActivated = true
+        }
+        is UiState.Success -> {
+            progressBar.isActivated = false
+        }
+        else -> {
+            progressBar.isActivated = false
+        }
     }
 }

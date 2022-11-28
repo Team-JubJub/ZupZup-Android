@@ -10,6 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.zupzup.databinding.FragmentReservationProcessBinding
 import com.example.zupzup.domain.models.CustomerModel
 import com.example.zupzup.domain.models.ReservationHeaderModel
+import com.example.zupzup.ui.UiState
 import com.example.zupzup.ui.viewmodel.ReservationProcessViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ReservationProcessFragment : Fragment() {
 
     private var _binding: FragmentReservationProcessBinding? = null
-    private val binding get() = _binding
+    private val binding get() = _binding!!
 
     private val args: ReservationProcessFragmentArgs by navArgs()
     private val reservationProcessViewModel: ReservationProcessViewModel by viewModels()
@@ -25,7 +26,7 @@ class ReservationProcessFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentReservationProcessBinding.inflate(layoutInflater, container, false)
         return _binding!!.root
@@ -33,7 +34,15 @@ class ReservationProcessFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initBinding()
         makeReservation()
+    }
+
+    private fun initBinding() {
+        with(binding) {
+            viewModel = reservationProcessViewModel
+            lifecycleOwner = viewLifecycleOwner
+        }
     }
 
     private fun makeReservation() {
@@ -46,7 +55,7 @@ class ReservationProcessFragment : Fragment() {
                     cartList.toList(),
                     Pair(0, 0)
                 ),
-                visitTime, CustomerModel(customerName, customerPhoneNumber)
+                visitTime, CustomerModel(customerName, customerPhoneNumber), hostPhoneNumber
             )
         }
     }

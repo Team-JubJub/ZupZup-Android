@@ -6,5 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface MakeReservationOnFireBaseUseCase {
 
-    operator fun invoke(reservationModel: ReservationModel): Flow<DataResult<Int>>
+    operator fun invoke(
+        reservationModel: ReservationModel
+    ): Flow<DataResult<Int>>
 }

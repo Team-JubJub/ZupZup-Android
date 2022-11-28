@@ -11,7 +11,7 @@
 
         <variable
             name="bindingHelper"
-            type="com.example.zupzup.ui.adaper.reservation.ReservationBindingHelper" />
+            type="com.example.zupzup.ui.bindinghelper.ReservationBindingHelper" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

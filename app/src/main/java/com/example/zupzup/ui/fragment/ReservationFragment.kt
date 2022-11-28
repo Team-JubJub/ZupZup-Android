@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zupzup.databinding.FragmentReservationBinding
 import com.example.zupzup.domain.models.ReservationModel
 import com.example.zupzup.ui.UiState
-import com.example.zupzup.ui.adaper.reservation.ReservationBindingHelper
+import com.example.zupzup.ui.bindinghelper.ReservationBindingHelper
 import com.example.zupzup.ui.adaper.reservation.ReservationCartListAdapter
 import com.example.zupzup.ui.adaper.reservation.ReservationFooterAdapter
 import com.example.zupzup.ui.adaper.reservation.ReservationHeaderAdapter
@@ -131,10 +131,12 @@ class ReservationFragment : Fragment() {
                         reservationHeaderInfo.storeId,
                         reservationHeaderInfo.storeName,
                         reservationHeaderInfo.storeAddress,
+                        args.hostPhoneNumber,
                         reservationHeaderInfo.cartList.toTypedArray(),
                         visitTime,
                         customer.name,
-                        customer.phoneNumber)
+                        customer.phoneNumber
+                    )
                 findNavController().navigate(action)
             }
         }

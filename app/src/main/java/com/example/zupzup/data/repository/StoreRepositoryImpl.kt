@@ -1,8 +1,6 @@
 package com.example.zupzup.data.repository
 
-import com.example.zupzup.data.datasource.ReservationDataSource
-import com.example.zupzup.data.datasource.StoreDataSource
-import com.example.zupzup.data.dto.Reservation
+import com.example.zupzup.data.datasource.remote.firebase.StoreDataSource
 import com.example.zupzup.domain.DataResult
 import com.example.zupzup.domain.models.StoreHeaderInfoModel
 import com.example.zupzup.domain.models.StoreModel

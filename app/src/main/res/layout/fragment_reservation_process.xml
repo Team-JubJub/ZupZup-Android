@@ -5,12 +5,27 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.zupzup.ui.viewmodel.ReservationProcessViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.fragment.ReservationProcessFragment">
+
+        <ProgressBar
+            android:id="@+id/progress_reservation_process"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/warm_gray3"
+            android:layout_marginBottom="32dp"
+            app:progressUiState="@{viewModel.processUiState}"
+            app:layout_constraintBottom_toTopOf="@id/tv_reservation_process_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/tv_reservation_process_label"
@@ -20,7 +35,7 @@
             android:text="예약 처리 중..."
             android:textColor="@color/main"
             android:textSize="22sp"
-            app:layout_constraintBottom_toTopOf="@id/tv_reservation_process_sub_label"
+            app:layout_constraintBottom_toBottomOf="@id/tv_reservation_process_sub_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -36,13 +51,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ProgressBar
-            android:id="@+id/progress_reservation_process"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_reservation_process_sub_label" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

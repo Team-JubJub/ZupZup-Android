@@ -13,6 +13,18 @@ abstract class UseCaseModule {
 
     @Binds
     @ViewModelScoped
+    abstract fun bindProcessReservationUseCase(
+        processReservationUseCaseImpl: ProcessReservationUseCaseImpl
+    ): ProcessReservationUseCase
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindSendNotificationTalkUseCase(
+        sendNotificationTalkUseCaseImpl: SendNotificationTalkUseCaseImpl
+    ): SendNotificationTalkUseCase
+
+    @Binds
+    @ViewModelScoped
     abstract fun bindMakeReservationOnFireBaseUseCase(
         makeReservationOnFireBaseUseCaseImpl: MakeReservationOnFireBaseUseCaseImpl
     ): MakeReservationOnFireBaseUseCase
