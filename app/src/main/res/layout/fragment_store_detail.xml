@@ -9,7 +9,7 @@
             type="com.example.zupzup.ui.viewmodel.StoreDetailViewModel" />
         <variable
             name="helper"
-            type="com.example.zupzup.ui.utils.AmountManageHelper" />
+            type="com.example.zupzup.ui.bindinghelper.AmountManageHelper" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

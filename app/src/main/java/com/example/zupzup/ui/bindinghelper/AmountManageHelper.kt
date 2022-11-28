@@ -1,4 +1,4 @@
-package com.example.zupzup.ui.utils
+package com.example.zupzup.ui.bindinghelper
 
 class AmountManageHelper(
     private val increaseAmount: (Int) -> Unit,

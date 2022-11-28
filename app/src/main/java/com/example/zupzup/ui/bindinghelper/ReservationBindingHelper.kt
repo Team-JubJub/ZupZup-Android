@@ -1,4 +1,4 @@
-package com.example.zupzup.ui.adaper.reservation
+package com.example.zupzup.ui.bindinghelper
 
 import com.example.zupzup.domain.models.CartModel
 import com.example.zupzup.domain.models.CustomerModel

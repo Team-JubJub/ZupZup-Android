@@ -1,4 +1,4 @@
-package com.example.zupzup.data.datasource
+package com.example.zupzup.data.datasource.remote.firebase
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -11,7 +11,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.tasks.await
 import java.net.UnknownHostException
 import javax.inject.Inject
-import kotlin.coroutines.coroutineContext
 
 class ReservationDataSourceImpl @Inject constructor(
     @FireBaseModule.ReservationRef private val reservationRef: CollectionReference,

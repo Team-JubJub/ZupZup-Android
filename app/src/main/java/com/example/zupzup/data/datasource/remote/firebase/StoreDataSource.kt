@@ -1,4 +1,4 @@
-package com.example.zupzup.data.datasource
+package com.example.zupzup.data.datasource.remote.firebase
 
 import com.example.zupzup.data.dto.Store
 

@@ -3,10 +3,8 @@ package com.example.zupzup.domain.usecase
 import com.example.zupzup.domain.DataResult
 import com.example.zupzup.domain.models.ReservationModel
 import com.example.zupzup.domain.repository.ReservationRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class MakeReservationOnFireBaseUseCaseImpl @Inject constructor(
@@ -17,6 +15,6 @@ class MakeReservationOnFireBaseUseCaseImpl @Inject constructor(
             reservationRepository.makeReservation(reservationModel).collect {
                 emit(it)
             }
-        }.flowOn(Dispatchers.IO)
+        }
     }
 }

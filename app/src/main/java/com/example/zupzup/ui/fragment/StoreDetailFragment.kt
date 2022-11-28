@@ -16,7 +16,7 @@ import com.example.zupzup.domain.models.CartModel
 import com.example.zupzup.domain.models.MerchandiseModel
 import com.example.zupzup.domain.models.StoreModel
 import com.example.zupzup.ui.UiState
-import com.example.zupzup.ui.utils.AmountManageHelper
+import com.example.zupzup.ui.bindinghelper.AmountManageHelper
 import com.example.zupzup.ui.viewmodel.StoreDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -81,6 +81,7 @@ class StoreDetailFragment : Fragment() {
                             storeId,
                             name,
                             address,
+                            hostPhoneNumber,
                             cartList,
                             saleTime.first,
                             saleTime.second

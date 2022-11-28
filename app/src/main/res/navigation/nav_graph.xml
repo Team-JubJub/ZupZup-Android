@@ -46,7 +46,9 @@
         <argument
             android:name="storeAddress"
             app:argType="string" />
-
+        <argument
+            android:name="hostPhoneNumber"
+            app:argType="string" />
         <argument
             android:name="cartList"
             app:argType="com.example.zupzup.domain.models.CartModel[]" />
@@ -78,6 +80,9 @@
             android:name="storeAddress"
             app:argType="string"
             app:nullable="false" />
+        <argument
+            android:name="hostPhoneNumber"
+            app:argType="string" />
         <argument
             android:name="cartList"
             app:argType="com.example.zupzup.domain.models.CartModel[]"
