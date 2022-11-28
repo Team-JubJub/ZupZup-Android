@@ -21,14 +21,12 @@ class ReservationDataSourceImpl @Inject constructor(
             val connectivityManager = getSystemService(context, ConnectivityManager::class.java)
             val currentNetwork = connectivityManager?.activeNetwork
             if (currentNetwork != null) {
-                Log.d("TAG", "createReservation: internet")
                 reservationRef.document(reservation.reserveId.toString()).set(reservation).await()
                 Result.success(0)
             } else {
                 throw UnknownHostException()
             }
         } catch (e: Exception) {
-            Log.d("TAG", "createReservation: exception")
             Result.failure(e)
         }
     }
