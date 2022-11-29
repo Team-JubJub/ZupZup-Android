@@ -1,12 +1,14 @@
 package com.example.zupzup.ui.utils
 
-import android.util.Log
+import android.view.LayoutInflater
+import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.TimePicker
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.zupzup.R
 import com.example.zupzup.domain.models.CartModel
 import com.example.zupzup.domain.models.ReservationModel
 import com.example.zupzup.domain.models.StoreHeaderInfoModel
@@ -17,6 +19,7 @@ import com.example.zupzup.ui.adaper.storedetail.StoreDetailHeaderAdapter
 import com.example.zupzup.ui.adaper.storelist.StoreListRecyclerViewAdapter
 import com.example.zupzup.ui.bindinghelper.AmountManageHelper
 import com.example.zupzup.ui.bindinghelper.ReservationBindingHelper
+import com.example.zupzup.ui.bindinghelper.ReservationProcessBindingHelper
 
 @BindingAdapter("storeListUiState")
 fun bindStoreListRecyclerView(
@@ -117,20 +120,41 @@ fun bindSelectedTimeToTimePicker(
     }
 }
 
-@BindingAdapter("progressUiState")
+@BindingAdapter("progressUiState", "bindingHelper")
 fun bindProgressStateToProgressBar(
     progressBar: ProgressBar,
-    progressUiState: UiState<Int>?
+    progressUiState: UiState<Int>?,
+    bindingHelper: ReservationProcessBindingHelper?
 ) {
-    when(progressUiState) {
+    when (progressUiState) {
         is UiState.Loading -> {
             progressBar.isActivated = true
         }
         is UiState.Success -> {
             progressBar.isActivated = false
+            bindingHelper?.navigate()
         }
         else -> {
             progressBar.isActivated = false
         }
+    }
+}
+
+@BindingAdapter("cartList", "inflater")
+fun bindViewTypeToTextView(
+    linearLayout: LinearLayout,
+    cartList: List<CartModel>?,
+    inflater: LayoutInflater
+) {
+    cartList?.forEach {
+        val layout = inflater.inflate(R.layout.item_reservation_cart_list, null)
+        val tvName: TextView = layout.findViewById(R.id.tv_cart_item_name)
+        val tvItemPrice: TextView = layout.findViewById(R.id.tv_cart_item_total_price)
+        if(it == cartList.last()) {
+            layout.setBackgroundResource(R.drawable.frame_rectangle_bottom_corner_12_gray0)
+        }
+        tvName.text = it.itemName
+        tvItemPrice.text = (it.amount * it.salesPrice).toString()
+        linearLayout.addView(layout)
     }
 }
