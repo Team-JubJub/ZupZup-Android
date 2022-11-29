@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="kotlin.jvm.functions.Function0"/>
+        <import type="kotlin.Unit"/>
+
+        <variable
+            name="navigateHome"
+            type="Function0&lt; Unit>" />
+
+        <variable
+            name="inflater"
+            type="android.view.LayoutInflater" />
+        <variable
+            name="reservationHeader"
+            type="com.example.zupzup.domain.models.ReservationHeaderModel" />
+
+        <variable
+            name="customer"
+            type="com.example.zupzup.domain.models.CustomerModel" />
+
+        <variable
+            name="visitTime"
+            type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:background="@color/transparent"
+        tools:context=".ui.fragment.ReservationCompleteFragment">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingVertical="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_navigate_home"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_reservation_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:text="예약하기"
+                    android:textColor="@color/black"
+                    android:textSize="34sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint_reservation_store_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    android:background="@color/warm_gray2"
+                    android:paddingHorizontal="32dp"
+                    android:paddingVertical="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_reservation_label">
+
+                    <TextView
+                        android:id="@+id/tv_store_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{reservationHeader.storeName}"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="가게 이름" />
+
+                    <TextView
+                        android:id="@+id/tv_store_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@{reservationHeader.storeAddress}"
+                        android:textColor="@color/warm_gray3"
+                        android:textSize="13sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_store_name"
+                        app:layout_constraintTop_toBottomOf="@id/tv_store_name"
+                        tools:text="가게 주소" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint_reservation_cart_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/frame_rectangle_top_corner_12_warmgray2"
+                    android:paddingVertical="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/constraint_reservation_store_info">
+
+                    <ImageView
+                        android:id="@+id/iv_cart_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/frame_rectangle_corner_8_warmgray3"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_cart_white_30"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_cart_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="담은 상품"
+                        android:textColor="@color/main"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toEndOf="@id/iv_cart_label"
+                        app:layout_constraintTop_toTopOf="@id/iv_cart_label" />
+
+                    <TextView
+                        android:id="@+id/tv_total_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/text"
+                        android:textSize="17sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_cart_label"
+                        app:layout_constraintTop_toBottomOf="@id/tv_cart_label"
+                        app:totalAmount="@{reservationHeader.cartList}"
+                        tools:text="0개" />
+
+                    <TextView
+                        android:id="@+id/tv_total_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/warm_gray4"
+                        android:textSize="13sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_cart_label"
+                        app:layout_constraintTop_toBottomOf="@id/tv_total_amount"
+                        app:totalPrice="@{reservationHeader.cartList}"
+                        tools:text="0000원" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_dynamic_cartList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:orientation="vertical"
+                    app:cartList="@{reservationHeader.cartList}"
+                    app:inflater="@{inflater}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/constraint_reservation_cart_header" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint_reservation_visit_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/frame_rectangle_corner_12_warmgray2"
+                    android:padding="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/linearLayout_dynamic_cartList">
+
+                    <ImageView
+                        android:id="@+id/iv_visit_time_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/frame_rectangle_corner_8_warmgray3"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_timer_white_30"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_visit_time_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="방문 예정 시간"
+                        android:textColor="@color/main"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toEndOf="@id/iv_visit_time_label"
+                        app:layout_constraintTop_toTopOf="@id/iv_visit_time_label" />
+
+                    <TextView
+                        android:id="@+id/tv_visit_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="00:00"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text"
+                        android:textSize="21sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_visit_time_label"
+                        app:layout_constraintTop_toBottomOf="@id/tv_visit_time_label"
+                        app:visitTime="@{visitTime}" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint_reservation_customer_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/frame_rectangle_corner_12_warmgray2"
+                    android:padding="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/constraint_reservation_visit_time">
+
+                    <ImageView
+                        android:id="@+id/iv_customer_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/frame_rectangle_corner_8_warmgray3"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_home_white_30"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_customer_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="방문자"
+                        android:textColor="@color/main"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toEndOf="@id/iv_customer_label"
+                        app:layout_constraintTop_toTopOf="@id/iv_customer_label" />
+
+                    <TextView
+                        android:id="@+id/tv_customer_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="김OO"
+                        android:text="@{customer.name}"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text"
+                        android:textSize="17sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_customer_label"
+                        app:layout_constraintTop_toBottomOf="@id/tv_customer_label" />
+
+                    <TextView
+                        android:id="@+id/tv_customer_phone_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="010-0000-0000"
+                        android:text="@{customer.phoneNumber}"
+                        android:textColor="@color/warm_gray4"
+                        android:textColorHint="@color/warm_gray4"
+                        android:textSize="13sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_customer_name"
+                        app:layout_constraintTop_toBottomOf="@id/tv_customer_name" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_navigate_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="16dp"
+            app:layout_constraintTop_toBottomOf="@id/scrollView"
+            android:background="@drawable/frame_rectangle_corner_14_main"
+            android:paddingHorizontal="64dp"
+            android:paddingVertical="16dp"
+            android:text="홈으로"
+            android:onClick="@{() -> navigateHome.invoke()}"
+            android:textColor="@color/text"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

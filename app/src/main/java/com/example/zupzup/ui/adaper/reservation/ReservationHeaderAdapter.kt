@@ -26,12 +26,6 @@ class ReservationHeaderAdapter(
         fun bind(
             item: ReservationHeaderModel
         ) {
-//            val adapter = ReservationCartListAdapter()
-//            adapter.submitList(item.cartList)
-//            with(binding) {
-//                rcvCartList.adapter = adapter
-//                rcvCartList.layoutManager = LinearLayoutManager(binding.rcvCartList.context)
-//            }
             binding.reservationHeader = item
         }
     }

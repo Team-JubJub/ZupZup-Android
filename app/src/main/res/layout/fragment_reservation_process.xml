@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="bindingHelper"
+            type="com.example.zupzup.ui.bindinghelper.ReservationProcessBindingHelper" />
+
+        <variable
             name="viewModel"
             type="com.example.zupzup.ui.viewmodel.ReservationProcessViewModel" />
 
@@ -20,12 +24,13 @@
             android:id="@+id/progress_reservation_process"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateTint="@color/warm_gray3"
             android:layout_marginBottom="32dp"
-            app:progressUiState="@{viewModel.processUiState}"
+            android:indeterminateTint="@color/warm_gray3"
             app:layout_constraintBottom_toTopOf="@id/tv_reservation_process_label"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:bindingHelper="@{bindingHelper}"
+            app:progressUiState="@{viewModel.processUiState}" />
 
         <TextView
             android:id="@+id/tv_reservation_process_label"

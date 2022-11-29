@@ -99,5 +99,35 @@
             android:name="customerPhoneNumber"
             app:argType="string"
             app:nullable="false" />
+        <action
+            app:popUpTo="@id/frag_store_detail"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_frag_reservation_process_to_reservationCompleteFragment"
+            app:destination="@id/reservationCompleteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reservationCompleteFragment"
+        android:name="com.example.zupzup.ui.fragment.ReservationCompleteFragment"
+        android:label="ReservationCompleteFragment"
+        tools:layout="@layout/fragment_reservation_complete">
+        <argument
+            android:name="storeName"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="storeAddress"
+            app:argType="string" />
+        <argument
+            android:name="cartList"
+            app:argType="com.example.zupzup.domain.models.CartModel[]" />
+        <argument
+            android:name="visitTime"
+            app:argType="integer"/>
+        <argument
+            android:name="customerName"
+            app:argType="string"/>
+        <argument
+            android:name="customerPhoneNumber"
+            app:argType="string"/>
     </fragment>
 </navigation>
