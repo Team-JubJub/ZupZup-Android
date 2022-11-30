@@ -12,6 +12,7 @@
 # 🧸️ Stack
 - Kotlin
 - MVVM, Clean Architecture
+- retrofit2, Okhttp3 (REST API)
 - Hilt (Dependency Injection)
 - Jetpack Navigation
 - DataBinding
