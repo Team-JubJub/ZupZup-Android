@@ -1,6 +1,6 @@
 package com.example.zupzup.di
 
-import com.example.zupzup.data.api.LunaSoftService
+import com.example.zupzup.data.service.LunaSoftService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

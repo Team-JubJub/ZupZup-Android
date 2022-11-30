@@ -1,20 +1,30 @@
 package com.example.zupzup.di
 
-import com.example.zupzup.data.datasource.remote.firebase.ReservationDataSource
-import com.example.zupzup.data.datasource.remote.firebase.ReservationDataSourceImpl
-import com.example.zupzup.data.datasource.remote.firebase.StoreDataSource
-import com.example.zupzup.data.datasource.remote.firebase.StoreDataSourceImpl
-import com.example.zupzup.data.datasource.remote.lunasoft.LunaSoftDataSource
-import com.example.zupzup.data.datasource.remote.lunasoft.LunaSoftDataSourceImpl
+import com.example.zupzup.data.datasource.reservation.ReservationLocalDataSourceImpl
+import com.example.zupzup.data.datasource.reservation.ReservationDataSource
+import com.example.zupzup.data.datasource.reservation.ReservationRemoteDataSourceImpl
+import com.example.zupzup.data.datasource.store.StoreDataSource
+import com.example.zupzup.data.datasource.store.StoreDataSourceImpl
+import com.example.zupzup.data.datasource.lunasoft.LunaSoftDataSource
+import com.example.zupzup.data.datasource.lunasoft.LunaSoftDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
 abstract class DataSourceModule {
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class ReservationRemote
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class ReservationLocal
 
     @Binds
     @Singleton
@@ -30,7 +40,15 @@ abstract class DataSourceModule {
 
     @Binds
     @Singleton
-    abstract fun bindReservationDataSource(
-        reservationDataSourceImpl: ReservationDataSourceImpl
+    @ReservationRemote
+    abstract fun bindReservationRemoteDataSource(
+        reservationRemoteDataSourceImpl: ReservationRemoteDataSourceImpl
+    ): ReservationDataSource
+
+    @Binds
+    @Singleton
+    @ReservationLocal
+    abstract fun bindReservationLocalDataSource(
+        reservationLocal: ReservationLocalDataSourceImpl
     ): ReservationDataSource
 }
