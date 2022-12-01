@@ -1,5 +1,6 @@
 package com.example.zupzup.ui.utils
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.ProgressBar
@@ -126,17 +127,9 @@ fun bindProgressStateToProgressBar(
     progressUiState: UiState<Int>?,
     bindingHelper: ReservationProcessBindingHelper?
 ) {
-    when (progressUiState) {
-        is UiState.Loading -> {
-            progressBar.isActivated = true
-        }
-        is UiState.Success -> {
-            progressBar.isActivated = false
-            bindingHelper?.navigate()
-        }
-        else -> {
-            progressBar.isActivated = false
-        }
+    if (progressUiState is UiState.Success) {
+        Log.d("TAG", "uiState :$progressUiState ")
+        bindingHelper?.navigate()
     }
 }
 
@@ -150,7 +143,7 @@ fun bindViewTypeToTextView(
         val layout = inflater.inflate(R.layout.item_reservation_cart_list, null)
         val tvName: TextView = layout.findViewById(R.id.tv_cart_item_name)
         val tvItemPrice: TextView = layout.findViewById(R.id.tv_cart_item_total_price)
-        if(it == cartList.last()) {
+        if (it == cartList.last()) {
             layout.setBackgroundResource(R.drawable.frame_rectangle_bottom_corner_12_gray0)
         }
         tvName.text = it.itemName

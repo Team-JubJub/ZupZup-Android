@@ -1,6 +1,7 @@
 package com.example.zupzup.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.zupzup.databinding.FragmentReservationProcessBinding
 import com.example.zupzup.domain.models.CustomerModel
 import com.example.zupzup.domain.models.ReservationHeaderModel
+import com.example.zupzup.ui.bindinghelper.ReservationProcessBindingHelper
 import com.example.zupzup.ui.viewmodel.ReservationProcessViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -44,7 +46,7 @@ class ReservationProcessFragment : Fragment() {
         with(binding) {
             viewModel = reservationProcessViewModel
             lifecycleOwner = viewLifecycleOwner
-            navigateReservationCompleteFragment()
+            bindingHelper = ReservationProcessBindingHelper(::navigateReservationCompleteFragment)
         }
     }
 
