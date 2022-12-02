@@ -10,11 +10,9 @@ class ReservationLocalDataSourceImpl @Inject constructor(
 ) : ReservationDataSource {
     override suspend fun createReservation(reservation: Reservation): Result<Int> {
         return try {
-            Log.d("TAG", "createReservation: ")
             dao.insertReservation(reservation as Reservation.ReservationEntity)
             Result.success(1)
         } catch (e: Exception) {
-            Log.d("TAG", "error: ")
             Result.failure(e)
         }
     }

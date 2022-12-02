@@ -54,7 +54,8 @@ object DtoMapper {
                 no = "0",
                 telNum = reservationModel.customer.phoneNumber,
                 msgContent = messageContent,
-                smsContent = ""
+                smsContent = "",
+                useSms = "0"
             )
         )
         list.add(
@@ -62,14 +63,15 @@ object DtoMapper {
                 no = "1",
                 telNum = hostPhoneNumber,
                 msgContent = messageContent,
-                smsContent = ""
+                smsContent = "",
+                useSms = "0"
             )
         )
         return list.toList()
     }
 
     private fun getMessageContent(reservationModel: ReservationModel): String {
-        return "<예약접수 안내>안녕하세요. ${reservationModel.customer.name}님!예약하신 정보에 대해 안내드립니다.\n" +
+        return "<예약접수 안내>안녕하세요. ${reservationModel.customer.name}님! 예약하신 정보에 대해 안내드립니다.\n" +
                 "\n" +
                 "-예약매장: ${reservationModel.reservationHeaderInfo.storeName}\n" +
                 "\n" +

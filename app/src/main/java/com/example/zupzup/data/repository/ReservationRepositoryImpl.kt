@@ -1,8 +1,8 @@
 package com.example.zupzup.data.repository
 
 import android.util.Log
-import com.example.zupzup.data.datasource.reservation.ReservationDataSource
 import com.example.zupzup.data.datasource.lunasoft.LunaSoftDataSource
+import com.example.zupzup.data.datasource.reservation.ReservationDataSource
 import com.example.zupzup.data.dto.lunasoft.response.LunaSoftResponse
 import com.example.zupzup.data.dto.mapper.DtoMapper
 import com.example.zupzup.di.DataSourceModule
@@ -27,12 +27,10 @@ class ReservationRepositoryImpl @Inject constructor(
             result.onSuccess {
                 val reservationEntity =
                     DtoMapper.reservationModelToEntity(reservationModel, reserveId)
-                Log.d("TAG", "makeReservation: $it ")
                 reservationLocalDataSource.createReservation(reservationEntity).onSuccess {
                     emit(DataResult.Success(it))
                 }
             }.onFailure {
-                Log.d("TAG", "fail: $it ")
                 emit(DataResult.Failure(it))
             }
         }

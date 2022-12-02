@@ -1,6 +1,5 @@
 package com.example.zupzup.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.zupzup.domain.DataResult
@@ -23,10 +22,6 @@ class ReservationProcessViewModel @Inject constructor(
     private var _processUiState = MutableStateFlow<UiState<Int>>(UiState.Loading)
     val processUiState: StateFlow<UiState<Int>> get() = _processUiState
 
-    override fun onCleared() {
-        Log.d("TAG", "onCleared: ")
-        super.onCleared()
-    }
     fun makeReservation(
         reservationHeaderInfo: ReservationHeaderModel,
         visitTime: Int,

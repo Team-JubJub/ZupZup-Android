@@ -1,6 +1,5 @@
 package com.example.zupzup.ui.utils
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.ProgressBar
@@ -128,7 +127,6 @@ fun bindProgressStateToProgressBar(
     bindingHelper: ReservationProcessBindingHelper?
 ) {
     if (progressUiState is UiState.Success) {
-        Log.d("TAG", "uiState :$progressUiState ")
         bindingHelper?.navigate()
     }
 }

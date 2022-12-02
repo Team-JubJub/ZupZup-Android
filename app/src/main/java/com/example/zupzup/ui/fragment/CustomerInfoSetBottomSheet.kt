@@ -11,7 +11,8 @@ import android.widget.Toast.LENGTH_SHORT
 import com.example.zupzup.R
 import com.example.zupzup.databinding.FragmentCustomerInfoSetBottomSheetBinding
 import com.example.zupzup.domain.models.CustomerModel
-import com.example.zupzup.ui.utils.toPhoneNumberFormat
+import com.example.zupzup.ui.utils.toPhoneNumberIntFormat
+import com.example.zupzup.ui.utils.toPhoneNumberStringFormat
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.util.*
@@ -48,7 +49,7 @@ class CustomerInfoSetBottomSheet(
         with(binding) {
             if (customer != null) {
                 name = customer.name
-                phoneNumber = customer.phoneNumber.toPhoneNumberFormat()
+                phoneNumber = customer.phoneNumber.toPhoneNumberStringFormat()
             } else {
                 name = ""
                 phoneNumber = ""
@@ -59,7 +60,7 @@ class CustomerInfoSetBottomSheet(
 
     private fun setCustomerInfo(name: String, phoneNumber: String) {
         if (name.isNotEmpty() && phoneNumber.length == 13) {
-            setCustomerInfoToViewModel(CustomerModel(name, phoneNumber))
+            setCustomerInfoToViewModel(CustomerModel(name, phoneNumber.toPhoneNumberIntFormat()))
             dismiss()
         } else {
             Toast.makeText(requireContext(), "올바르지 않은 입력입니다. 다시 확인해주세요", LENGTH_SHORT).show()
