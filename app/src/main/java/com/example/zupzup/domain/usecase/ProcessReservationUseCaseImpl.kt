@@ -4,6 +4,7 @@ import com.example.zupzup.domain.DataResult
 import com.example.zupzup.domain.models.ReservationModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
+import java.net.UnknownHostException
 import javax.inject.Inject
 
 class ProcessReservationUseCaseImpl @Inject constructor(
@@ -20,6 +21,9 @@ class ProcessReservationUseCaseImpl @Inject constructor(
             ) { postResult, fireBaseResult ->
                 if (postResult is DataResult.Success && fireBaseResult is DataResult.Success) {
                     emit(DataResult.Success(1))
+                }
+                else {
+                    emit(DataResult.Failure(UnknownHostException()))
                 }
             }.collect()
         }.flowOn(Dispatchers.IO)

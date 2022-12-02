@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zupzup.databinding.ItemStoreDetailStoreInfoBinding
 import com.example.zupzup.domain.models.StoreDetailHeaderModel
-import com.example.zupzup.domain.models.StoreHeaderInfoModel
 
 class StoreDetailHeaderAdapter :
     ListAdapter<StoreDetailHeaderModel, StoreDetailHeaderAdapter.StoreDetailHeaderViewHolder>(

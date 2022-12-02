@@ -23,6 +23,10 @@ class ReservationProcessViewModel @Inject constructor(
     private var _processUiState = MutableStateFlow<UiState<Int>>(UiState.Loading)
     val processUiState: StateFlow<UiState<Int>> get() = _processUiState
 
+    override fun onCleared() {
+        Log.d("TAG", "onCleared: ")
+        super.onCleared()
+    }
     fun makeReservation(
         reservationHeaderInfo: ReservationHeaderModel,
         visitTime: Int,
@@ -30,7 +34,6 @@ class ReservationProcessViewModel @Inject constructor(
         hostPhoneNumber: String,
     ) {
         viewModelScope.launch {
-            _processUiState.emit(UiState.Loading)
             processReservationUseCase(
                 ReservationModel(
                     reservationHeaderInfo,
@@ -42,11 +45,9 @@ class ReservationProcessViewModel @Inject constructor(
             ).collect {
                 when (it) {
                     is DataResult.Success -> {
-                        Log.d("TAG", "makeReservation: 0 ")
                         _processUiState.emit(UiState.Success(0))
                     }
                     is DataResult.Failure -> {
-                        Log.d("TAG", "makeReservation: 1 ")
                         _processUiState.emit(UiState.Error(1))
                     }
                 }
