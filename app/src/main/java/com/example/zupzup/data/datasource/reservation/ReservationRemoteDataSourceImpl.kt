@@ -16,18 +16,16 @@ class ReservationRemoteDataSourceImpl @Inject constructor(
     @ApplicationContext private val context: Context
 ) : ReservationDataSource {
     override suspend fun createReservation(reservation: Reservation): Result<Long> {
-        return try {
+        return runCatching {
             val connectivityManager = getSystemService(context, ConnectivityManager::class.java)
             val currentNetwork = connectivityManager?.activeNetwork
             if (currentNetwork != null) {
                 val reservationDto = reservation as Reservation.ReservationDto
                 reservationRef.document(reservation.reserveId.toString()).set(reservationDto).await()
-                Result.success(1)
+                0
             } else {
                 throw UnknownHostException()
             }
-        } catch (e: Exception) {
-            Result.failure(e)
         }
     }
 }

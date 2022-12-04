@@ -4,7 +4,6 @@ import com.example.zupzup.data.datasource.lunasoft.LunaSoftDataSource
 import com.example.zupzup.data.datasource.reservation.ReservationDataSource
 import com.example.zupzup.data.datasource.reservation.ReservationLocalDataSourceImpl
 import com.example.zupzup.data.dto.Reservation
-import com.example.zupzup.data.dto.lunasoft.response.LunaSoftResponse
 import com.example.zupzup.data.dto.mapper.DtoMapper
 import com.example.zupzup.di.DataSourceModule
 import com.example.zupzup.domain.DataResult
@@ -43,9 +42,16 @@ class ReservationRepositoryImpl @Inject constructor(
     override suspend fun sendNotificationTalk(
         reservationModel: ReservationModel,
         hostPhoneNumber: String
-    ): Result<LunaSoftResponse> {
-        val messages = DtoMapper.getLunaSoftMessages(reservationModel, hostPhoneNumber)
-        return lunaSoftDataSource.sendNotificationTalk(messages)
+    ): Flow<DataResult<Int>> {
+        return flow {
+            val messages = DtoMapper.getLunaSoftMessages(reservationModel, hostPhoneNumber)
+            val result = lunaSoftDataSource.sendNotificationTalk(messages)
+            result.onSuccess {
+                emit(DataResult.Success(it.code))
+            }.onFailure {
+                emit(DataResult.Failure(it))
+            }
+        }.flowOn(Dispatchers.IO)
     }
 
     override suspend fun getMyReservationList(): Flow<DataResult<List<MyReservationModel>>> {

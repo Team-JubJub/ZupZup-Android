@@ -8,7 +8,7 @@ import com.example.zupzup.data.dto.Reservation
 @Dao
 interface ReservationDao {
 
-    @Query("SELECT * FROM ReservationEntity")
+    @Query("SELECT * FROM ReservationEntity ORDER BY reserve_id DESC")
     fun getMyReservationList(): List<Reservation.ReservationEntity>
 
     @Insert

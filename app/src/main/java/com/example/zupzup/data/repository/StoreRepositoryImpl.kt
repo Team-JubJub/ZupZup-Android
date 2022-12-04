@@ -5,35 +5,38 @@ import com.example.zupzup.domain.DataResult
 import com.example.zupzup.domain.models.StoreHeaderInfoModel
 import com.example.zupzup.domain.models.StoreModel
 import com.example.zupzup.domain.repository.StoreRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class StoreRepositoryImpl @Inject constructor(
     private val storeDataSource: StoreDataSource
 ) : StoreRepository {
 
-    private lateinit var storeListResult: DataResult<List<StoreHeaderInfoModel>>
-    private lateinit var storeDetailResult: DataResult<StoreModel>
-
-    override suspend fun getStoreList(): DataResult<List<StoreHeaderInfoModel>> {
-        storeDataSource.getStoreList()
-            .onSuccess {
-                storeListResult = DataResult.Success(it.map { store ->
-                    store.toHeaderInfoModel()
-                })
-            }.onFailure {
-                storeListResult = DataResult.Failure(it)
-            }
-        return storeListResult
+    override suspend fun getStoreList(): Flow<DataResult<List<StoreHeaderInfoModel>>> {
+        return flow {
+            storeDataSource.getStoreList()
+                .onSuccess {
+                    emit(DataResult.Success(it.map { store ->
+                        store.toHeaderInfoModel()
+                    }))
+                }.onFailure {
+                    emit(DataResult.Failure(it))
+                }
+        }.flowOn(Dispatchers.IO)
     }
 
-    override suspend fun getStoreDetailById(storeId: Long): DataResult<StoreModel> {
-        storeDataSource.getStoreDetailById(storeId)
-            .onSuccess {
-                storeDetailResult = DataResult.Success(it.toModel())
-            }
-            .onFailure {
-                storeDetailResult = DataResult.Failure(it)
-            }
-        return storeDetailResult
+    override suspend fun getStoreDetailById(storeId: Long): Flow<DataResult<StoreModel>> {
+        return flow {
+            storeDataSource.getStoreDetailById(storeId)
+                .onSuccess {
+                    emit(DataResult.Success(it.toModel()))
+                }
+                .onFailure {
+                    emit(DataResult.Failure(it))
+                }
+        }.flowOn(Dispatchers.IO)
     }
 }

@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface MakeReservationOnFireBaseUseCase {
 
-    operator fun invoke(
+    suspend operator fun invoke(
         reservationModel: ReservationModel
     ): Flow<DataResult<Long>>
 }

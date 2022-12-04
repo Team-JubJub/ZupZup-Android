@@ -98,6 +98,14 @@ fun bindVisitTimeToTextView(
     textView.text = visitTime.toTimeString()
 }
 
+@BindingAdapter("phoneNumber")
+fun bindPhoneNumberToTextView(
+    textView: TextView,
+    phoneNumber: String
+) {
+    textView.text = phoneNumber.toPhoneNumberStringFormat()
+}
+
 @BindingAdapter("startTime", "endTime")
 fun bindSaleTimeToTextView(
     textView: TextView,

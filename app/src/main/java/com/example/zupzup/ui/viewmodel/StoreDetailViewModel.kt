@@ -32,15 +32,17 @@ class StoreDetailViewModel @Inject constructor(
             isInitialState = true
             viewModelScope.launch {
                 _storeDetailUiState.emit(UiState.Loading)
-                getStoreDetailUseCase.invoke(storeId).apply {
-                    if (this is DataResult.Success) {
-                        with(data) {
-                            _storeDetailUiState.emit(UiState.Success(this))
-                            amountList = MutableList(this.merchandiseList.size) { 0 }
+                getStoreDetailUseCase.invoke(storeId).collect {
+                    when (it) {
+                        is DataResult.Success -> {
+                            with(it.data) {
+                                _storeDetailUiState.emit(com.example.zupzup.ui.UiState.Success(this))
+                                amountList = MutableList(this.merchandiseList.size) { 0 }
+                            }
                         }
-
-                    } else if (this is DataResult.Failure) {
-                        _storeDetailUiState.emit(UiState.Error(1))
+                        is DataResult.Failure -> {
+                            _storeDetailUiState.emit(UiState.Error(1))
+                        }
                     }
                 }
             }

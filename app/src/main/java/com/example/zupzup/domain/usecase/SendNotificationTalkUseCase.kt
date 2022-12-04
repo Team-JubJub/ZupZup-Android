@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface SendNotificationTalkUseCase {
 
-    operator fun invoke(
+    suspend operator fun invoke(
         reservationModel: ReservationModel,
         hostPhoneNumber: String
     ): Flow<DataResult<Int>>

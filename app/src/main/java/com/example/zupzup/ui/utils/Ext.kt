@@ -1,12 +1,14 @@
 package com.example.zupzup.ui.utils
 
+import android.util.Log
+
 
 fun Int.toTimeString(): String {
     var timeString = ""
     val text = this.toString()
     timeString = if (this == 0) {
         "00:00"
-    } else if(this < 10) {
+    } else if (this < 10) {
         "00:0$this"
     } else if (this < 60) {
         "00:$this"
@@ -19,18 +21,14 @@ fun Int.toTimeString(): String {
     return timeString
 }
 
-fun String.toPhoneNumberIntFormat() : String {
-    return this.replace("-","")
+fun String.toPhoneNumberIntFormat(): String {
+    return this.replace("-", "")
 }
 
 fun String.toPhoneNumberStringFormat(): String {
-    if (this.length == 13) {
-        return this.format(
-            "%s-%s-%s",
-            this.substring(0, 3),
-            this.substring(3, 6),
-            this.substring(6)
-        )
+    Log.d("TAG", "$this: ")
+    if (this.length == 11) {
+        return "${this.substring(0, 3)}-${this.substring(3, 7)}-${this.substring(7)}"
     }
     return ""
 }

@@ -11,7 +11,7 @@ class ProcessReservationUseCaseImpl @Inject constructor(
     private val sendNotificationTalkUseCase: SendNotificationTalkUseCase,
     private val makeReservationOnFireBaseUseCase: MakeReservationOnFireBaseUseCase
 ) : ProcessReservationUseCase {
-    override fun invoke(
+    override suspend fun invoke(
         reservationModel: ReservationModel,
         hostPhoneNumber: String
     ): Flow<DataResult<Int>> {
@@ -26,6 +26,6 @@ class ProcessReservationUseCaseImpl @Inject constructor(
                     emit(DataResult.Failure(UnknownHostException()))
                 }
             }.collect()
-        }.flowOn(Dispatchers.IO)
+        }
     }
 }
