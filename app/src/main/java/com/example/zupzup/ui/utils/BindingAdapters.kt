@@ -9,11 +9,9 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zupzup.R
-import com.example.zupzup.domain.models.CartModel
-import com.example.zupzup.domain.models.ReservationModel
-import com.example.zupzup.domain.models.StoreHeaderInfoModel
-import com.example.zupzup.domain.models.StoreModel
+import com.example.zupzup.domain.models.*
 import com.example.zupzup.ui.UiState
+import com.example.zupzup.ui.adaper.myreservation.MyReservationListAdapter
 import com.example.zupzup.ui.adaper.storedetail.StoreDetailBodyAdapter
 import com.example.zupzup.ui.adaper.storedetail.StoreDetailHeaderAdapter
 import com.example.zupzup.ui.adaper.storelist.StoreListRecyclerViewAdapter
@@ -147,5 +145,18 @@ fun bindViewTypeToTextView(
         tvName.text = it.itemName
         tvItemPrice.text = (it.amount * it.salesPrice).toString()
         linearLayout.addView(layout)
+    }
+}
+
+@BindingAdapter("myReservationUiState")
+fun bindMyReservationListToRecyclerView(
+    recyclerView: RecyclerView,
+    uiState: UiState<List<MyReservationModel>>?
+) {
+    val adapter = recyclerView.adapter as MyReservationListAdapter
+    when (uiState) {
+        is UiState.Success -> {
+            adapter.submitList(uiState.data)
+        }
     }
 }

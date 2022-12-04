@@ -40,4 +40,10 @@ abstract class UseCaseModule {
     abstract fun bindGetStoreDetailUseCase(
         getStoreDetailUseCaseImpl: GetStoreDetailUseCaseImpl
     ): GetStoreDetailUseCase
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindGetMyReservationUseCase(
+        getMyReservationListUseCaseImpl: GetMyReservationListUseCaseImpl
+    ): GetMyReservationListUseCase
 }

@@ -7,6 +7,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.zupzup.R
 import com.example.zupzup.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     private fun initNavController() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container)  as NavHostFragment
         navController = navHostFragment.findNavController()
-        //binding.bottomNavMain.setupWithNavController(navController)
+        binding.bottomNavMain.setupWithNavController(navController)
     }
 
     private fun setBottomNavVisibility() {

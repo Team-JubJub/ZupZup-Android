@@ -55,4 +55,9 @@ class TermsDetailDialogFragment : DialogFragment() {
                     "5. 동의 거부권 등에 대한 고지 : 정보주체는 개인정보 제공 동의를 거부할 권리가 있으나, 이 경우 상품 및 서비스 예약이 제한될 수 있습니다."
         dialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
 }

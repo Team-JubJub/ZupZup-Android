@@ -8,5 +8,5 @@ interface MakeReservationOnFireBaseUseCase {
 
     operator fun invoke(
         reservationModel: ReservationModel
-    ): Flow<DataResult<Int>>
+    ): Flow<DataResult<Long>>
 }

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.zupzup.databinding.ItemStoreCardBinding
+import com.example.zupzup.databinding.ItemStoreListBinding
 import com.example.zupzup.domain.models.StoreHeaderInfoModel
 import com.example.zupzup.ui.adaper.storelist.StoreListRecyclerViewAdapter.StoreViewHolder
 
@@ -31,7 +31,7 @@ class StoreListRecyclerViewAdapter(
     }
 
     class StoreViewHolder(
-        private val binding: ItemStoreCardBinding,
+        private val binding: ItemStoreListBinding,
         private val navigateToStoreDetail: (Long) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: StoreHeaderInfoModel) {
@@ -43,7 +43,7 @@ class StoreListRecyclerViewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoreViewHolder {
         val binding =
-            ItemStoreCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemStoreListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return StoreViewHolder(binding, navigateStoreDetail)
     }
 

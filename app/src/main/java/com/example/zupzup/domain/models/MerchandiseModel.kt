@@ -18,7 +18,5 @@ data class MerchandiseModel(
             amount = amount
         )
     }
-
-
 }
 

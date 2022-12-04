@@ -6,6 +6,8 @@ fun Int.toTimeString(): String {
     val text = this.toString()
     timeString = if (this == 0) {
         "00:00"
+    } else if(this < 10) {
+        "00:0$this"
     } else if (this < 60) {
         "00:$this"
     } else if (this < 1000) { // 1.00 ~ 9.59
