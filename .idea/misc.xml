@@ -5,12 +5,14 @@
       <map>
         <entry key="../../../layout/custom_preview.xml" value="0.1816123188405797" />
         <entry key="app/src/main/res/drawable/frame_39.xml" value="0.1615" />
+        <entry key="app/src/main/res/drawable/frame_bottom_nav_indicator.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/frame_checkbox_false.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/frame_checkbox_true.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/frame_circle_warmgray2.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/frame_circle_white.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/frame_circle_wramgray2.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/frame_edittext_bottom_main.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/frame_rectangle_14_black.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/frame_rectangle_16.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/frame_rectangle_bottom_corner_12_gray0.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/frame_rectangle_bottom_corner_12_grayo.xml" value="0.1615" />
@@ -43,14 +45,18 @@
         <entry key="app/src/main/res/drawable/ic_store.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/ic_store_timer.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/ic_timer_24.xml" value="0.1615" />
+        <entry key="app/src/main/res/drawable/ic_timer_main_20.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/ic_timer_white.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/ic_timer_white_16.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/ic_timer_white_30.xml" value="0.1615" />
+        <entry key="app/src/main/res/drawable/selector_bottom_nav_indicator.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/selector_button_enabled.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/selector_permission_personal_info_checkbox.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/test.xml" value="0.137" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1703277587890625" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.6410705566406251" />
         <entry key="app/src/main/res/layout/fragment_customer_info_set_bottom_sheet.xml" value="0.6511581420898438" />
+        <entry key="app/src/main/res/layout/fragment_my_reservation.xml" value="0.3878968253968254" />
+        <entry key="app/src/main/res/layout/fragment_my_reservation_detail.xml" value="0.3878968253968254" />
         <entry key="app/src/main/res/layout/fragment_reservation.xml" value="0.5715109562528307" />
         <entry key="app/src/main/res/layout/fragment_reservation_complete.xml" value="0.35944700460829493" />
         <entry key="app/src/main/res/layout/fragment_reservation_process.xml" value="0.2966507177033493" />
@@ -60,6 +66,7 @@
         <entry key="app/src/main/res/layout/fragment_store_list.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_terms_detail_dialog.xml" value="0.37103174603174605" />
         <entry key="app/src/main/res/layout/fragment_visit_time_set_bottom_sheet.xml" value="0.49029052734375" />
+        <entry key="app/src/main/res/layout/item_my_reservation_list.xml" value="0.540045766590389" />
         <entry key="app/src/main/res/layout/item_reservation_cart_list.xml" value="0.26141421553017424" />
         <entry key="app/src/main/res/layout/item_reservation_store_info.xml" value="1.9548771209296447" />
         <entry key="app/src/main/res/layout/item_reservation_visit_info.xml" value="0.609784046943807" />
@@ -69,6 +76,7 @@
         <entry key="app/src/main/res/layout/item_store_detail_merchandise.xml" value="0.4251099465110085" />
         <entry key="app/src/main/res/layout/item_store_detail_name.xml" value="0.22756754557291664" />
         <entry key="app/src/main/res/layout/item_store_detail_store_info.xml" value="0.17395833333333333" />
+        <entry key="app/src/main/res/layout/item_store_list.xml" value="0.3878968253968254" />
         <entry key="app/src/main/res/layout/snackbar_error_message.xml" value="0.42956349206349204" />
         <entry key="app/src/main/res/menu/main_bottom_nav.xml" value="0.28360748291015625" />
         <entry key="app/src/main/res/menu/main_nav_menu.xml" value="0.1921875" />

@@ -20,7 +20,7 @@ class ProcessReservationUseCaseImpl @Inject constructor(
                 makeReservationOnFireBaseUseCase.invoke(reservationModel)
             ) { postResult, fireBaseResult ->
                 if (postResult is DataResult.Success && fireBaseResult is DataResult.Success) {
-                    emit(DataResult.Success(1))
+                    emit(DataResult.Success(0))
                 }
                 else {
                     emit(DataResult.Failure(UnknownHostException()))

@@ -31,7 +31,6 @@ class ReservationCompleteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initBinding()
-
     }
 
     private fun navigateHome() {
@@ -54,5 +53,9 @@ class ReservationCompleteFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
 
 }

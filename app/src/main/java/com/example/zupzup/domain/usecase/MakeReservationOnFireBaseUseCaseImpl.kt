@@ -10,7 +10,7 @@ import javax.inject.Inject
 class MakeReservationOnFireBaseUseCaseImpl @Inject constructor(
     private val reservationRepository: ReservationRepository
 ) : MakeReservationOnFireBaseUseCase {
-    override operator fun invoke(reservationModel: ReservationModel): Flow<DataResult<Int>> {
+    override operator fun invoke(reservationModel: ReservationModel): Flow<DataResult<Long>> {
         return flow {
             reservationRepository.makeReservation(reservationModel).collect {
                 emit(it)

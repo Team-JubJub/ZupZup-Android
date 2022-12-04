@@ -15,7 +15,7 @@ class ReservationRemoteDataSourceImpl @Inject constructor(
     @FireBaseModule.ReservationRef private val reservationRef: CollectionReference,
     @ApplicationContext private val context: Context
 ) : ReservationDataSource {
-    override suspend fun createReservation(reservation: Reservation): Result<Int> {
+    override suspend fun createReservation(reservation: Reservation): Result<Long> {
         return try {
             val connectivityManager = getSystemService(context, ConnectivityManager::class.java)
             val currentNetwork = connectivityManager?.activeNetwork
