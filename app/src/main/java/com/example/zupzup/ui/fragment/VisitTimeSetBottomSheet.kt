@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import com.example.zupzup.R
 import com.example.zupzup.databinding.FragmentVisitTimeSetBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -27,7 +29,7 @@ class VisitTimeSetBottomSheet(
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentVisitTimeSetBottomSheetBinding.inflate(layoutInflater, container, false)
         return _binding!!.root
     }
@@ -35,14 +37,41 @@ class VisitTimeSetBottomSheet(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initBinding()
+        initNumberPicker()
+    }
+
+    private fun getTimeInterval(time: Int): Int {
+        var hour = 0
+        if (time > 100) { // 1000 이상
+            hour = time / 100
+        }
+        return hour
+    }
+
+    private fun initNumberPicker() {
+        with(binding) {
+            numberPickerHour.minValue = getTimeInterval(saleTime.first)
+            numberPickerHour.maxValue = getTimeInterval(saleTime.second)
+            numberPickerMinute.minValue = 0
+            numberPickerMinute.maxValue = 59
+            numberPickerAtNoon.minValue = 0
+            numberPickerAtNoon.maxValue = 1
+            numberPickerAtNoon.displayedValues = arrayOf("AM", "PM")
+        }
     }
 
     private fun setVisitTimeBtnClickListener() {
-        with(binding.timepicker) {
-            val hour = hour
-            val minutes = minute
-            setVisitTime(hour * 100 + minutes)
-            dismiss()
+        with(binding) {
+            val hour = numberPickerHour.value
+            val minutes = numberPickerMinute.value
+            if (numberPickerAtNoon.value == 0 && hour > 12) {
+                Toast.makeText(requireContext(), "AM, PM 을 확인해주세요 !", LENGTH_SHORT).show()
+            } else if (hour * 100 + minutes > saleTime.second) {
+                Toast.makeText(requireContext(), "마감시간을 넘었습니다. !", LENGTH_SHORT).show()
+            } else {
+                setVisitTime(hour * 100 + minutes)
+                dismiss()
+            }
         }
     }
 
@@ -50,10 +79,21 @@ class VisitTimeSetBottomSheet(
         with(binding) {
             startTime = saleTime.first
             endTime = saleTime.second
-            time = selectedTime
+            if (selectedTime == 0) {
+                hour = saleTime.first / 100
+                minute = 0
+                atNoon = 0
+            } else {
+                hour = selectedTime / 100
+                minute = selectedTime % 100
+                atNoon = if (selectedTime / 100 >= 12) {
+                    1
+                } else {
+                    0
+                }
+            }
             setVisitTimeBtnClick = { setVisitTimeBtnClickListener() }
         }
-
     }
 
     override fun onDestroyView() {
