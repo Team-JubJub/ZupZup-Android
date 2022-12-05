@@ -27,7 +27,7 @@
         <item name="android:windowBackground">@color/transparent</item>
     </style>
 
-    <style name="CustomTimePickerStyle" parent="Theme.AppCompat">
+    <style name="CustomTimePickerStyle">
         <!-- NumberPicker divider color -->
         <item name="colorControlNormal">@color/main</item>
         <item name="android:editTextColor">@color/text</item>
