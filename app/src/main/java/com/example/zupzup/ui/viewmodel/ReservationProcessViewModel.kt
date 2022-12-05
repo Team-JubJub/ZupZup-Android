@@ -3,8 +3,6 @@ package com.example.zupzup.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.zupzup.domain.DataResult
-import com.example.zupzup.domain.models.CustomerModel
-import com.example.zupzup.domain.models.ReservationHeaderModel
 import com.example.zupzup.domain.models.ReservationModel
 import com.example.zupzup.domain.usecase.ProcessReservationUseCase
 import com.example.zupzup.ui.UiState
@@ -23,21 +21,11 @@ class ReservationProcessViewModel @Inject constructor(
     val processUiState: StateFlow<UiState<Int>> get() = _processUiState
 
     fun makeReservation(
-        reservationHeaderInfo: ReservationHeaderModel,
-        visitTime: Int,
-        customer: CustomerModel,
+        reservationModel: ReservationModel,
         hostPhoneNumber: String,
     ) {
         viewModelScope.launch {
-            processReservationUseCase(
-                ReservationModel(
-                    reservationHeaderInfo,
-                    visitTime,
-                    customer,
-                    true
-                ),
-                hostPhoneNumber
-            ).collect {
+            processReservationUseCase(reservationModel, hostPhoneNumber).collect {
                 when (it) {
                     is DataResult.Success -> {
                         _processUiState.emit(UiState.Success(0))

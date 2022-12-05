@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import android.widget.Toast.LENGTH_SHORT
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -15,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zupzup.databinding.FragmentStoreDetailBinding
 import com.example.zupzup.domain.models.CartModel
 import com.example.zupzup.domain.models.MerchandiseModel
+import com.example.zupzup.domain.models.ReservationHeaderModel
 import com.example.zupzup.domain.models.StoreModel
 import com.example.zupzup.ui.UiState
 import com.example.zupzup.ui.adaper.storedetail.StoreDetailBodyAdapter
@@ -100,25 +99,22 @@ class StoreDetailFragment : Fragment() {
                     val cartList = makeCartList(merchandiseList)
                     val action =
                         StoreDetailFragmentDirections.actionFragStoreDetailToFragReservation(
-                            storeId,
-                            name,
-                            address,
-                            hostPhoneNumber,
-                            cartList,
-                            saleTime.first,
-                            saleTime.second
+                            reservationHeader = ReservationHeaderModel(
+                                storeId,
+                                name,
+                                address,
+                                cartList,
+                                Pair(saleTime.first, saleTime.second)
+                            ),
+                            hostPhoneNumber = hostPhoneNumber
                         )
-                    if (cartList.isEmpty()) {
-                        Toast.makeText(requireContext(), "상품을 선택해주세요 !", LENGTH_SHORT).show()
-                    } else {
-                        findNavController().navigate(action)
-                    }
+                    findNavController().navigate(action)
                 }
             }
         }
     }
 
-    private fun makeCartList(merchandiseList: List<MerchandiseModel>): Array<CartModel> {
+    private fun makeCartList(merchandiseList: List<MerchandiseModel>): List<CartModel> {
         val amountList = storeDetailViewModel.getAmountList()
         val cartList = arrayListOf<CartModel>()
         amountList.forEachIndexed { idx, amount ->
@@ -126,7 +122,7 @@ class StoreDetailFragment : Fragment() {
                 cartList.add(merchandiseList[idx].toCartModel(amount))
             }
         }
-        return cartList.toTypedArray()
+        return cartList
     }
 
 }

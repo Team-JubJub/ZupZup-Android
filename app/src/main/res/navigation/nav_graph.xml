@@ -36,28 +36,11 @@
         android:label="fragment_reservation"
         tools:layout="@layout/fragment_reservation">
         <argument
-            android:name="storeId"
-            app:argType="long"
-            app:nullable="false" />
-        <argument
-            android:name="storeName"
-            app:argType="string"
-            app:nullable="false" />
-        <argument
-            android:name="storeAddress"
-            app:argType="string" />
+            android:name="reservationHeader"
+            app:argType="com.example.zupzup.domain.models.ReservationHeaderModel" />
         <argument
             android:name="hostPhoneNumber"
             app:argType="string" />
-        <argument
-            android:name="cartList"
-            app:argType="com.example.zupzup.domain.models.CartModel[]" />
-        <argument
-            android:name="start"
-            app:argType="integer" />
-        <argument
-            android:name="end"
-            app:argType="integer" />
         <action
             android:id="@+id/action_frag_reservation_to_frag_reservation_process"
             app:destination="@id/frag_reservation_process" />
@@ -69,36 +52,12 @@
         android:label="ReservationProcessFragment"
         tools:layout="@layout/fragment_reservation_process">
         <argument
-            android:name="storeId"
-            app:argType="long"
-            app:nullable="false" />
-        <argument
-            android:name="storeName"
-            app:argType="string"
-            app:nullable="false" />
-        <argument
-            android:name="storeAddress"
-            app:argType="string"
-            app:nullable="false" />
+            android:name="reservation"
+            app:argType="com.example.zupzup.domain.models.ReservationModel"/>
         <argument
             android:name="hostPhoneNumber"
             app:argType="string" />
-        <argument
-            android:name="cartList"
-            app:argType="com.example.zupzup.domain.models.CartModel[]"
-            app:nullable="false" />
-        <argument
-            android:name="visitTime"
-            app:argType="integer"
-            app:nullable="false"/>
-        <argument
-            android:name="customerName"
-            app:argType="string"
-            app:nullable="false" />
-        <argument
-            android:name="customerPhoneNumber"
-            app:argType="string"
-            app:nullable="false" />
+
         <action
             app:popUpTo="@id/frag_store_detail"
             app:popUpToInclusive="true"
@@ -111,24 +70,9 @@
         android:label="ReservationCompleteFragment"
         tools:layout="@layout/fragment_reservation_complete">
         <argument
-            android:name="storeName"
-            app:argType="string"
-            app:nullable="false" />
-        <argument
-            android:name="storeAddress"
-            app:argType="string" />
-        <argument
-            android:name="cartList"
-            app:argType="com.example.zupzup.domain.models.CartModel[]" />
-        <argument
-            android:name="visitTime"
-            app:argType="integer"/>
-        <argument
-            android:name="customerName"
-            app:argType="string"/>
-        <argument
-            android:name="customerPhoneNumber"
-            app:argType="string"/>
+            android:name="myReservation"
+            app:argType="com.example.zupzup.domain.models.MyReservationModel"/>
+
     </fragment>
     <fragment
         android:id="@+id/frag_my_reservation"

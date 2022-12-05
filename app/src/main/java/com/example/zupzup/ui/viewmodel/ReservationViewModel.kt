@@ -73,22 +73,11 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
     }
 
     fun setHeaderInfo(
-        storeId: Long,
-        storeName: String,
-        storeAddress: String,
-        cartList: List<CartModel>,
-        start: Int,
-        end: Int
+        reservationHeaderModel: ReservationHeaderModel
     ) {
         viewModelScope.launch {
             headerInfo.emit(
-                ReservationHeaderModel(
-                    storeId,
-                    storeName,
-                    storeAddress,
-                    cartList,
-                    Pair(start, end)
-                )
+                reservationHeaderModel
             )
         }
     }
