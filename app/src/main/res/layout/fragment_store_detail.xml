@@ -10,6 +10,9 @@
         <variable
             name="helper"
             type="com.example.zupzup.ui.bindinghelper.AmountManageHelper" />
+        <variable
+            name="bindingHelper"
+            type="com.example.zupzup.ui.bindinghelper.StoreDetailBindingHelper" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,7 +31,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:storeDetailUiState="@{viewModel.storeDetailUiState}"
-            app:amountManageHelper="@{helper}"/>
+            app:bindingHelper="@{bindingHelper}" />
 
 
         <androidx.appcompat.widget.AppCompatButton

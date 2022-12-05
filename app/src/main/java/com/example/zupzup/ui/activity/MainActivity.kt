@@ -1,6 +1,12 @@
 package com.example.zupzup.ui.activity
 
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
+import android.content.pm.Signature
+import android.os.Build
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -10,7 +16,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.zupzup.R
 import com.example.zupzup.databinding.ActivityMainBinding
+import com.kakao.util.maps.helper.Utility.getKeyHash
 import dagger.hilt.android.AndroidEntryPoint
+import net.daum.mf.map.api.MapView
+import net.daum.mf.map.gen.DaumMapLibraryAndroidMeta
+import net.daum.mf.map.gen.KakaoMapLibraryAndroidMeta
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

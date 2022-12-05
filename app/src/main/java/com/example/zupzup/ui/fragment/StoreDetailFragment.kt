@@ -10,13 +10,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zupzup.databinding.FragmentStoreDetailBinding
 import com.example.zupzup.domain.models.CartModel
 import com.example.zupzup.domain.models.MerchandiseModel
 import com.example.zupzup.domain.models.StoreModel
 import com.example.zupzup.ui.UiState
+import com.example.zupzup.ui.adaper.storedetail.StoreDetailBodyAdapter
+import com.example.zupzup.ui.adaper.storedetail.StoreDetailHeaderAdapter
 import com.example.zupzup.ui.bindinghelper.AmountManageHelper
+import com.example.zupzup.ui.bindinghelper.StoreDetailBindingHelper
 import com.example.zupzup.ui.viewmodel.StoreDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,6 +33,23 @@ class StoreDetailFragment : Fragment() {
     private val storeDetailViewModel: StoreDetailViewModel by viewModels()
     private val args: StoreDetailFragmentArgs by navArgs()
 
+    private val headerAdapter: StoreDetailHeaderAdapter by lazy {
+        StoreDetailHeaderAdapter(activity = requireActivity())
+    }
+
+    private val bodyAdapter: StoreDetailBodyAdapter by lazy {
+        StoreDetailBodyAdapter(
+            AmountManageHelper(
+                storeDetailViewModel::increaseAmount,
+                storeDetailViewModel::decreaseAmount,
+                storeDetailViewModel::getAmountList
+            )
+        )
+    }
+
+    private val concatAdapter: ConcatAdapter by lazy {
+        ConcatAdapter(headerAdapter, bodyAdapter)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,27 +62,28 @@ class StoreDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setViewModelBinding()
+        initBinding()
         initRcvLayoutManager()
         getStoreDetailById()
         navigateToReservationFragment()
     }
 
-    private fun setViewModelBinding() {
+    private fun initBinding() {
         with(binding) {
             viewModel = storeDetailViewModel
             lifecycleOwner = viewLifecycleOwner
-
-            helper = AmountManageHelper(
-                storeDetailViewModel::increaseAmount,
-                storeDetailViewModel::decreaseAmount,
-                storeDetailViewModel::getAmountList
+            bindingHelper = StoreDetailBindingHelper(
+                headerAdapter::setStoreDetailHeader,
+                bodyAdapter::submitList
             )
         }
     }
 
     private fun initRcvLayoutManager() {
-        binding.rcvStoreDetail.layoutManager = LinearLayoutManager(requireContext())
+        with(binding.rcvStoreDetail) {
+            adapter = concatAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
     }
 
     private fun getStoreDetailById() {
