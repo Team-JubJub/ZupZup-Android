@@ -6,18 +6,15 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.TimePicker
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zupzup.R
 import com.example.zupzup.domain.models.*
 import com.example.zupzup.ui.UiState
 import com.example.zupzup.ui.adaper.myreservation.MyReservationListAdapter
-import com.example.zupzup.ui.adaper.storedetail.StoreDetailBodyAdapter
-import com.example.zupzup.ui.adaper.storedetail.StoreDetailHeaderAdapter
 import com.example.zupzup.ui.adaper.storelist.StoreListRecyclerViewAdapter
-import com.example.zupzup.ui.bindinghelper.AmountManageHelper
 import com.example.zupzup.ui.bindinghelper.ReservationBindingHelper
 import com.example.zupzup.ui.bindinghelper.ReservationProcessBindingHelper
+import com.example.zupzup.ui.bindinghelper.StoreDetailBindingHelper
 
 @BindingAdapter("storeListUiState")
 fun bindStoreListRecyclerView(
@@ -32,28 +29,24 @@ fun bindStoreListRecyclerView(
     }
 }
 
-@BindingAdapter("storeDetailUiState", "amountManageHelper")
+@BindingAdapter("storeDetailUiState", "bindingHelper")
 fun bindStoreDetailRecyclerView(
     recyclerView: RecyclerView,
     uiState: UiState<StoreModel>?,
-    amountManageHelper: AmountManageHelper
+    bindingHelper: StoreDetailBindingHelper,
 ) {
-    val headerAdapter = StoreDetailHeaderAdapter()
-    val bodyAdapter = StoreDetailBodyAdapter(amountManageHelper)
     when (uiState) {
         is UiState.Success -> {
-            headerAdapter.submitList(listOf(uiState.data.toDetailHeaderModel()))
-            bodyAdapter.submitList(uiState.data.merchandiseList)
-            val adapter = ConcatAdapter(headerAdapter, bodyAdapter)
-            recyclerView.adapter = adapter
+            bindingHelper.setHeader(uiState.data.toDetailHeaderModel())
+            bindingHelper.setBody(uiState.data.merchandiseList)
         }
     }
 }
 
 @BindingAdapter("eventList")
-fun bindEventListToTextView(textView: TextView, eventList: List<String>) {
+fun bindEventListToTextView(textView: TextView, eventList: List<String>?) {
     var event = ""
-    eventList.forEachIndexed { index, s ->
+    eventList?.forEachIndexed { index, s ->
         event += s
         if (index < eventList.size - 1) {
             event += "\n"

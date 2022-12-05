@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="storeDetailHeader"
             type="com.example.zupzup.domain.models.StoreDetailHeaderModel" />
@@ -18,9 +19,9 @@
             android:id="@+id/tv_store_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{storeDetailHeader.name}"
             android:textColor="@color/black"
             android:textSize="34sp"
-            android:text="@{storeDetailHeader.name}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="가게 이름" />
@@ -29,12 +30,22 @@
             android:id="@+id/tv_store_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{storeDetailHeader.address}"
             android:textColor="@color/warm_gray3"
             android:textSize="15sp"
-            android:text="@{storeDetailHeader.address}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_store_name"
             tools:text="가게 주소" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout_map_container"
+            android:layout_width="match_parent"
+            android:layout_height="182dp"
+            android:layout_marginTop="24dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_store_address" />
 
         <TextView
             android:id="@+id/tv_store_info_title"
@@ -46,7 +57,7 @@
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_store_address" />
+            app:layout_constraintTop_toBottomOf="@id/linearLayout_map_container" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_store_info_container"
@@ -85,8 +96,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:textSize="15sp"
                 android:text="@{storeDetailHeader.openTime}"
+                android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="@id/tv_store_open_time_title"
                 app:layout_constraintTop_toBottomOf="@id/tv_store_open_time_title"
                 tools:text="가게 영업시간 들어가는 자리" />
@@ -129,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:textSize="15sp"
-                app:eventList = "@{storeDetailHeader.eventList}"
+                app:eventList="@{storeDetailHeader.eventList}"
                 app:layout_constraintStart_toStartOf="@id/tv_store_event_title"
                 app:layout_constraintTop_toBottomOf="@id/tv_store_event_title"
                 tools:text="이벤트 들어가는 자리" />
