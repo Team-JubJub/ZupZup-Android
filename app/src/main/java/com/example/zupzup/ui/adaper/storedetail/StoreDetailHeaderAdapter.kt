@@ -24,18 +24,29 @@ class StoreDetailHeaderAdapter(
 
     class StoreDetailHeaderViewHolder(private val binding: ItemStoreDetailStoreInfoBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(item: StoreDetailHeaderModel?, activity: FragmentActivity) {
             if (item != null) {
                 val mapView = getMapView(activity, item.location, item.name)
+                binding.linearLayoutMapContainer.removeAllViews()
                 binding.linearLayoutMapContainer.addView(mapView)
                 binding.storeDetailHeader = item
                 binding.executePendingBindings()
             }
         }
 
-        private fun getMapView(activity: FragmentActivity, location: Pair<Double, Double>, storeName: String): MapView {
+        private fun getMapView(
+            activity: FragmentActivity,
+            location: Pair<Double, Double>,
+            storeName: String
+        ): MapView {
             val mapView = MapView(activity)
-            mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(location.first, location.second), 0, true)
+            mapView.setMapCenterPointAndZoomLevel(
+                MapPoint.mapPointWithGeoCoord(
+                    location.first,
+                    location.second
+                ), 0, true
+            )
 
             val marker = MapPOIItem()
             marker.itemName = storeName
@@ -50,7 +61,7 @@ class StoreDetailHeaderAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): StoreDetailHeaderViewHolder {
+    ): StoreDetailHeaderAdapter.StoreDetailHeaderViewHolder {
         val binding =
             ItemStoreDetailStoreInfoBinding.inflate(
                 LayoutInflater.from(parent.context),
