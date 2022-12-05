@@ -11,12 +11,13 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zupzup.databinding.FragmentReservationBinding
+import com.example.zupzup.domain.models.CustomerModel
 import com.example.zupzup.domain.models.ReservationModel
 import com.example.zupzup.ui.UiState
-import com.example.zupzup.ui.bindinghelper.ReservationBindingHelper
 import com.example.zupzup.ui.adaper.reservation.ReservationCartListAdapter
 import com.example.zupzup.ui.adaper.reservation.ReservationFooterAdapter
 import com.example.zupzup.ui.adaper.reservation.ReservationHeaderAdapter
+import com.example.zupzup.ui.bindinghelper.ReservationBindingHelper
 import com.example.zupzup.ui.viewmodel.ReservationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -70,7 +71,7 @@ class ReservationFragment : Fragment() {
 
     private fun showSetVisitTimeBottomSheet() {
         VisitTimeSetBottomSheet(
-            Pair(args.start, args.end),
+            Pair(args.reservationHeader.saleTime.first, args.reservationHeader.saleTime.second),
             reservationViewModel.getSelectedVisitTime(),
             reservationViewModel::setVisitTime
         ).show(parentFragmentManager, null)
@@ -110,9 +111,7 @@ class ReservationFragment : Fragment() {
 
     private fun setArgumentToViewModel() {
         with(args) {
-            reservationViewModel.setHeaderInfo(
-                storeId, storeName, storeAddress, cartList.toList(), start, end
-            )
+            reservationViewModel.setHeaderInfo(reservationHeader)
         }
     }
 
@@ -122,23 +121,19 @@ class ReservationFragment : Fragment() {
     }
 
     private fun navigateToReservationProcess() {
-        if (reservationViewModel.reservationUiState.value is UiState.Success<ReservationModel>) {
-            val uiState =
-                reservationViewModel.reservationUiState.value as UiState.Success<ReservationModel>
-            with(uiState.data) {
-                val action =
-                    ReservationFragmentDirections.actionFragReservationToFragReservationProcess(
-                        reservationHeaderInfo.storeId,
-                        reservationHeaderInfo.storeName,
-                        reservationHeaderInfo.storeAddress,
-                        args.hostPhoneNumber,
-                        reservationHeaderInfo.cartList.toTypedArray(),
+        val uiState = reservationViewModel.reservationUiState.value as UiState.Success<ReservationModel>
+        with(uiState.data) {
+            val action =
+                ReservationFragmentDirections.actionFragReservationToFragReservationProcess(
+                    reservation = ReservationModel(
+                        reservationHeaderInfo,
                         visitTime,
-                        customer.name,
-                        customer.phoneNumber
-                    )
-                findNavController().navigate(action)
-            }
+                        CustomerModel(customer.name, customer.phoneNumber),
+                        isAgree
+                    ),
+                    hostPhoneNumber = args.hostPhoneNumber
+                )
+            findNavController().navigate(action)
         }
     }
 

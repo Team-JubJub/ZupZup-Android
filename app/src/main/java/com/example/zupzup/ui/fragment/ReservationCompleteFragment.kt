@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.navArgument
 import com.example.zupzup.databinding.FragmentReservationCompleteBinding
-import com.example.zupzup.domain.models.CustomerModel
 import com.example.zupzup.domain.models.ReservationHeaderModel
 
 class ReservationCompleteFragment : Fragment() {
@@ -41,13 +39,13 @@ class ReservationCompleteFragment : Fragment() {
         with(args) {
             binding.reservationHeader = ReservationHeaderModel(
                 0,
-                storeName,
-                storeAddress,
-                cartList.toList(),
+                myReservation.storeName,
+                myReservation.storeAddress,
+                myReservation.cartList,
                 Pair(0, 0)
             )
-            binding.customer = CustomerModel(customerName, customerPhoneNumber)
-            binding.visitTime = visitTime
+            binding.customer = myReservation.customer
+            binding.visitTime = myReservation.visitTime
             binding.inflater = requireActivity().layoutInflater
             binding.navigateHome = ::navigateHome
         }

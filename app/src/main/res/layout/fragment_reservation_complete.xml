@@ -269,7 +269,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:hint="010-0000-0000"
-                        android:text="@{customer.phoneNumber}"
+                        app:phoneNumber="@{customer.phoneNumber}"
                         android:textColor="@color/warm_gray4"
                         android:textColorHint="@color/warm_gray4"
                         android:textSize="13sp"
