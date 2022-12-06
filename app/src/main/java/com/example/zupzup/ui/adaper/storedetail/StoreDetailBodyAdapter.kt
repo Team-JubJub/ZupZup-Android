@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.zupzup.R
 import com.example.zupzup.databinding.ItemStoreDetailMerchandiseBinding
 import com.example.zupzup.domain.models.MerchandiseModel
 import com.example.zupzup.ui.bindinghelper.AmountManageHelper
@@ -47,9 +48,13 @@ class StoreDetailBodyAdapter(
                 helper = amountManageHelper
                 tvMerchandisePrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
 
+                if (item.stock == 0) {
+                    tvMerchandiseName.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+                }
+
                 btnIncreaseAmount.setOnClickListener {
                     val curAmount = tvMerchandiseAmount.text.toString().toInt()
-                    if(curAmount  < 10 ) {
+                    if (curAmount < item.stock) {
                         amountManageHelper.increase(bindingAdapterPosition)
                         tvMerchandiseAmount.text = (curAmount.inc()).toString()
                     }
@@ -57,7 +62,7 @@ class StoreDetailBodyAdapter(
 
                 btnDecreaseAmount.setOnClickListener {
                     val curAmount = tvMerchandiseAmount.text.toString().toInt()
-                    if(curAmount  > 0 ) {
+                    if (curAmount > 0) {
                         amountManageHelper.decrease(bindingAdapterPosition)
                         tvMerchandiseAmount.text = (curAmount.dec()).toString()
                     }

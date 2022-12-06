@@ -26,16 +26,17 @@ class LunaSoftDataSourceImpl @Inject constructor(
                 ContextCompat.getSystemService(context, ConnectivityManager::class.java)
             val currentNetwork = connectivityManager?.activeNetwork
             if (currentNetwork != null) {
-                val body = LunaSoftRequestBody(
-                    userId = userId,
-                    apiKey = apiKey,
-                    templateId = defaultTemplateId,
-                    messages = messages
-                )
-                val result = lunaSoftService.sendNotificationTalk(
-                    parameter = body
-                )
-                result
+//                val body = LunaSoftRequestBody(
+//                    userId = userId,
+//                    apiKey = apiKey,
+//                    templateId = defaultTemplateId,
+//                    messages = messages
+//                )
+//                val result = lunaSoftService.sendNotificationTalk(
+//                    parameter = body
+//                )
+//                result
+                LunaSoftResponse(0,null)
             } else {
                 throw UnknownHostException()
             }

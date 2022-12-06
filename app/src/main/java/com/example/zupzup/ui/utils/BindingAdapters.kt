@@ -1,6 +1,7 @@
 package com.example.zupzup.ui.utils
 
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -16,6 +17,8 @@ import com.example.zupzup.ui.bindinghelper.ReservationBindingHelper
 import com.example.zupzup.ui.bindinghelper.ReservationProcessBindingHelper
 import com.example.zupzup.ui.bindinghelper.StoreDetailBindingHelper
 
+
+// StoreList
 @BindingAdapter("storeListUiState")
 fun bindStoreListRecyclerView(
     recyclerView: RecyclerView,
@@ -29,6 +32,7 @@ fun bindStoreListRecyclerView(
     }
 }
 
+// StoreDetail
 @BindingAdapter("storeDetailUiState", "bindingHelper")
 fun bindStoreDetailRecyclerView(
     recyclerView: RecyclerView,
@@ -54,6 +58,8 @@ fun bindEventListToTextView(textView: TextView, eventList: List<String>?) {
     }
     textView.text = event
 }
+
+// Reservation
 
 @BindingAdapter("totalAmount")
 fun bindTotalAmountToTextView(textView: TextView, cartList: List<CartModel>) {
@@ -130,6 +136,8 @@ fun bindProgressStateToProgressBar(
     }
 }
 
+
+// ReservationComplete
 @BindingAdapter("cartList", "inflater")
 fun bindViewTypeToTextView(
     linearLayout: LinearLayout,

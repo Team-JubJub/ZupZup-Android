@@ -3,6 +3,7 @@ package com.example.zupzup.data.repository
 import com.example.zupzup.data.datasource.lunasoft.LunaSoftDataSource
 import com.example.zupzup.data.datasource.reservation.ReservationDataSource
 import com.example.zupzup.data.datasource.reservation.ReservationLocalDataSourceImpl
+import com.example.zupzup.data.datasource.store.StoreDataSource
 import com.example.zupzup.data.dto.Reservation
 import com.example.zupzup.data.dto.mapper.DtoMapper
 import com.example.zupzup.di.DataSourceModule
@@ -17,9 +18,10 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class ReservationRepositoryImpl @Inject constructor(
-    @DataSourceModule.ReservationRemote val reservationRemoteDataSource: ReservationDataSource,
-    @DataSourceModule.ReservationLocal val reservationLocalDataSource: ReservationDataSource,
+    @DataSourceModule.ReservationRemote private val reservationRemoteDataSource: ReservationDataSource,
+    @DataSourceModule.ReservationLocal private val reservationLocalDataSource: ReservationDataSource,
     private val lunaSoftDataSource: LunaSoftDataSource,
+    private val storeDataSource: StoreDataSource
 ) : ReservationRepository {
 
     override fun makeReservation(reservationModel: ReservationModel): Flow<DataResult<Long>> {
@@ -31,7 +33,12 @@ class ReservationRepositoryImpl @Inject constructor(
                 val reservationEntity =
                     DtoMapper.reservationModelToEntity(reservationModel, reserveId)
                 reservationLocalDataSource.createReservation(reservationEntity).onSuccess {
-                    emit(DataResult.Success(it))
+                    storeDataSource.updateMerchandiseStock(
+                        reservationModel.reservationHeaderInfo.storeId,
+                        (reservationEntity as Reservation.ReservationEntity).cartList
+                    ).onSuccess {
+                        emit(DataResult.Success(it))
+                    }
                 }
             }.onFailure {
                 emit(DataResult.Failure(it))

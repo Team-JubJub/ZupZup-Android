@@ -2,6 +2,7 @@ package com.example.zupzup.di
 
 import com.example.zupzup.utils.Constants
 import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import dagger.Module
@@ -22,6 +23,12 @@ object FireBaseModule {
     @Qualifier
     @Retention(AnnotationRetention.BINARY)
     annotation class ReservationRef
+
+    @Singleton
+    @Provides
+    fun provideFireStoreDataBase() : FirebaseFirestore {
+        return Firebase.firestore
+    }
 
     @Singleton
     @Provides
