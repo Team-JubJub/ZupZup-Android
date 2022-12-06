@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="kotlin.Pair" />
+
         <variable
             name="storeDetailHeader"
             type="com.example.zupzup.domain.models.StoreDetailHeaderModel" />
@@ -85,22 +87,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="영업 시간"
+                android:text="할인 시간"
                 android:textColor="@color/main"
                 android:textSize="13sp"
                 app:layout_constraintStart_toEndOf="@id/iv_store_open_time"
                 app:layout_constraintTop_toTopOf="@id/iv_store_open_time" />
 
             <TextView
-                android:id="@+id/tv_store_open_time"
+                android:id="@+id/tv_store_sale_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="@{storeDetailHeader.openTime}"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="@id/tv_store_open_time_title"
                 app:layout_constraintTop_toBottomOf="@id/tv_store_open_time_title"
+                app:saleTime="@{storeDetailHeader.saleTime}"
                 tools:text="가게 영업시간 들어가는 자리" />
+
+            <TextView
+                android:id="@+id/tv_store_open_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@{storeDetailHeader.openTime}"
+                android:textColor="@color/warm_gray3"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="@id/tv_store_open_time_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_store_sale_time" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/divider"

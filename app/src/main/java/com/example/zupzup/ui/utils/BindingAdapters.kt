@@ -104,9 +104,17 @@ fun bindPhoneNumberToTextView(
 ) {
     textView.text = phoneNumber.toPhoneNumberStringFormat()
 }
-
-@BindingAdapter("startTime", "endTime")
+@BindingAdapter("saleTime")
 fun bindSaleTimeToTextView(
+    textView: TextView,
+    saleTime:Pair<Int,Int>?
+) {
+    if(saleTime != null) {
+        textView.text = "${saleTime.first.toTimeString()} ~ ${saleTime.second.toTimeString()}"
+    }
+}
+@BindingAdapter("startTime", "endTime")
+fun bindSaleTimeBottomSheet(
     textView: TextView,
     startTime: Int,
     endTime: Int
