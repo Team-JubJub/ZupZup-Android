@@ -33,7 +33,7 @@ object DtoMapper {
         )
     }
 
-    private fun CartModel.toDto(): Cart {
+    fun CartModel.toDto(): Cart {
         return Cart(
             itemId = itemId,
             storeId = storeId,

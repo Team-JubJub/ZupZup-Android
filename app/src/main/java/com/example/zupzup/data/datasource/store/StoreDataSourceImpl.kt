@@ -3,6 +3,7 @@ package com.example.zupzup.data.datasource.store
 import android.content.Context
 import android.net.ConnectivityManager
 import androidx.core.content.ContextCompat
+import com.example.zupzup.data.dto.Cart
 import com.example.zupzup.data.dto.Store
 import com.example.zupzup.di.FireBaseModule
 import com.google.firebase.firestore.CollectionReference
@@ -17,12 +18,12 @@ class StoreDataSourceImpl @Inject constructor(
     @ApplicationContext private val context: Context
 ) : StoreDataSource {
 
+    private val connectivityManager =
+        ContextCompat.getSystemService(context, ConnectivityManager::class.java)
+
     override suspend fun getStoreList(): Result<List<Store>> {
         return runCatching {
-            val connectivityManager =
-                ContextCompat.getSystemService(context, ConnectivityManager::class.java)
-            val currentNetwork = connectivityManager?.activeNetwork
-            if (currentNetwork != null) {
+            if (connectivityManager?.activeNetwork != null) {
                 val storeList = storeRef.get().await().documents.mapNotNull {
                     it.toObject<Store>()
                 }
@@ -35,12 +36,39 @@ class StoreDataSourceImpl @Inject constructor(
 
     override suspend fun getStoreDetailById(storeId: Long): Result<Store> {
         return runCatching {
-            val store = storeRef.document(storeId.toString()).get().await().toObject<Store>()
-            if (store != null) {
-                store
+            if (connectivityManager?.activeNetwork != null) {
+                val store = storeRef.document(storeId.toString()).get().await().toObject<Store>()
+                if (store != null) {
+                    store
+                } else {
+                    throw NullPointerException()
+                }
             } else {
-                throw NullPointerException()
+                throw UnknownHostException()
             }
         }
+    }
+
+    override suspend fun updateMerchandiseStock(storeId: Long, cartList: List<Cart>): Result<Long> {
+        return runCatching {
+            if (connectivityManager?.activeNetwork != null) {
+                val store = storeRef.document(storeId.toString()).get().await().toObject<Store>()
+                if (store != null) {
+                    val merchandiseList = store.merchandiseList
+                    cartList.forEach { cart ->
+                        val item = merchandiseList.find { it.itemId == cart.itemId }
+                        if (item != null) {
+                            item.stock -= cart.amount
+                        }
+                    }
+                    storeRef.document(storeId.toString())
+                        .update(mapOf("merchandiseList" to merchandiseList)).await()
+                }
+                0
+            } else {
+                throw UnknownHostException()
+            }
+        }
+
     }
 }

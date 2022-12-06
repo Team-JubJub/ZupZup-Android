@@ -3,6 +3,7 @@ package com.example.zupzup.data.datasource.reservation
 import android.content.Context
 import android.net.ConnectivityManager
 import androidx.core.content.ContextCompat.getSystemService
+import com.example.zupzup.data.dto.Cart
 import com.example.zupzup.data.dto.Reservation
 import com.example.zupzup.di.FireBaseModule
 import com.google.firebase.firestore.CollectionReference
