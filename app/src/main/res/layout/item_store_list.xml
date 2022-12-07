@@ -63,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:background="@drawable/ic_store_timer"
+            android:background="@drawable/ic_clock_warmgray3_20"
             app:layout_constraintBottom_toBottomOf="@id/tv_store_sales"
             app:layout_constraintStart_toEndOf="@id/tv_store_sales"
             app:layout_constraintTop_toTopOf="@id/tv_store_sales" />
@@ -85,7 +85,7 @@
             android:id="@+id/iv_select_store"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_right_arrow"
+            android:src="@drawable/ic_arrow_right_warmgray4_24"
             android:onClick="@{_ -> navigateToStoreDetail.invoke(storeHeader.storeId)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

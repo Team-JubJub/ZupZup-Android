@@ -5,6 +5,14 @@
 
     <data>
 
+        <import type="kotlin.jvm.functions.Function0" />
+
+        <import type="kotlin.Unit" />
+
+        <variable
+            name="navigateBackStack"
+            type="Function0&lt; Unit>" />
+
         <variable
             name="reservation"
             type="com.example.zupzup.domain.models.MyReservationModel" />
@@ -17,19 +25,44 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="2dp"
         android:background="@color/transparent"
         tools:context=".ui.fragment.ReservationCompleteFragment">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="9dp"
+            android:onClick="@{_ -> navigateBackStack.invoke()}"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_back_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="내 예약"
+            android:textColor="@color/main"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_back"
+            app:layout_constraintStart_toEndOf="@id/btn_back"
+            app:layout_constraintTop_toTopOf="@id/btn_back" />
 
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingVertical="16dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="9dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="11dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_back">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -103,7 +136,7 @@
                         android:layout_marginStart="20dp"
                         android:background="@drawable/frame_rectangle_corner_8_warmgray3"
                         android:padding="4dp"
-                        android:src="@drawable/ic_cart_white_30"
+                        android:src="@drawable/ic_shopping_bag_white_22"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -173,7 +206,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/frame_rectangle_corner_8_warmgray3"
                         android:padding="4dp"
-                        android:src="@drawable/ic_timer_white_30"
+                        android:src="@drawable/ic_clock_white_22"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -221,7 +254,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/frame_rectangle_corner_8_warmgray3"
                         android:padding="4dp"
-                        android:src="@drawable/ic_home_white_30"
+                        android:src="@drawable/ic_home_white_22"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -255,12 +288,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:hint="010-0000-0000"
-                        app:phoneNumber="@{reservation.customer.phoneNumber}"
                         android:textColor="@color/warm_gray4"
                         android:textColorHint="@color/warm_gray4"
                         android:textSize="13sp"
                         app:layout_constraintStart_toStartOf="@id/tv_customer_name"
-                        app:layout_constraintTop_toBottomOf="@id/tv_customer_name" />
+                        app:layout_constraintTop_toBottomOf="@id/tv_customer_name"
+                        app:phoneNumber="@{reservation.customer.phoneNumber}" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

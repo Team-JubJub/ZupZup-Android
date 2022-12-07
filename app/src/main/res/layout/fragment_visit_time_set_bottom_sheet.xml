@@ -10,6 +10,10 @@
         <import type="kotlin.Unit" />
 
         <variable
+            name="cancelBtnClick"
+            type="Function0&lt; Unit>" />
+
+        <variable
             name="setVisitTimeBtnClick"
             type="Function0&lt; Unit>" />
 
@@ -41,7 +45,7 @@
         android:paddingHorizontal="16dp"
         android:theme="@style/BottomSheetStyle"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-        tools:context=".ui.fragment.VisitTimeSetBottomSheet">
+        tools:context=".ui.fragment.bottomsheet.VisitTimeSetBottomSheet">
 
         <TextView
             android:id="@+id/tv_set_visit_time_label"
@@ -55,6 +59,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="14dp"
+            android:background="@drawable/frame_circle_main"
+            android:padding="9dp"
+            android:onClick="@{_ -> cancelBtnClick.invoke()}"
+            android:src="@drawable/ic_cancel_white_12"
+            app:layout_constraintBottom_toBottomOf="@id/tv_set_visit_time_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_set_visit_time_label"/>
 
         <TextView
             android:id="@+id/tv_sale_time"

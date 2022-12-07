@@ -8,7 +8,8 @@ class ReservationBindingHelper(
     private val navigateToReservationProcess : () -> Unit,
     private val setHeaderData: (ReservationHeaderModel) -> Unit,
     private val setFooterData: (Int, CustomerModel, Boolean) -> Unit,
-    private val setCartListData : (List<CartModel>) -> Unit
+    private val setCartListData : (List<CartModel>) -> Unit,
+    private val navigateBack : () -> Unit
 ) {
     fun setHeader(headerInfo: ReservationHeaderModel) {
         setHeaderData(headerInfo)
@@ -24,5 +25,9 @@ class ReservationBindingHelper(
 
     fun navigateToReservationProcessFragment() {
         navigateToReservationProcess()
+    }
+
+    fun navigateToBackStack() {
+        navigateBack()
     }
 }

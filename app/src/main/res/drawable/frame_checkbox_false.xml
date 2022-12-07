@@ -4,9 +4,9 @@
         android:drawable="@drawable/frame_circle_white"/>
 
     <item
-        android:bottom="6dp"
-        android:drawable="@drawable/ic_check_false"
-        android:left="6dp"
-        android:right="6dp"
-        android:top="6dp" />
+        android:bottom="12dp"
+        android:drawable="@drawable/ic_check_black_16"
+        android:left="12dp"
+        android:right="12dp"
+        android:top="12dp" />
 </layer-list>

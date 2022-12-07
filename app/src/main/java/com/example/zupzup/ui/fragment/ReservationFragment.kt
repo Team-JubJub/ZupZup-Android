@@ -18,6 +18,9 @@ import com.example.zupzup.ui.adaper.reservation.ReservationCartListAdapter
 import com.example.zupzup.ui.adaper.reservation.ReservationFooterAdapter
 import com.example.zupzup.ui.adaper.reservation.ReservationHeaderAdapter
 import com.example.zupzup.ui.bindinghelper.ReservationBindingHelper
+import com.example.zupzup.ui.fragment.bottomsheet.CustomerInfoSetBottomSheet
+import com.example.zupzup.ui.fragment.bottomsheet.VisitTimeSetBottomSheet
+import com.example.zupzup.ui.fragment.dialog.TermsDetailDialogFragment
 import com.example.zupzup.ui.viewmodel.ReservationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -92,12 +95,14 @@ class ReservationFragment : Fragment() {
             ::navigateToReservationProcess,
             headerAdapter::setReservationHeader,
             footerAdapter::setReservationFooter,
-            cartListAdapter::setReservationCartList
+            cartListAdapter::setReservationCartList,
+            ::navigateBackStack
         )
         with(binding) {
             viewModel = reservationViewModel
             lifecycleOwner = viewLifecycleOwner
             bindingHelper = dataBindingHelper
+            storeName = args.reservationHeader.storeName
         }
     }
 
@@ -121,7 +126,8 @@ class ReservationFragment : Fragment() {
     }
 
     private fun navigateToReservationProcess() {
-        val uiState = reservationViewModel.reservationUiState.value as UiState.Success<ReservationModel>
+        val uiState =
+            reservationViewModel.reservationUiState.value as UiState.Success<ReservationModel>
         with(uiState.data) {
             val action =
                 ReservationFragmentDirections.actionFragReservationToFragReservationProcess(
@@ -136,6 +142,11 @@ class ReservationFragment : Fragment() {
             findNavController().navigate(action)
         }
     }
+
+    private fun navigateBackStack() {
+        findNavController().popBackStack()
+    }
+
 
     override fun onDestroyView() {
         _binding = null
