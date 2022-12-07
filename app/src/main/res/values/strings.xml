@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">ZupZup</string>
 
+    <!-- splash -->
+    <string name="splash_title">내 집 주변 마감할인</string>
 
-    <!-- bottom nav title -->
+    <!--bottom nav title -->
     <string name="bottom_nav_title_home">Home</string>
     <string name="bottom_nav_title_map">Shopping</string>
 
