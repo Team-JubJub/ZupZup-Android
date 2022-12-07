@@ -27,8 +27,10 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNav_main"
             android:layout_width="match_parent"
+            android:background="@color/warm_gray1"
             android:layout_height="wrap_content"
             app:itemBackground="@drawable/frame_bottom_nav_indicator"
+            app:itemIconTint="@drawable/selector_bottomnav_icon_color"
             app:labelVisibilityMode="unlabeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,6 +1,7 @@
 package com.example.zupzup.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,7 +65,6 @@ class StoreDetailFragment : Fragment() {
         initBinding()
         initRcvLayoutManager()
         getStoreDetailById()
-        navigateToReservationFragment()
     }
 
     private fun initBinding() {
@@ -73,7 +73,9 @@ class StoreDetailFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             bindingHelper = StoreDetailBindingHelper(
                 headerAdapter::setStoreDetailHeader,
-                bodyAdapter::submitList
+                bodyAdapter::submitList,
+                navigateToBackStack = ::navigateBackStack,
+                navigateToReservation = ::navigateToReservationFragment
             )
         }
     }
@@ -91,25 +93,23 @@ class StoreDetailFragment : Fragment() {
     }
 
     private fun navigateToReservationFragment() {
-        binding.btnMakeReservation.setOnClickListener {
-            if (storeDetailViewModel.storeDetailUiState.value is UiState.Success<StoreModel>) {
-                val uiState =
-                    storeDetailViewModel.storeDetailUiState.value as UiState.Success<StoreModel>
-                with(uiState.data) {
-                    val cartList = makeCartList(merchandiseList)
-                    val action =
-                        StoreDetailFragmentDirections.actionFragStoreDetailToFragReservation(
-                            reservationHeader = ReservationHeaderModel(
-                                storeId,
-                                name,
-                                address,
-                                cartList,
-                                Pair(saleTime.first, saleTime.second)
-                            ),
-                            hostPhoneNumber = hostPhoneNumber
-                        )
-                    findNavController().navigate(action)
-                }
+        if (storeDetailViewModel.storeDetailUiState.value is UiState.Success<StoreModel>) {
+            val uiState =
+                storeDetailViewModel.storeDetailUiState.value as UiState.Success<StoreModel>
+            with(uiState.data) {
+                val cartList = makeCartList(merchandiseList)
+                val action =
+                    StoreDetailFragmentDirections.actionFragStoreDetailToFragReservation(
+                        reservationHeader = ReservationHeaderModel(
+                            storeId,
+                            name,
+                            address,
+                            cartList,
+                            Pair(saleTime.first, saleTime.second)
+                        ),
+                        hostPhoneNumber = hostPhoneNumber
+                    )
+                findNavController().navigate(action)
             }
         }
     }
@@ -123,6 +123,15 @@ class StoreDetailFragment : Fragment() {
             }
         }
         return cartList
+    }
+
+    private fun navigateBackStack() {
+        findNavController().popBackStack()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

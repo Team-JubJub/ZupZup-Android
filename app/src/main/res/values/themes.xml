@@ -33,12 +33,4 @@
         <item name="android:editTextColor">@color/text</item>
         <item name="android:textStyle">bold</item>
     </style>
-
-
-    <style name="EditTextGreyStyle" parent="Widget.Design.TextInputLayout">
-        <item name="colorControlNormal">@color/main</item>
-        <item name="colorControlActivated">@color/black</item>
-    </style>
-
-
 </resources>

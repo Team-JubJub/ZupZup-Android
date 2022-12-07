@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="storeName"
+            type="String" />
+
+        <variable
             name="viewModel"
             type="com.example.zupzup.ui.viewmodel.ReservationViewModel" />
 
@@ -17,31 +21,55 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="2dp"
         tools:context=".ui.fragment.ReservationFragment">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="9dp"
+            android:onClick="@{_ -> bindingHelper.navigateToBackStack()}"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_back_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@{storeName}"
+            android:textColor="@color/main"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_back"
+            app:layout_constraintStart_toEndOf="@id/btn_back"
+            app:layout_constraintTop_toTopOf="@id/btn_back" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_reservation_info"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="11dp"
             app:bindingHelper="@{bindingHelper}"
             app:layout_constraintBottom_toTopOf="@id/btn_register_reservation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_back"
             app:reservationHeaderUiState="@{viewModel.reservationUiState}" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_register_reservation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:enabled="@{viewModel.isAllInput}"
             android:layout_marginHorizontal="16dp"
             android:layout_marginVertical="16dp"
             android:background="@drawable/selector_button_enabled"
+            android:enabled="@{viewModel.isAllInput}"
+            android:onClick="@{ _ -> bindingHelper.navigateToReservationProcessFragment()}"
             android:padding="16dp"
             android:text="예약 완료하기"
-            android:onClick="@{ _ -> bindingHelper.navigateToReservationProcessFragment()}"
             android:textColor="@color/text"
             android:textSize="17sp"
             android:textStyle="bold"

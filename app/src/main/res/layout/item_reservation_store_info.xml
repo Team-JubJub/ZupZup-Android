@@ -81,7 +81,7 @@
                 android:layout_marginStart="20dp"
                 android:background="@drawable/frame_rectangle_corner_8_warmgray3"
                 android:padding="4dp"
-                android:src="@drawable/ic_cart_white_30"
+                android:src="@drawable/ic_shopping_bag_white_22"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

@@ -16,34 +16,50 @@
             name="inflater"
             type="android.view.LayoutInflater" />
         <variable
-            name="reservationHeader"
-            type="com.example.zupzup.domain.models.ReservationHeaderModel" />
-
-        <variable
-            name="customer"
-            type="com.example.zupzup.domain.models.CustomerModel" />
-
-        <variable
-            name="visitTime"
-            type="Integer" />
+            name="myReservation"
+            type="com.example.zupzup.domain.models.MyReservationModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="2dp"
         android:background="@color/transparent"
         tools:context=".ui.fragment.ReservationCompleteFragment">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="9dp"
+            android:onClick="@{_ -> navigateHome.invoke()}"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_back_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="가게"
+            android:textColor="@color/main"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_back"
+            app:layout_constraintStart_toEndOf="@id/btn_back"
+            app:layout_constraintTop_toTopOf="@id/btn_back" />
 
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:paddingVertical="16dp"
+            android:layout_marginTop="11dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_navigate_home"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/btn_back">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -78,7 +94,7 @@
                         android:id="@+id/tv_store_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{reservationHeader.storeName}"
+                        android:text="@{myReservation.storeName}"
                         android:textColor="@color/black"
                         android:textSize="17sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +106,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="@{reservationHeader.storeAddress}"
+                        android:text="@{myReservation.storeAddress}"
                         android:textColor="@color/warm_gray3"
                         android:textSize="13sp"
                         app:layout_constraintStart_toStartOf="@id/tv_store_name"
@@ -117,7 +133,7 @@
                         android:layout_marginStart="20dp"
                         android:background="@drawable/frame_rectangle_corner_8_warmgray3"
                         android:padding="4dp"
-                        android:src="@drawable/ic_cart_white_30"
+                        android:src="@drawable/ic_shopping_bag_white_22"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -141,7 +157,7 @@
                         android:textSize="17sp"
                         app:layout_constraintStart_toStartOf="@id/tv_cart_label"
                         app:layout_constraintTop_toBottomOf="@id/tv_cart_label"
-                        app:totalAmount="@{reservationHeader.cartList}"
+                        app:totalAmount="@{myReservation.cartList}"
                         tools:text="0개" />
 
                     <TextView
@@ -153,7 +169,7 @@
                         android:textSize="13sp"
                         app:layout_constraintStart_toStartOf="@id/tv_cart_label"
                         app:layout_constraintTop_toBottomOf="@id/tv_total_amount"
-                        app:totalPrice="@{reservationHeader.cartList}"
+                        app:totalPrice="@{myReservation.cartList}"
                         tools:text="0000원" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -163,7 +179,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:orientation="vertical"
-                    app:cartList="@{reservationHeader.cartList}"
+                    app:cartList="@{myReservation.cartList}"
                     app:inflater="@{inflater}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -187,7 +203,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/frame_rectangle_corner_8_warmgray3"
                         android:padding="4dp"
-                        android:src="@drawable/ic_timer_white_30"
+                        android:src="@drawable/ic_clock_white_22"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -213,7 +229,7 @@
                         android:textSize="21sp"
                         app:layout_constraintStart_toStartOf="@id/tv_visit_time_label"
                         app:layout_constraintTop_toBottomOf="@id/tv_visit_time_label"
-                        app:visitTime="@{visitTime}" />
+                        app:visitTime="@{myReservation.visitTime}" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -235,7 +251,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/frame_rectangle_corner_8_warmgray3"
                         android:padding="4dp"
-                        android:src="@drawable/ic_home_white_30"
+                        android:src="@drawable/ic_home_white_22"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -256,7 +272,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:hint="김OO"
-                        android:text="@{customer.name}"
+                        android:text="@{myReservation.customer.name}"
                         android:textColor="@color/text"
                         android:textColorHint="@color/text"
                         android:textSize="17sp"
@@ -269,7 +285,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:hint="010-0000-0000"
-                        app:phoneNumber="@{customer.phoneNumber}"
+                        app:phoneNumber="@{myReservation.customer.phoneNumber}"
                         android:textColor="@color/warm_gray4"
                         android:textColorHint="@color/warm_gray4"
                         android:textSize="13sp"

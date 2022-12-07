@@ -1,7 +1,5 @@
 package com.example.zupzup.ui.utils
 
-import android.util.Log
-
 
 fun Int.toTimeString(): String {
     var timeString = ""
@@ -26,7 +24,6 @@ fun String.toPhoneNumberIntFormat(): String {
 }
 
 fun String.toPhoneNumberStringFormat(): String {
-    Log.d("TAG", "$this: ")
     if (this.length == 11) {
         return "${this.substring(0, 3)}-${this.substring(3, 7)}-${this.substring(7)}"
     }

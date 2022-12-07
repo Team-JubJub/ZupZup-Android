@@ -99,7 +99,7 @@ class CustomClearEditText : AppCompatEditText, TextWatcher, View.OnTouchListener
         clearDrawable = DrawableCompat.wrap(
             (ResourcesCompat.getDrawable(
                 resources,
-                R.drawable.ic_edit_text_clear,
+                R.drawable.ic_edittext_clear_main_20,
                 null
             ) as Drawable)
         )

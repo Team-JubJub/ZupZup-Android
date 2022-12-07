@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.zupzup.databinding.FragmentMyReservationDetailBinding
 
@@ -34,7 +35,12 @@ class MyReservationDetailFragment : Fragment() {
         with(binding) {
             inflater = requireActivity().layoutInflater
             reservation = args.myReservation
+            navigateBackStack = ::navigateToBackStack
         }
+    }
+
+    private fun navigateToBackStack() {
+        findNavController().popBackStack()
     }
 
     override fun onDestroyView() {

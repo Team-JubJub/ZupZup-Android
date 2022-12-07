@@ -3,12 +3,12 @@
     <item
         android:id="@+id/frag_store_list"
         android:enabled="true"
-        android:icon="@drawable/ic_bottom_nav_home"
+        android:icon="@drawable/ic_home_white_24"
         android:title="@string/bottom_nav_title_home" />
 
     <item
         android:id="@+id/frag_my_reservation"
         android:enabled="true"
-        android:icon="@drawable/ic_bottom_nav_map"
+        android:icon="@drawable/ic_shopping_cart_warmgray3_24"
         android:title="@string/bottom_nav_title_map" />
 </menu>

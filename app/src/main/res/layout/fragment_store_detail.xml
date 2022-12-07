@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.zupzup.ui.viewmodel.StoreDetailViewModel" />
-        <variable
-            name="helper"
-            type="com.example.zupzup.ui.bindinghelper.AmountManageHelper" />
+
         <variable
             name="bindingHelper"
             type="com.example.zupzup.ui.bindinghelper.StoreDetailBindingHelper" />
@@ -18,20 +17,45 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="46dp"
+        android:layout_marginHorizontal="7dp"
+        android:layout_marginTop="2dp"
         tools:context=".ui.fragment.StoreDetailFragment">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:onClick="@{_ -> bindingHelper.navigateBack()}"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_back_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="가게"
+            android:textColor="@color/main"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_back"
+            app:layout_constraintStart_toEndOf="@id/btn_back"
+            app:layout_constraintTop_toTopOf="@id/btn_back" />
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_store_detail"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginHorizontal="9dp"
+            android:layout_marginTop="11dp"
+            app:bindingHelper="@{bindingHelper}"
             app:layout_constraintBottom_toTopOf="@id/btn_make_reservation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:storeDetailUiState="@{viewModel.storeDetailUiState}"
-            app:bindingHelper="@{bindingHelper}" />
+            app:layout_constraintTop_toBottomOf="@id/btn_back"
+            app:storeDetailUiState="@{viewModel.storeDetailUiState}" />
 
 
         <androidx.appcompat.widget.AppCompatButton
@@ -39,12 +63,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginVertical="16dp"
-            android:enabled="@{!viewModel.isCartEmpty}"
             android:background="@drawable/selector_button_enabled"
+            android:enabled="@{!viewModel.isCartEmpty}"
             android:padding="16dp"
             android:text="예약하기"
             android:textColor="@color/text"
             android:textSize="17sp"
+            android:onClick="@{_ -> bindingHelper.navigateReservation()}"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

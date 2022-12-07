@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/frame_rectangle_corner_14_white"
         android:padding="16dp"
-        tools:context=".ui.fragment.TermsDetailDialogFragment">
+        tools:context=".ui.fragment.dialog.TermsDetailDialogFragment">
 
         <TextView
             android:id="@+id/tv_terms_detail"

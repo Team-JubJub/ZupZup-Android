@@ -5,8 +5,18 @@ import com.example.zupzup.domain.models.StoreDetailHeaderModel
 
 class StoreDetailBindingHelper(
     private val setHeaderAdapter: (StoreDetailHeaderModel) -> Unit,
-    private val setBodyAdapter: (List<MerchandiseModel>) -> Unit
+    private val setBodyAdapter: (List<MerchandiseModel>) -> Unit,
+    private val navigateToBackStack : () -> Unit,
+    private val navigateToReservation : () -> Unit
 ) {
+
+    fun navigateReservation() {
+        navigateToReservation()
+    }
+
+    fun navigateBack() {
+        navigateToBackStack()
+    }
 
     fun setHeader(detailHeaderModel: StoreDetailHeaderModel) {
         setHeaderAdapter(detailHeaderModel)
