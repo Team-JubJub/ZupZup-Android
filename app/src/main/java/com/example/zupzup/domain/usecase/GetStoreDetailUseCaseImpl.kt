@@ -1,6 +1,7 @@
 package com.example.zupzup.domain.usecase
 
 import com.example.zupzup.domain.DataResult
+import com.example.zupzup.domain.ErrorMapper
 import com.example.zupzup.domain.models.StoreModel
 import com.example.zupzup.domain.repository.StoreRepository
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +18,7 @@ class GetStoreDetailUseCaseImpl @Inject constructor(
             storeRepository.getStoreDetailById(storeId).onSuccess {
                 emit(DataResult.Success(it))
             }.onFailure {
-                emit(DataResult.Failure(it))
+                emit(DataResult.Failure(ErrorMapper.getErrorCode(it)))
             }
         }.flowOn(Dispatchers.IO)
     }

@@ -42,9 +42,10 @@ class ReservationProcessFragment : Fragment() {
         with(binding) {
             viewModel = reservationProcessViewModel
             lifecycleOwner = viewLifecycleOwner
-            bindingHelper = ReservationProcessBindingHelper { reservation: MyReservationModel ->
-                navigateReservationCompleteFragment(reservation)
-            }
+            bindingHelper =
+                ReservationProcessBindingHelper(::makeReservation) { reservation: MyReservationModel ->
+                    navigateReservationCompleteFragment(reservation)
+                }
         }
     }
 

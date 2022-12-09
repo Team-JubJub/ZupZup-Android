@@ -33,7 +33,7 @@ class MyReservationViewModel @Inject constructor(
                         _myReservationUiState.emit(UiState.Success(it.data))
                     }
                     is DataResult.Failure -> {
-                        _myReservationUiState.emit(UiState.Error(1))
+                        _myReservationUiState.emit(UiState.Error(it.errorCode))
                     }
                 }
             }

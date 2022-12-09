@@ -1,6 +1,7 @@
 package com.example.zupzup.domain.usecase
 
 import com.example.zupzup.domain.DataResult
+import com.example.zupzup.domain.ErrorMapper
 import com.example.zupzup.domain.models.MyReservationModel
 import com.example.zupzup.domain.repository.ReservationRepository
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +18,7 @@ class GetMyReservationListUseCaseImpl @Inject constructor(
             reservationRepository.getMyReservationList().onSuccess {
                 emit(DataResult.Success(it))
             }.onFailure {
-                emit(DataResult.Failure(it))
+                emit(DataResult.Failure(ErrorMapper.getErrorCode(it)))
             }
         }.flowOn(Dispatchers.IO)
     }

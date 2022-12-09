@@ -59,15 +59,15 @@ object DtoMapper {
                 useSms = "0"
             )
         )
-        list.add(
-            Message(
-                no = "1",
-                telNum = hostPhoneNumber,
-                msgContent = messageContent,
-                smsContent = "",
-                useSms = "0"
-            )
-        )
+//        list.add(
+//            Message(
+//                no = "1",
+//                telNum = hostPhoneNumber,
+//                msgContent = messageContent,
+//                smsContent = "",
+//                useSms = "0"
+//            )
+//        )
         return list.toList()
     }
 

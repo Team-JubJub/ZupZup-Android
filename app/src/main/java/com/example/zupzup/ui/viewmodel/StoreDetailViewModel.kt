@@ -38,7 +38,7 @@ class StoreDetailViewModel @Inject constructor(
                             amountList = MutableList(it.data.merchandiseList.size) { 0 }
                         }
                         is DataResult.Failure -> {
-                            _storeDetailUiState.emit(UiState.Error(1))
+                            _storeDetailUiState.emit(UiState.Error(it.errorCode))
                         }
                     }
                 }

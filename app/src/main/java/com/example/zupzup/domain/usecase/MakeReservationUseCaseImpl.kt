@@ -1,6 +1,7 @@
 package com.example.zupzup.domain.usecase
 
 import com.example.zupzup.domain.DataResult
+import com.example.zupzup.domain.ErrorMapper
 import com.example.zupzup.domain.models.MyReservationModel
 import com.example.zupzup.domain.models.ReservationModel
 import com.example.zupzup.domain.repository.ReservationRepository
@@ -17,6 +18,8 @@ class MakeReservationUseCaseImpl @Inject constructor(
         return flow {
             reservationRepository.makeReservation(reservationModel).onSuccess {
                 emit(DataResult.Success(it))
+            }.onFailure {
+                emit(DataResult.Failure(ErrorMapper.getErrorCode(it)))
             }
         }.flowOn(Dispatchers.IO)
     }

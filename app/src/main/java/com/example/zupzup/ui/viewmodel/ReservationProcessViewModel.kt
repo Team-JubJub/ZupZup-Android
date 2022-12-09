@@ -26,13 +26,14 @@ class ReservationProcessViewModel @Inject constructor(
         hostPhoneNumber: String,
     ) {
         viewModelScope.launch {
+            _processUiState.emit(UiState.Loading)
             processReservationUseCase(reservationModel, hostPhoneNumber).collect {
                 when (it) {
                     is DataResult.Success -> {
                         _processUiState.emit(UiState.Success(it.data))
                     }
                     is DataResult.Failure -> {
-                        _processUiState.emit(UiState.Error(1))
+                        _processUiState.emit(UiState.Error(it.errorCode))
                     }
                 }
             }
