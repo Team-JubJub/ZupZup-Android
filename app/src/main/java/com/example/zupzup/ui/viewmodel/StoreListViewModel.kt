@@ -25,15 +25,16 @@ class StoreListViewModel @Inject constructor(
         getStoreList()
     }
 
-    private fun getStoreList() {
+    fun getStoreList() {
         viewModelScope.launch {
+            _storeUiState.emit(UiState.Loading)
             getStoreListUseCase.invoke().collect {
                 when (it) {
                     is DataResult.Success -> {
                         _storeUiState.emit(UiState.Success(it.data))
                     }
                     is DataResult.Failure -> {
-                        _storeUiState.emit(UiState.Error(1))
+                        _storeUiState.emit(UiState.Error(it.errorCode))
                     }
                 }
             }

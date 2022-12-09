@@ -1,24 +1,32 @@
 package com.example.zupzup.data.repository
 
+import android.content.Context
 import com.example.zupzup.data.datasource.lunasoft.LunaSoftDataSource
 import com.example.zupzup.data.datasource.reservation.ReservationLocalDataSource
 import com.example.zupzup.data.datasource.reservation.ReservationRemoteDataSource
 import com.example.zupzup.data.datasource.store.StoreDataSource
 import com.example.zupzup.data.dto.mapper.DtoMapper
+import com.example.zupzup.domain.NetworkManager
 import com.example.zupzup.domain.models.MyReservationModel
 import com.example.zupzup.domain.models.ReservationModel
 import com.example.zupzup.domain.repository.ReservationRepository
+import dagger.hilt.android.qualifiers.ApplicationContext
+import java.net.UnknownHostException
 import javax.inject.Inject
 
 class ReservationRepositoryImpl @Inject constructor(
     private val reservationRemoteDataSource: ReservationRemoteDataSource,
     private val reservationLocalDataSource: ReservationLocalDataSource,
     private val lunaSoftDataSource: LunaSoftDataSource,
-    private val storeDataSource: StoreDataSource
+    private val storeDataSource: StoreDataSource,
+    @ApplicationContext private val context: Context
 ) : ReservationRepository {
 
     override suspend fun makeReservation(reservationModel: ReservationModel): Result<MyReservationModel> {
         return try {
+            if (!NetworkManager(context).isNetworkConnected()) {
+                throw UnknownHostException()
+            }
             val reserveId = System.currentTimeMillis()
             val reservationDto = DtoMapper.reservationModelToDto(reservationModel, reserveId)
             val reservationEntity = DtoMapper.reservationModelToEntity(reservationModel, reserveId)
@@ -45,12 +53,12 @@ class ReservationRepositoryImpl @Inject constructor(
         return try {
             val messages = DtoMapper.getLunaSoftMessages(reservationModel, hostPhoneNumber)
             val result = lunaSoftDataSource.sendNotificationTalk(messages)
+
             if (result.isSuccessful) {
                 when (result.body()?.code) {
                     0 -> Result.success(0)
                     else -> {
-                        Result.success(1)
-                        // LunaSoftResponse 별 예외처리
+                        Result.success(-1)
                     }
                 }
             } else {

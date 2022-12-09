@@ -9,7 +9,7 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class StoreDataSourceImpl @Inject constructor(
-    @FireBaseModule.StoreRef private val storeRef: CollectionReference
+    @FireBaseModule.StoreRef private val storeRef: CollectionReference,
 ) : StoreDataSource {
 
     override suspend fun getStoreList(): List<Store> {

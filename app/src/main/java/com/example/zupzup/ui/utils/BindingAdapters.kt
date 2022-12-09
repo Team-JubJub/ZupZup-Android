@@ -1,10 +1,13 @@
 package com.example.zupzup.ui.utils
 
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.TimePicker
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zupzup.R
@@ -26,8 +29,44 @@ fun bindStoreListRecyclerView(
     val adapter = recyclerView.adapter as StoreListRecyclerViewAdapter
     when (uiState) {
         is UiState.Success -> {
+            recyclerView.visibility = View.VISIBLE
             adapter.submitList(uiState.data)
         }
+        else -> {
+            recyclerView.visibility = View.GONE
+        }
+    }
+}
+
+@BindingAdapter("storeListUiState")
+fun bindStoreListUiStateToProgressBar(
+    progressBar: ProgressBar,
+    uiState: UiState<List<StoreHeaderInfoModel>>?
+) {
+    Log.d("TAG", "bindStoreListUiStateToProgressBar: $uiState ")
+    when (uiState) {
+        is UiState.Loading -> progressBar.visibility = View.VISIBLE
+        else -> progressBar.visibility = View.GONE
+    }
+}
+
+@BindingAdapter("storeListUiState")
+fun bindStoreListUiStateToConstraintLayout(
+    constraintLayout: ConstraintLayout,
+    storeListUiState: UiState<List<StoreHeaderInfoModel>>?
+) {
+    Log.d("TAG", "bindStoreListUiStateToConstraintLayout: $storeListUiState")
+    when (storeListUiState) {
+        is UiState.Loading -> constraintLayout.visibility = View.GONE
+        is UiState.Success -> {
+            constraintLayout.visibility = View.GONE
+        }
+        is UiState.Error -> {
+            if (storeListUiState.code == 1000) {
+                constraintLayout.visibility = View.VISIBLE
+            }
+        }
+        else -> {}
     }
 }
 
@@ -135,13 +174,30 @@ fun bindSelectedTimeToTimePicker(
 }
 
 @BindingAdapter("progressUiState", "bindingHelper")
-fun bindProgressStateToProgressBar(
-    progressBar: ProgressBar,
+fun bindProgressStateToProgressBarConstraint(
+    constraintLayout: ConstraintLayout,
     progressUiState: UiState<MyReservationModel>?,
     bindingHelper: ReservationProcessBindingHelper?
 ) {
-    if (progressUiState is UiState.Success) {
-        bindingHelper?.navigate(progressUiState.data)
+    when (progressUiState) {
+        is UiState.Success -> bindingHelper?.navigate(progressUiState.data)
+        is UiState.Loading -> constraintLayout.visibility = View.VISIBLE
+        else -> constraintLayout.visibility = View.GONE
+    }
+}
+
+@BindingAdapter("progressUiState")
+fun bindProgressUiStateToErrorConstraintLayout(
+    constraintLayout: ConstraintLayout,
+    progressUiState: UiState<MyReservationModel>?
+) {
+    when (progressUiState) {
+        is UiState.Error -> {
+            if (progressUiState.code == 1000) {
+                constraintLayout.visibility = View.VISIBLE
+            }
+        }
+        else -> constraintLayout.visibility = View.GONE
     }
 }
 
@@ -171,6 +227,7 @@ fun bindMyReservationListToRecyclerView(
     recyclerView: RecyclerView,
     uiState: UiState<List<MyReservationModel>>?
 ) {
+    Log.d("TAG", "bindMyReservationListToRecyclerView: ")
     val adapter = recyclerView.adapter as MyReservationListAdapter
     when (uiState) {
         is UiState.Success -> {
