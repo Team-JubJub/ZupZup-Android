@@ -3,14 +3,14 @@ package com.example.zupzup.data.datasource.room.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.zupzup.data.dto.Reservation
+import com.example.zupzup.data.dto.reservation.ReservationEntity
 
 @Dao
 interface ReservationDao {
 
     @Query("SELECT * FROM ReservationEntity ORDER BY reserve_id DESC")
-    fun getMyReservationList(): List<Reservation.ReservationEntity>
+    fun getMyReservationList(): List<ReservationEntity>
 
     @Insert
-    fun insertReservation(reservation: Reservation.ReservationEntity) : Long
+    fun insertReservation(reservation: ReservationEntity)
 }

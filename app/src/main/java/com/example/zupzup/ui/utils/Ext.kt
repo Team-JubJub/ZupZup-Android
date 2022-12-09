@@ -2,9 +2,8 @@ package com.example.zupzup.ui.utils
 
 
 fun Int.toTimeString(): String {
-    var timeString = ""
     val text = this.toString()
-    timeString = if (this == 0) {
+    val timeString = if (this == 0) {
         "00:00"
     } else if (this < 10) {
         "00:0$this"

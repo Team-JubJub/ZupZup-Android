@@ -42,7 +42,9 @@ class ReservationProcessFragment : Fragment() {
         with(binding) {
             viewModel = reservationProcessViewModel
             lifecycleOwner = viewLifecycleOwner
-            bindingHelper = ReservationProcessBindingHelper(::navigateReservationCompleteFragment)
+            bindingHelper = ReservationProcessBindingHelper { reservation: MyReservationModel ->
+                navigateReservationCompleteFragment(reservation)
+            }
         }
     }
 
@@ -52,21 +54,12 @@ class ReservationProcessFragment : Fragment() {
         }
     }
 
-    private fun navigateReservationCompleteFragment() {
-        with(args.reservation) {
-            val action =
-                ReservationProcessFragmentDirections.actionFragReservationProcessToReservationCompleteFragment(
-                    MyReservationModel(
-                        0,
-                        reservationHeaderInfo.storeName,
-                        reservationHeaderInfo.storeAddress,
-                        visitTime,
-                        reservationHeaderInfo.cartList,
-                        customer
-                    )
-                )
-            findNavController().navigate(action)
-        }
+    private fun navigateReservationCompleteFragment(reservation: MyReservationModel) {
+        val action =
+            ReservationProcessFragmentDirections.actionFragReservationProcessToReservationCompleteFragment(
+                reservation
+            )
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

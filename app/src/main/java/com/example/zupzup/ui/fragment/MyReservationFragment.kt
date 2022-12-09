@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.zupzup.data.dto.Reservation
 import com.example.zupzup.databinding.FragmentMyReservationBinding
 import com.example.zupzup.domain.models.MyReservationModel
 import com.example.zupzup.ui.adaper.myreservation.MyReservationListAdapter
