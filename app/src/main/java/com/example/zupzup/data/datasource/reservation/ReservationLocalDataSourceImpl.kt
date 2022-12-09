@@ -1,18 +1,18 @@
 package com.example.zupzup.data.datasource.reservation
 
 import com.example.zupzup.data.datasource.room.dao.ReservationDao
-import com.example.zupzup.data.dto.Reservation
+import com.example.zupzup.data.dto.reservation.ReservationEntity
 import javax.inject.Inject
 
 class ReservationLocalDataSourceImpl @Inject constructor(
     private val dao: ReservationDao
-) : ReservationDataSource {
+) : ReservationLocalDataSource {
 
-    override suspend fun createReservation(reservation: Reservation): Result<Long> = runCatching {
-        dao.insertReservation(reservation as Reservation.ReservationEntity)
-    }
+    override suspend fun insertReservation(reservation: ReservationEntity) =
+        dao.insertReservation(reservation)
 
-    suspend fun getMyReservationList(): Result<List<Reservation>> = runCatching {
+
+    override suspend fun getMyReservationList(): List<ReservationEntity> =
         dao.getMyReservationList()
-    }
+
 }

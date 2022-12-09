@@ -8,7 +8,7 @@ import com.example.zupzup.domain.usecase.GetMyReservationListUseCase
 import com.example.zupzup.ui.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -19,7 +19,7 @@ class MyReservationViewModel @Inject constructor(
 
     private var _myReservationUiState =
         MutableStateFlow<UiState<List<MyReservationModel>>>(UiState.Loading)
-    val myReservationUiState: StateFlow<UiState<List<MyReservationModel>>> get() = _myReservationUiState
+    val myReservationUiState = _myReservationUiState.asStateFlow()
 
     init {
         getMyReservationList()

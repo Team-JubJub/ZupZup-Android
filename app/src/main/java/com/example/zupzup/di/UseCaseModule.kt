@@ -26,8 +26,8 @@ abstract class UseCaseModule {
     @Binds
     @ViewModelScoped
     abstract fun bindMakeReservationOnFireBaseUseCase(
-        makeReservationOnFireBaseUseCaseImpl: MakeReservationOnFireBaseUseCaseImpl
-    ): MakeReservationOnFireBaseUseCase
+        makeReservationOnFireBaseUseCaseImpl: MakeReservationUseCaseImpl
+    ): MakeReservationUseCase
 
     @Binds
     @ViewModelScoped

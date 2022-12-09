@@ -4,9 +4,9 @@ import com.example.zupzup.data.dto.Cart
 import com.example.zupzup.data.dto.Store
 
 interface StoreDataSource {
-    suspend fun getStoreList(): Result<List<Store>>
+    suspend fun getStoreList(): List<Store>
 
-    suspend fun getStoreDetailById(storeId: Long): Result<Store>
+    suspend fun getStoreDetailById(storeId: Long): Store
 
-    suspend fun updateMerchandiseStock(storeId: Long, cartList : List<Cart>) : Result<Long>
+    suspend fun updateMerchandiseStock(storeId: Long, cartList : List<Cart>)
 }

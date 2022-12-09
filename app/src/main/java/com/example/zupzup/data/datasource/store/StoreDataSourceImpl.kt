@@ -1,74 +1,48 @@
 package com.example.zupzup.data.datasource.store
 
-import android.content.Context
-import android.net.ConnectivityManager
-import androidx.core.content.ContextCompat
 import com.example.zupzup.data.dto.Cart
 import com.example.zupzup.data.dto.Store
 import com.example.zupzup.di.FireBaseModule
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.ktx.toObject
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.tasks.await
-import java.net.UnknownHostException
 import javax.inject.Inject
 
 class StoreDataSourceImpl @Inject constructor(
-    @FireBaseModule.StoreRef private val storeRef: CollectionReference,
-    @ApplicationContext private val context: Context
+    @FireBaseModule.StoreRef private val storeRef: CollectionReference
 ) : StoreDataSource {
 
-    private val connectivityManager =
-        ContextCompat.getSystemService(context, ConnectivityManager::class.java)
+    override suspend fun getStoreList(): List<Store> {
+        return storeRef.get().await().mapNotNull { it.toObject() }
+    }
 
-    override suspend fun getStoreList(): Result<List<Store>> {
-        return runCatching {
-            if (connectivityManager?.activeNetwork != null) {
-                val storeList = storeRef.get().await().documents.mapNotNull {
-                    it.toObject<Store>()
-                }
-                storeList
-            } else {
-                throw UnknownHostException()
-            }
+    override suspend fun getStoreDetailById(storeId: Long): Store {
+        val store = storeRef.document(storeId.toString()).get().await()
+        if (store != null) {
+            return store.toObject<Store>()!!
+        } else {
+            throw NullPointerException()
         }
     }
 
-    override suspend fun getStoreDetailById(storeId: Long): Result<Store> {
-        return runCatching {
-            if (connectivityManager?.activeNetwork != null) {
-                val store = storeRef.document(storeId.toString()).get().await().toObject<Store>()
-                if (store != null) {
-                    store
-                } else {
-                    throw NullPointerException()
-                }
-            } else {
-                throw UnknownHostException()
-            }
-        }
-    }
-
-    override suspend fun updateMerchandiseStock(storeId: Long, cartList: List<Cart>): Result<Long> {
-        return runCatching {
-            if (connectivityManager?.activeNetwork != null) {
-                val store = storeRef.document(storeId.toString()).get().await().toObject<Store>()
-                if (store != null) {
-                    val merchandiseList = store.merchandiseList
-                    cartList.forEach { cart ->
-                        val item = merchandiseList.find { it.itemId == cart.itemId }
-                        if (item != null) {
-                            item.stock -= cart.amount
-                        }
+    override suspend fun updateMerchandiseStock(storeId: Long, cartList: List<Cart>) {
+        val store = storeRef.document(storeId.toString()).get().await()
+        if (store != null) {
+            val merchandiseList = store.toObject<Store>()!!.merchandiseList
+            cartList.forEach { cart ->
+                val item =
+                    merchandiseList.find { merchandise -> merchandise.itemId == cart.itemId }
+                if (item != null) {
+                    item.stock -= cart.amount
+                    if (item.stock < 0) {
+                        item.stock = 0
                     }
-                    storeRef.document(storeId.toString())
-                        .update(mapOf("merchandiseList" to merchandiseList)).await()
                 }
-                0
-            } else {
-                throw UnknownHostException()
             }
+            storeRef.document(storeId.toString())
+                .update(mapOf("merchandiseList" to merchandiseList)).await()
+        } else {
+            throw NullPointerException()
         }
-
     }
 }

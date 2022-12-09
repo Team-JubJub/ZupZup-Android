@@ -5,9 +5,9 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.zupzup.data.datasource.room.dao.ReservationDao
 import com.example.zupzup.data.datasource.room.typeconverter.TypeConverter
-import com.example.zupzup.data.dto.Reservation
+import com.example.zupzup.data.dto.reservation.ReservationEntity
 
-@Database(entities = [Reservation.ReservationEntity::class], version = 1)
+@Database(entities = [ReservationEntity::class], version = 1)
 @TypeConverters(
     value = [
         TypeConverter::class

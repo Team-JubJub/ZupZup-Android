@@ -8,7 +8,7 @@ import com.example.zupzup.domain.usecase.GetStoreListUseCase
 import com.example.zupzup.ui.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -19,7 +19,7 @@ class StoreListViewModel @Inject constructor(
 
     private var _storeUiState =
         MutableStateFlow<UiState<List<StoreHeaderInfoModel>>>(UiState.Loading)
-    val storeUiState: StateFlow<UiState<List<StoreHeaderInfoModel>>> get() = _storeUiState
+    val storeUiState = _storeUiState.asStateFlow()
 
     init {
         getStoreList()
@@ -27,7 +27,6 @@ class StoreListViewModel @Inject constructor(
 
     private fun getStoreList() {
         viewModelScope.launch {
-            _storeUiState.emit(UiState.Loading)
             getStoreListUseCase.invoke().collect {
                 when (it) {
                     is DataResult.Success -> {
@@ -38,6 +37,7 @@ class StoreListViewModel @Inject constructor(
                     }
                 }
             }
+
         }
     }
 }

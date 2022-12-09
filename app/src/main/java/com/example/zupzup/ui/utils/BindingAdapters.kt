@@ -1,7 +1,6 @@
 package com.example.zupzup.ui.utils
 
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -104,15 +103,17 @@ fun bindPhoneNumberToTextView(
 ) {
     textView.text = phoneNumber.toPhoneNumberStringFormat()
 }
+
 @BindingAdapter("saleTime")
 fun bindSaleTimeToTextView(
     textView: TextView,
-    saleTime:Pair<Int,Int>?
+    saleTime: Pair<Int, Int>?
 ) {
-    if(saleTime != null) {
+    if (saleTime != null) {
         textView.text = "${saleTime.first.toTimeString()} ~ ${saleTime.second.toTimeString()}"
     }
 }
+
 @BindingAdapter("startTime", "endTime")
 fun bindSaleTimeBottomSheet(
     textView: TextView,
@@ -136,11 +137,11 @@ fun bindSelectedTimeToTimePicker(
 @BindingAdapter("progressUiState", "bindingHelper")
 fun bindProgressStateToProgressBar(
     progressBar: ProgressBar,
-    progressUiState: UiState<Int>?,
+    progressUiState: UiState<MyReservationModel>?,
     bindingHelper: ReservationProcessBindingHelper?
 ) {
     if (progressUiState is UiState.Success) {
-        bindingHelper?.navigate()
+        bindingHelper?.navigate(progressUiState.data)
     }
 }
 
