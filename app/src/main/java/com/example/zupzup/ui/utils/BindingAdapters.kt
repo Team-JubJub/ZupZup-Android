@@ -1,6 +1,5 @@
 package com.example.zupzup.ui.utils
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
@@ -43,7 +42,6 @@ fun bindStoreListUiStateToProgressBar(
     progressBar: ProgressBar,
     uiState: UiState<List<StoreHeaderInfoModel>>?
 ) {
-    Log.d("TAG", "bindStoreListUiStateToProgressBar: $uiState ")
     when (uiState) {
         is UiState.Loading -> progressBar.visibility = View.VISIBLE
         else -> progressBar.visibility = View.GONE
@@ -55,7 +53,6 @@ fun bindStoreListUiStateToConstraintLayout(
     constraintLayout: ConstraintLayout,
     storeListUiState: UiState<List<StoreHeaderInfoModel>>?
 ) {
-    Log.d("TAG", "bindStoreListUiStateToConstraintLayout: $storeListUiState")
     when (storeListUiState) {
         is UiState.Loading -> constraintLayout.visibility = View.GONE
         is UiState.Success -> {
@@ -227,7 +224,6 @@ fun bindMyReservationListToRecyclerView(
     recyclerView: RecyclerView,
     uiState: UiState<List<MyReservationModel>>?
 ) {
-    Log.d("TAG", "bindMyReservationListToRecyclerView: ")
     val adapter = recyclerView.adapter as MyReservationListAdapter
     when (uiState) {
         is UiState.Success -> {
