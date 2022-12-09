@@ -30,8 +30,8 @@
                           <map>
                             <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="1e1e1e" />
-                            <entry key="outputName" value="ic_edittext_clear_main_20" />
-                            <entry key="sourceFile" value="$PROJECT_DIR$/../Downloads/ic_edittext_clear_main_20.svg" />
+                            <entry key="outputName" value="ic_splash" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/../Downloads/ic_splash.svg" />
                           </map>
                         </option>
                       </PersistentState>

@@ -68,6 +68,7 @@
         <entry key="app/src/main/res/drawable/ic_shopping_bag_white_22.xml" value="0.127" />
         <entry key="app/src/main/res/drawable/ic_shopping_cart_warmgray3.xml" value="0.127" />
         <entry key="app/src/main/res/drawable/ic_shopping_cart_warmgray3_24.xml" value="0.127" />
+        <entry key="app/src/main/res/drawable/ic_splash.xml" value="0.127" />
         <entry key="app/src/main/res/drawable/ic_store.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/ic_store_timer.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/ic_timer_24.xml" value="0.1615" />
@@ -75,6 +76,7 @@
         <entry key="app/src/main/res/drawable/ic_timer_white.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/ic_timer_white_16.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/ic_timer_white_30.xml" value="0.1615" />
+        <entry key="app/src/main/res/drawable/layout_splash.xml" value="0.127" />
         <entry key="app/src/main/res/drawable/selector_bottom_nav_indicator.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/selector_bottomnav_icon_color.xml" value="0.127" />
         <entry key="app/src/main/res/drawable/selector_button_enabled.xml" value="0.137" />
@@ -107,6 +109,7 @@
         <entry key="app/src/main/res/layout/snackbar_error_message.xml" value="0.42956349206349204" />
         <entry key="app/src/main/res/menu/main_bottom_nav.xml" value="0.28360748291015625" />
         <entry key="app/src/main/res/menu/main_nav_menu.xml" value="0.1921875" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/app_icon.xml" value="0.1235" />
       </map>
     </option>
   </component>
