@@ -1,6 +1,8 @@
 package com.example.zupzup.ui.activity
 
 import android.os.Bundle
+import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -11,10 +13,11 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.zupzup.R
 import com.example.zupzup.databinding.ActivityMainBinding
 import com.example.zupzup.ui.utils.toDateFormat
+import com.google.android.material.navigation.NavigationBarView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityMainBinding
 
@@ -53,11 +56,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.frag_store_detail -> {
                     hideBottomNavigation()
                 }
-                R.id.myReservationDetailFragment -> {
+                R.id.frag_my_reservation_detail -> {
                     hideBottomNavigation()
                 }
             }
-
         }
     }
 

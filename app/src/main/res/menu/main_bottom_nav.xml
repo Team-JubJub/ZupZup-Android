@@ -10,5 +10,5 @@
         android:id="@+id/frag_my_reservation"
         android:enabled="true"
         android:icon="@drawable/ic_shopping_cart_warmgray3_24"
-        android:title="@string/bottom_nav_title_map" />
+        android:title="@string/bottom_nav_title_shopping" />
 </menu>

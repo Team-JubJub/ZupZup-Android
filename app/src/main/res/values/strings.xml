@@ -6,7 +6,8 @@
 
     <!--bottom nav title -->
     <string name="bottom_nav_title_home">Home</string>
-    <string name="bottom_nav_title_map">Shopping</string>
+    <string name="bottom_nav_title_shopping">Shopping</string>
+    <string name="bottom_nav_title_shopping_detail">ShoppingDetail</string>
 
     <!-- Store Fragment -->
     <string name="fragment_store_title">가게</string>

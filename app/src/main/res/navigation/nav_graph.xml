@@ -78,16 +78,16 @@
         android:id="@+id/frag_my_reservation"
         tools:layout="@layout/fragment_my_reservation"
         android:name="com.example.zupzup.ui.fragment.MyReservationFragment"
-        android:label="MyReservationFragment" >
+        android:label="frag_my_reservation" >
         <action
-            android:id="@+id/action_frag_my_reservation_to_myReservationDetailFragment"
-            app:destination="@id/myReservationDetailFragment" />
+            android:id="@+id/action_frag_my_reservation_to_frag_my_reservation_detail"
+            app:destination="@id/frag_my_reservation_detail" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_my_reservation_detail"
-        android:id="@+id/myReservationDetailFragment"
+        android:id="@+id/frag_my_reservation_detail"
         android:name="com.example.zupzup.ui.fragment.MyReservationDetailFragment"
-        android:label="MyReservationDetailFragment" >
+        android:label="frag_my_reservation_detail" >
         <argument
             android:name="myReservation"
             app:argType="com.example.zupzup.domain.models.MyReservationModel" />

@@ -38,7 +38,7 @@ class MyReservationFragment : Fragment() {
     }
 
     private fun navigateToMyReservationDetail(myReservationModel: MyReservationModel) {
-        val action = MyReservationFragmentDirections.actionFragMyReservationToMyReservationDetailFragment(
+        val action = MyReservationFragmentDirections.actionFragMyReservationToFragMyReservationDetail(
             myReservation = myReservationModel
         )
         findNavController().navigate(action)
