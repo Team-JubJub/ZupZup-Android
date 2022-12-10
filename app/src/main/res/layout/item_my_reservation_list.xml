@@ -29,15 +29,15 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/tv_reservation_id"
+            android:id="@+id/tv_reservation_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{String.valueOf(myReservation.reserveId)}"
             android:textColor="@color/warm_gray4"
             android:textSize="13sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="예약A" />
+            app:reserveId="@{myReservation.reserveId}"
+            tools:text="예약날짜" />
 
         <TextView
             android:id="@+id/tv_store_name"
@@ -49,7 +49,7 @@
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_reservation_id"
+            app:layout_constraintTop_toBottomOf="@id/tv_reservation_date"
             tools:text="번아웃 커피 금정점" />
 
         <ImageView

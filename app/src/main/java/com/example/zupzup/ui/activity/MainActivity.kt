@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.zupzup.R
 import com.example.zupzup.databinding.ActivityMainBinding
+import com.example.zupzup.ui.utils.toDateFormat
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -46,7 +47,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.frag_store_list -> {
                     showBottomNavigation()
                 }
+                R.id.frag_my_reservation -> {
+                    showBottomNavigation()
+                }
                 R.id.frag_store_detail -> {
+                    hideBottomNavigation()
+                }
+                R.id.myReservationDetailFragment -> {
                     hideBottomNavigation()
                 }
             }

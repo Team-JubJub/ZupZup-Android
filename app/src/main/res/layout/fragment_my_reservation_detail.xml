@@ -69,11 +69,11 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tv_reservation_id"
+                    android:id="@+id/tv_reservation_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:text="@{String.valueOf(reservation.reserveId)}"
+                    app:reserveId="@{reservation.reserveId}"
                     android:textColor="@color/black"
                     android:textSize="34sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +91,7 @@
                     android:paddingVertical="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_reservation_id">
+                    app:layout_constraintTop_toBottomOf="@id/tv_reservation_date">
 
                     <TextView
                         android:id="@+id/tv_store_name"
