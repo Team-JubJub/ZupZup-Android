@@ -231,3 +231,12 @@ fun bindMyReservationListToRecyclerView(
         }
     }
 }
+
+// MyReservation
+@BindingAdapter("reserveId")
+fun bindReservationDateToTextView(
+    textView: TextView,
+    reserveId : Long
+) {
+    textView.text = reserveId.toDateFormat()
+}

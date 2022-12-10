@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.zupzup.R
 import com.example.zupzup.databinding.ActivityMainBinding
+import com.example.zupzup.ui.utils.toDateFormat
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,6 +24,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
+        val a : Long = 1670597205287
+        a.toDateFormat()
         initBinding()
         initNavController()
         setBottomNavVisibility()

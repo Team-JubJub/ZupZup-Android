@@ -1,5 +1,12 @@
 package com.example.zupzup.ui.utils
 
+import android.annotation.SuppressLint
+import android.util.Log
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.math.log
+
 
 fun Int.toTimeString(): String {
     val text = this.toString()
@@ -27,4 +34,9 @@ fun String.toPhoneNumberStringFormat(): String {
         return "${this.substring(0, 3)}-${this.substring(3, 7)}-${this.substring(7)}"
     }
     return ""
+}
+
+
+fun Long.toDateFormat() : String {
+    return  DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.SHORT,Locale.KOREA).format(Date(this))
 }
