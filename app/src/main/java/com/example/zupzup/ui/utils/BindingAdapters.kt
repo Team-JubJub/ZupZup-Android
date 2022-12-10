@@ -214,7 +214,7 @@ fun bindViewTypeToTextView(
             layout.setBackgroundResource(R.drawable.frame_rectangle_bottom_corner_12_gray0)
         }
         tvName.text = it.itemName
-        tvItemPrice.text = (it.amount * it.salesPrice).toString()
+        tvItemPrice.text = "${it.salesPrice}원x${it.amount}개 "
         linearLayout.addView(layout)
     }
 }
