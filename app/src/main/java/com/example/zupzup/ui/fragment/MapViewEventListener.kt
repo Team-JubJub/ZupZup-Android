@@ -6,7 +6,7 @@ import net.daum.mf.map.api.MapView
 
 class MapViewEventListener(
     private val recyclerView: RecyclerView) : MapView.MapViewEventListener {
- // scrollview.requestDisallowInterceptTouchEvent(true);
+
     override fun onMapViewInitialized(p0: MapView?) {
 
     }
