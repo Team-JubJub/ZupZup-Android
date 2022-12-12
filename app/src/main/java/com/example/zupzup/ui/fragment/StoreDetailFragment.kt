@@ -34,7 +34,8 @@ class StoreDetailFragment : Fragment() {
     private val args: StoreDetailFragmentArgs by navArgs()
 
     private val headerAdapter: StoreDetailHeaderAdapter by lazy {
-        StoreDetailHeaderAdapter(activity = requireActivity())
+        StoreDetailHeaderAdapter(activity = requireActivity(),
+        onMapViewEventListener = MapViewEventListener(binding.rcvStoreDetail))
     }
 
     private val bodyAdapter: StoreDetailBodyAdapter by lazy {

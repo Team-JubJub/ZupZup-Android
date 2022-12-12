@@ -13,7 +13,8 @@ import net.daum.mf.map.api.MapView
 
 class StoreDetailHeaderAdapter(
     private var storeDetailHeaderModel: StoreDetailHeaderModel? = null,
-    private val activity: FragmentActivity
+    private val activity: FragmentActivity,
+    private val onMapViewEventListener: MapView.MapViewEventListener
 ) :
     RecyclerView.Adapter<StoreDetailHeaderAdapter.StoreDetailHeaderViewHolder>() {
 
@@ -25,9 +26,14 @@ class StoreDetailHeaderAdapter(
     class StoreDetailHeaderViewHolder(private val binding: ItemStoreDetailStoreInfoBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: StoreDetailHeaderModel?, activity: FragmentActivity) {
+        fun bind(
+            item: StoreDetailHeaderModel?,
+            activity: FragmentActivity,
+            onMapViewEventListener: MapView.MapViewEventListener
+        ) {
             if (item != null) {
                 val mapView = getMapView(activity, item.location, item.name)
+                mapView.setMapViewEventListener(onMapViewEventListener)
                 binding.linearLayoutMapContainer.removeAllViews()
                 binding.linearLayoutMapContainer.addView(mapView)
                 binding.storeDetailHeader = item
@@ -75,7 +81,7 @@ class StoreDetailHeaderAdapter(
         holder: StoreDetailHeaderViewHolder,
         position: Int
     ) {
-        holder.bind(storeDetailHeaderModel, activity)
+        holder.bind(storeDetailHeaderModel, activity, onMapViewEventListener)
     }
 
     override fun getItemCount(): Int {
