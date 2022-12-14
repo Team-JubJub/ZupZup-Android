@@ -9,7 +9,7 @@
         <import type="kotlin.Unit" />
 
         <variable
-            name="approveCheckboxOnClick"
+            name="checkboxOnClick"
             type="Function0&lt; Unit>" />
 
         <variable
@@ -22,7 +22,7 @@
 
         <variable
             name="showTermsDetailTextViewOnClick"
-            type="Function0&lt; Unit>" />
+            type="Function0&lt;Unit>" />
 
         <variable
             name="visitTime"
@@ -48,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/frame_rectangle_corner_12_warmgray2"
+            android:onClick="@{_ -> showSetVisitTimeBottomSheetBtnOnClick.invoke()}"
             android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -87,12 +88,11 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_visit_time_label"
                 app:visitTime="@{visitTime}" />
 
-            <ImageButton
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:background="@color/transparent"
-                android:onClick="@{_ -> showSetVisitTimeBottomSheetBtnOnClick.invoke()}"
                 android:src="@drawable/ic_chevron_right_warmgray4_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -105,6 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/frame_rectangle_corner_12_warmgray2"
+            android:onClick="@{() -> showSetCustomerInfoBottomSheetBtnOnClick.invoke()}"
             android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -150,19 +151,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:hint="010-0000-0000"
-                app:phoneNumber="@{customer.phoneNumber}"
                 android:textColor="@color/warm_gray4"
                 android:textColorHint="@color/warm_gray4"
                 android:textSize="13sp"
                 app:layout_constraintStart_toStartOf="@id/tv_customer_name"
-                app:layout_constraintTop_toBottomOf="@id/tv_customer_name" />
+                app:layout_constraintTop_toBottomOf="@id/tv_customer_name"
+                app:phoneNumber="@{customer.phoneNumber}" />
 
-            <ImageButton
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:background="@color/transparent"
-                android:onClick="@{() -> showSetCustomerInfoBottomSheetBtnOnClick.invoke()}"
                 android:src="@drawable/ic_chevron_right_warmgray4_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -213,10 +213,10 @@
                 android:background="@drawable/selector_permission_personal_info_checkbox"
                 android:button="@null"
                 android:checked="@{isAgree}"
+                android:onClick="@{_ -> checkboxOnClick.invoke()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:onClick="@{_ -> approveCheckboxOnClick.invoke()}" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
