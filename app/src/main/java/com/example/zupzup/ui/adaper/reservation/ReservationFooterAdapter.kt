@@ -10,7 +10,7 @@ class ReservationFooterAdapter(
     private var visitTime: Int,
     private var customer: CustomerModel,
     private var isAgree : Boolean,
-    private var setIsApproveToViewModel : () -> Unit,
+    private var checkBoxOnClickListener : () -> Unit,
     private val showSetVisitTimeBottomSheet: () -> Unit,
     private val showSetCustomerInfoBottomSheet: () -> Unit,
     private val showTermsDetailDialog: () -> Unit
@@ -32,7 +32,7 @@ class ReservationFooterAdapter(
             newVisitTime: Int,
             newCustomer: CustomerModel,
             newIsAgree: Boolean,
-            setIsApproveToViewModel: () -> Unit,
+            checkBoxOnClickListener: () -> Unit,
             showSetVisitTimeBottomSheet: () -> Unit,
             showSetCustomerInfoBottomSheet: () -> Unit,
             showTermsDetailDialog: () -> Unit
@@ -41,7 +41,7 @@ class ReservationFooterAdapter(
                 visitTime = newVisitTime
                 customer = newCustomer
                 isAgree = newIsAgree
-                approveCheckboxOnClick = setIsApproveToViewModel
+                checkboxOnClick = checkBoxOnClickListener
                 showTermsDetailTextViewOnClick = showTermsDetailDialog
                 showSetVisitTimeBottomSheetBtnOnClick = showSetVisitTimeBottomSheet
                 showSetCustomerInfoBottomSheetBtnOnClick = showSetCustomerInfoBottomSheet
@@ -70,7 +70,7 @@ class ReservationFooterAdapter(
             visitTime,
             customer,
             isAgree,
-            setIsApproveToViewModel,
+            checkBoxOnClickListener,
             showSetVisitTimeBottomSheet,
             showSetCustomerInfoBottomSheet,
             showTermsDetailDialog

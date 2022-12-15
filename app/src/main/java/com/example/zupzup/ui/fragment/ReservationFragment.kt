@@ -43,7 +43,7 @@ class ReservationFragment : Fragment() {
     private val footerAdapter: ReservationFooterAdapter by lazy {
         ReservationFooterAdapter(
             0, reservationViewModel.getCustomerInfo(), false,
-            reservationViewModel::setIsAgree, ::showSetVisitTimeBottomSheet,
+            ::checkBoxOnClickListener, ::showSetVisitTimeBottomSheet,
             ::showSetCustomerInfoBottomSheet, ::showTermsDetailDialog
         )
     }
@@ -123,6 +123,13 @@ class ReservationFragment : Fragment() {
     private fun showTermsDetailDialog() {
         val dialog = TermsDetailDialogFragment()
         dialog.show(parentFragmentManager, null)
+    }
+
+    private fun checkBoxOnClickListener() {
+        if(!reservationViewModel.getIsAgree()) {
+            showTermsDetailDialog()
+        }
+        reservationViewModel.setIsAgree()
     }
 
     private fun navigateToReservationProcess() {
