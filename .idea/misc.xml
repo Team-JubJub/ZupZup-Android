@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../layout/custom_preview.xml" value="0.1816123188405797" />
+        <entry key="app/src/main/res/drawable-v24/frame_rectangle_bottom_corner_12_gray_re.xml" value="0.1655" />
+        <entry key="app/src/main/res/drawable-v24/ic_arrow_right_black_24.xml" value="0.1655" />
+        <entry key="app/src/main/res/drawable-v24/ic_clock_black_20.xml" value="0.1655" />
         <entry key="app/src/main/res/drawable/frame_39.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/frame_bottom_nav_indicator.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/frame_checkbox_false.xml" value="0.137" />
@@ -31,6 +34,7 @@
         <entry key="app/src/main/res/drawable/frame_rectangle_corner_6_main.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/frame_rectangle_corner_8_warmgray3.xml" value="0.1345" />
         <entry key="app/src/main/res/drawable/frame_rectangle_corner_8_wramgray3.xml" value="0.1615" />
+        <entry key="app/src/main/res/drawable/frame_rectangle_corner_99_white.xml" value="0.1655" />
         <entry key="app/src/main/res/drawable/frame_rectangle_left_corner_12_wramgray2.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/frame_rectangle_left_corner_14_warmgray2.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/frame_rectangle_left_corner_14_wramgray2.xml" value="0.1615" />
@@ -84,10 +88,10 @@
         <entry key="app/src/main/res/drawable/selector_button_enabled.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/selector_permission_personal_info_checkbox.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/test.xml" value="0.137" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.6410705566406251" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_customer_info_set_bottom_sheet.xml" value="0.6511581420898438" />
-        <entry key="app/src/main/res/layout/fragment_my_reservation.xml" value="0.3878968253968254" />
-        <entry key="app/src/main/res/layout/fragment_my_reservation_detail.xml" value="0.3892733564013841" />
+        <entry key="app/src/main/res/layout/fragment_my_reservation.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_my_reservation_detail.xml" value="0.2928957929248216" />
         <entry key="app/src/main/res/layout/fragment_network_error_dialog.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_reservation.xml" value="0.4805491990846682" />
         <entry key="app/src/main/res/layout/fragment_reservation_complete.xml" value="0.5329949238578681" />
@@ -98,7 +102,7 @@
         <entry key="app/src/main/res/layout/fragment_store_list.xml" value="0.12149532710280374" />
         <entry key="app/src/main/res/layout/fragment_terms_detail_dialog.xml" value="0.2982366410512773" />
         <entry key="app/src/main/res/layout/fragment_visit_time_set_bottom_sheet.xml" value="0.49029052734375" />
-        <entry key="app/src/main/res/layout/item_my_reservation_list.xml" value="0.4098360655737705" />
+        <entry key="app/src/main/res/layout/item_my_reservation_list.xml" value="0.2825941833139163" />
         <entry key="app/src/main/res/layout/item_reservation_cart_list.xml" value="0.26141421553017424" />
         <entry key="app/src/main/res/layout/item_reservation_store_info.xml" value="0.5544819182929258" />
         <entry key="app/src/main/res/layout/item_reservation_visit_info.xml" value="0.49528301886792453" />
@@ -107,9 +111,10 @@
         <entry key="app/src/main/res/layout/item_store_detail_marchant_list.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/layout/item_store_detail_merchandise.xml" value="0.5974683544303797" />
         <entry key="app/src/main/res/layout/item_store_detail_name.xml" value="0.22756754557291664" />
-        <entry key="app/src/main/res/layout/item_store_detail_store_info.xml" value="0.48870401793225676" />
+        <entry key="app/src/main/res/layout/item_store_detail_store_info.xml" value="0.27862711363538173" />
         <entry key="app/src/main/res/layout/item_store_list.xml" value="0.3234269157288566" />
         <entry key="app/src/main/res/layout/snackbar_error_message.xml" value="0.42956349206349204" />
+        <entry key="app/src/main/res/layout/testfrag.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/menu/main_bottom_nav.xml" value="0.28360748291015625" />
         <entry key="app/src/main/res/menu/main_nav_menu.xml" value="0.1921875" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/app_icon.xml" value="0.1235" />

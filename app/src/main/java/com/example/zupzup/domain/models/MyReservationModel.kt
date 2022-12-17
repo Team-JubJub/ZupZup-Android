@@ -10,5 +10,6 @@ data class MyReservationModel(
     val storeAddress: String,
     val visitTime: Int,
     val cartList: List<CartModel>,
-    val customer: CustomerModel
+    val customer: CustomerModel,
+    val state : String
 ) : Parcelable

@@ -19,15 +19,15 @@ class LunaSoftDataSourceImpl @Inject constructor(
 ) : LunaSoftDataSource {
 
     override suspend fun sendNotificationTalk(messages: List<Message>): Response<LunaSoftResponse> {
-        val body = LunaSoftRequestBody(
-            userId = userId,
-            apiKey = apiKey,
-            templateId = defaultTemplateId,
-            messages = messages
-        )
-        return lunaSoftService.sendNotificationTalk(
-            parameter = body
-        )
-        //return Response.success(LunaSoftResponse(0,null))
+//        val body = LunaSoftRequestBody(
+//            userId = userId,
+//            apiKey = apiKey,
+//            templateId = defaultTemplateId,
+//            messages = messages
+//        )
+//        return lunaSoftService.sendNotificationTalk(
+//            parameter = body
+//        )
+        return Response.success(LunaSoftResponse(0,null))
     }
 }

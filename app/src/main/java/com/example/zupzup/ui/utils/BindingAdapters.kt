@@ -5,8 +5,9 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.TimePicker
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zupzup.R
@@ -18,6 +19,35 @@ import com.example.zupzup.ui.bindinghelper.ReservationBindingHelper
 import com.example.zupzup.ui.bindinghelper.ReservationProcessBindingHelper
 import com.example.zupzup.ui.bindinghelper.StoreDetailBindingHelper
 
+
+// Common
+@BindingAdapter("uiState")
+fun bindStoreListUiStateToProgressBar(
+    progressBar: ProgressBar,
+    uiState: UiState<Any>?
+) {
+    when (uiState) {
+        is UiState.Loading -> progressBar.visibility = View.VISIBLE
+        else -> progressBar.visibility = View.GONE
+    }
+}
+
+@BindingAdapter("uiState")
+fun bindStoreListUiStateToConstraintLayout(
+    constraintLayout: ConstraintLayout,
+    uiState: UiState<Any>?
+) {
+    when (uiState) {
+        is UiState.Error -> {
+            if (uiState.code == 1000) {
+                constraintLayout.visibility = View.VISIBLE
+            }
+        }
+        else -> {
+            constraintLayout.visibility = View.GONE
+        }
+    }
+}
 
 // StoreList
 @BindingAdapter("storeListUiState")
@@ -34,36 +64,6 @@ fun bindStoreListRecyclerView(
         else -> {
             recyclerView.visibility = View.GONE
         }
-    }
-}
-
-@BindingAdapter("storeListUiState")
-fun bindStoreListUiStateToProgressBar(
-    progressBar: ProgressBar,
-    uiState: UiState<List<StoreHeaderInfoModel>>?
-) {
-    when (uiState) {
-        is UiState.Loading -> progressBar.visibility = View.VISIBLE
-        else -> progressBar.visibility = View.GONE
-    }
-}
-
-@BindingAdapter("storeListUiState")
-fun bindStoreListUiStateToConstraintLayout(
-    constraintLayout: ConstraintLayout,
-    storeListUiState: UiState<List<StoreHeaderInfoModel>>?
-) {
-    when (storeListUiState) {
-        is UiState.Loading -> constraintLayout.visibility = View.GONE
-        is UiState.Success -> {
-            constraintLayout.visibility = View.GONE
-        }
-        is UiState.Error -> {
-            if (storeListUiState.code == 1000) {
-                constraintLayout.visibility = View.VISIBLE
-            }
-        }
-        else -> {}
     }
 }
 
@@ -159,17 +159,6 @@ fun bindSaleTimeBottomSheet(
     textView.text = "할인시간 : ${startTime.toTimeString()} ~ ${endTime.toTimeString()}"
 }
 
-@BindingAdapter("selectedTime")
-fun bindSelectedTimeToTimePicker(
-    timePicker: TimePicker,
-    selectedTime: Int,
-) {
-    if (selectedTime != 0) {
-        timePicker.hour = selectedTime / 100
-        timePicker.minute = selectedTime % 100
-    }
-}
-
 @BindingAdapter("progressUiState", "bindingHelper")
 fun bindProgressStateToProgressBarConstraint(
     constraintLayout: ConstraintLayout,
@@ -219,6 +208,8 @@ fun bindViewTypeToTextView(
     }
 }
 
+// MyReservation
+
 @BindingAdapter("myReservationUiState")
 fun bindMyReservationListToRecyclerView(
     recyclerView: RecyclerView,
@@ -227,16 +218,57 @@ fun bindMyReservationListToRecyclerView(
     val adapter = recyclerView.adapter as MyReservationListAdapter
     when (uiState) {
         is UiState.Success -> {
+            recyclerView.visibility = View.VISIBLE
             adapter.submitList(uiState.data)
+        }
+        else -> {
+            recyclerView.visibility = View.GONE
         }
     }
 }
 
-// MyReservation
 @BindingAdapter("reserveId")
 fun bindReservationDateToTextView(
     textView: TextView,
-    reserveId : Long
+    reserveId: Long
 ) {
     textView.text = reserveId.toDateFormat()
+}
+
+@BindingAdapter("reserveState")
+fun bindReserveStateToTextView(
+    textView: TextView,
+    reserveState: String
+) {
+    var text = ""
+    var textColor = 0
+    var backgroundColor = 0
+    when (reserveState) {
+        "NEW" -> {
+            text = "대기"
+            backgroundColor = R.color.main
+            textColor = R.color.text
+        }
+        "CANCEL" -> {
+            text = "취소"
+            backgroundColor = R.color.warning1
+            textColor = R.color.white
+        }
+        "CONFIRM" -> {
+            text = "확정"
+            backgroundColor = R.color.green
+            textColor = R.color.text
+        }
+        "COMPLETE" -> {
+            text = "완료"
+            backgroundColor = R.color.text_gray
+            textColor = R.color.cool_gray1
+        }
+    }
+    textView.text = text
+    textView.setTextColor(ContextCompat.getColor(textView.context, textColor))
+    DrawableCompat.setTint(
+        textView.background,
+        ContextCompat.getColor(textView.context, backgroundColor)
+    )
 }

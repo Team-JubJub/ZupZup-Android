@@ -1,10 +1,10 @@
 package com.example.zupzup.data.datasource.reservation
 
-import com.example.zupzup.data.dto.reservation.ReservationEntity
+import com.example.zupzup.data.datasource.room.MyReservationEntity
 
 interface ReservationLocalDataSource {
 
-    suspend fun insertReservation(reservation: ReservationEntity)
+    suspend fun insertReservation(myReservationEntity: MyReservationEntity)
 
-    suspend fun getMyReservationList(): List<ReservationEntity>
+    suspend fun getMyReservationEntityList() : List<MyReservationEntity>
 }

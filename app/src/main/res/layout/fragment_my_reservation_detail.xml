@@ -94,6 +94,22 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_reservation_date">
 
                     <TextView
+                        android:id="@+id/tv_reservation_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/frame_rectangle_corner_99_white"
+                        android:paddingHorizontal="24.5dp"
+                        android:paddingVertical="8dp"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:reserveState="@{reservation.state}"
+                        tools:text="대기" />
+
+                    <TextView
                         android:id="@+id/tv_store_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
