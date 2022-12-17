@@ -21,12 +21,9 @@ class MyReservationViewModel @Inject constructor(
         MutableStateFlow<UiState<List<MyReservationModel>>>(UiState.Loading)
     val myReservationUiState = _myReservationUiState.asStateFlow()
 
-    init {
-        getMyReservationList()
-    }
-
-    private fun getMyReservationList() {
+    fun getMyReservationList() {
         viewModelScope.launch {
+            _myReservationUiState.emit(UiState.Loading)
             getMyReservationListUseCase.invoke().collect {
                 when (it) {
                     is DataResult.Success -> {

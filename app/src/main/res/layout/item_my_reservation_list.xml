@@ -24,68 +24,107 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/frame_rectangle_corner_14_black"
-        android:onClick="@{_ -> navigateToMyReservationDetail.invoke(myReservation)}"
-        android:padding="16dp">
+        android:onClick="@{_ -> navigateToMyReservationDetail.invoke(myReservation)}">
 
-        <TextView
-            android:id="@+id/tv_reservation_date"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_top"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/warm_gray4"
-            android:textSize="13sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:reserveId="@{myReservation.reserveId}"
-            tools:text="예약날짜" />
-
-        <TextView
-            android:id="@+id/tv_store_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@{myReservation.storeName}"
-            android:textColor="@color/text_white"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_reservation_date"
-            tools:text="번아웃 커피 금정점" />
-
-        <ImageView
-            android:id="@+id/iv_store_timer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="31dp"
-            android:background="@drawable/ic_clock_main_20"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_store_name" />
-
-        <TextView
-            android:id="@+id/tv_reservation_visit_time"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:textColor="@color/main"
-            android:textSize="17sp"
-            app:layout_constraintBottom_toBottomOf="@id/iv_store_timer"
-            app:layout_constraintEnd_toStartOf="@+id/iv_select_reservation"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@id/iv_store_timer"
-            app:layout_constraintTop_toTopOf="@id/iv_store_timer"
-            app:visitTime="@{myReservation.visitTime}"
-            tools:text="12:00" />
-
-        <ImageView
-            android:id="@+id/iv_select_reservation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_arrow_right_warmgray4_24"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/frame_rectangle_top_corner_12_warmgray2"
+            android:paddingHorizontal="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <TextView
+                android:id="@+id/tv_reservation_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:textColor="@color/cool_gray1"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:reserveId="@{myReservation.reserveId}"
+                tools:text="예약날짜" />
+
+            <TextView
+                android:id="@+id/tv_store_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="26dp"
+                android:text="@{myReservation.storeName}"
+                android:textColor="@color/text"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_reservation_date"
+                tools:text="번아웃 커피 금정점" />
+
+            <TextView
+                android:id="@+id/tv_reservation_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/frame_rectangle_corner_99_white"
+                android:paddingHorizontal="24.5dp"
+                android:paddingVertical="8dp"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:reserveState="@{myReservation.state}"
+                tools:text="대기" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/frame_rectangle_bottom_corner_12_gray_re"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraint_top">
+
+            <ImageView
+                android:id="@+id/iv_store_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="1.5dp"
+                android:background="@drawable/ic_clock_black_20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_reservation_visit_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textColor="@color/text"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_store_timer"
+                app:layout_constraintStart_toEndOf="@id/iv_store_timer"
+                app:layout_constraintTop_toTopOf="@id/iv_store_timer"
+                app:visitTime="@{myReservation.visitTime}"
+                tools:text="12:00" />
+
+            <ImageView
+                android:id="@+id/iv_select_reservation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/ic_arrow_right_black_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

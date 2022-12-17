@@ -1,6 +1,5 @@
 package com.example.zupzup.domain.repository
 
-import com.example.zupzup.domain.DataResult
 import com.example.zupzup.domain.models.StoreHeaderInfoModel
 import com.example.zupzup.domain.models.StoreModel
 

@@ -3,8 +3,8 @@ package com.example.zupzup.data.dto.mapper
 import com.example.zupzup.data.dto.Cart
 import com.example.zupzup.data.dto.lunasoft.parameter.Message
 import com.example.zupzup.data.dto.reservation.ReservationDto
-import com.example.zupzup.data.dto.reservation.ReservationEntity
 import com.example.zupzup.domain.models.CartModel
+import com.example.zupzup.domain.models.MyReservationModel
 import com.example.zupzup.domain.models.ReservationModel
 import com.example.zupzup.ui.utils.toTimeString
 
@@ -15,18 +15,6 @@ object DtoMapper {
             reserveId = reserveId,
             storeId = model.reservationHeaderInfo.storeId,
             state = "NEW",
-            cartList = model.reservationHeaderInfo.cartList.map { it.toDto() },
-            customerName = model.customer.name,
-            customerPhone = model.customer.phoneNumber,
-            visitTime = model.visitTime
-        )
-    }
-
-    fun reservationModelToEntity(model: ReservationModel, reserveId: Long): ReservationEntity {
-        return ReservationEntity(
-            reserveId = reserveId,
-            storeName = model.reservationHeaderInfo.storeName,
-            storeAddress = model.reservationHeaderInfo.storeAddress,
             cartList = model.reservationHeaderInfo.cartList.map { it.toDto() },
             customerName = model.customer.name,
             customerPhone = model.customer.phoneNumber,

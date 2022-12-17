@@ -20,4 +20,11 @@
     <color name="warm_gray3">#C8BCAB</color>
     <color name="warm_gray4">#AFA08A</color>
     <color name="cool_gray1">#535353</color>
+    <color name="green">#56D578</color>
+    <color name="purple">#855BF9</color>
+    <color name="BG_2">#FFBD00</color>
+    <color name="gray_re">#DED6C9</color>
+    <color name="warning1">#E31E1E</color>
+    <color name="text_gray">#8C8C8C</color>
+
 </resources>

@@ -37,7 +37,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:storeListUiState="@{viewModel.storeUiState}" />
+            app:uiState="@{viewModel.storeUiState}" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_network_disconnect"
@@ -47,7 +47,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:storeListUiState="@{viewModel.storeUiState}">
+            app:uiState="@{viewModel.storeUiState}">
 
             <ImageView
                 android:id="@+id/iv_network_disconnect"
@@ -81,14 +81,14 @@
                 android:text="인터넷 연결 상태를 확인해주세"
                 android:textColor="@color/warm_gray4"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toTopOf="@+id/appCompatButton"
+                app:layout_constraintBottom_toTopOf="@+id/btn_retry"
                 app:layout_constraintEnd_toEndOf="@id/tv_network_disconnect_label"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@id/tv_network_disconnect_label"
                 app:layout_constraintTop_toBottomOf="@+id/tv_network_disconnect_label" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/appCompatButton"
+                android:id="@+id/btn_retry"
                 android:layout_width="100dp"
                 android:layout_height="53dp"
                 android:layout_marginTop="96dp"

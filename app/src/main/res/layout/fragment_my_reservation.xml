@@ -28,6 +28,85 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ProgressBar
+            android:id="@+id/progress_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/warm_gray3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:uiState="@{viewModel.myReservationUiState}" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_network_disconnect"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:uiState="@{viewModel.myReservationUiState}">
+
+            <ImageView
+                android:id="@+id/iv_network_disconnect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_network_disconnect"
+                app:layout_constraintBottom_toTopOf="@+id/tv_network_disconnect_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/tv_network_disconnect_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="연결 끊김"
+                android:textColor="@color/main"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_network_disconnect_description"
+                app:layout_constraintEnd_toEndOf="@id/iv_network_disconnect"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/iv_network_disconnect"
+                app:layout_constraintTop_toBottomOf="@+id/iv_network_disconnect" />
+
+            <TextView
+                android:id="@+id/tv_network_disconnect_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="인터넷 연결 상태를 확인해주세"
+                android:textColor="@color/warm_gray4"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_retry"
+                app:layout_constraintEnd_toEndOf="@id/tv_network_disconnect_label"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/tv_network_disconnect_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_network_disconnect_label" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_retry"
+                android:layout_width="100dp"
+                android:layout_height="53dp"
+                android:layout_marginTop="96dp"
+                android:background="@drawable/frame_rectangle_corner_14_warmgray2"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.getMyReservationList()}"
+                android:text="재시도"
+                android:textColor="@color/cool_gray1"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_network_disconnect_description" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_my_reservation_list"
             android:layout_width="match_parent"

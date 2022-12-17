@@ -1,6 +1,7 @@
 package com.example.zupzup.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,12 +36,18 @@ class MyReservationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initBinding()
         initRecyclerView()
+        getMyReservationList()
+    }
+
+    private fun getMyReservationList() {
+        myReservationViewModel.getMyReservationList()
     }
 
     private fun navigateToMyReservationDetail(myReservationModel: MyReservationModel) {
-        val action = MyReservationFragmentDirections.actionFragMyReservationToFragMyReservationDetail(
-            myReservation = myReservationModel
-        )
+        val action =
+            MyReservationFragmentDirections.actionFragMyReservationToFragMyReservationDetail(
+                myReservation = myReservationModel
+            )
         findNavController().navigate(action)
     }
 
