@@ -59,9 +59,9 @@
             android:layout_marginTop="9dp"
             android:paddingTop="2dp"
             android:paddingBottom="11dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_back">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -69,29 +69,53 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tv_reservation_date"
+                    android:id="@+id/tv_store_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    app:reserveId="@{reservation.reserveId}"
+                    android:text="@{reservation.storeName}"
                     android:textColor="@color/black"
                     android:textSize="34sp"
+                    android:layout_marginStart="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="16601023023" />
+                    tools:text="가게 이름" />
 
+                <TextView
+                    android:id="@+id/tv_store_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@{reservation.storeAddress}"
+                    android:textColor="@color/warm_gray3"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@id/tv_store_name"
+                    app:layout_constraintTop_toBottomOf="@id/tv_store_name"
+                    tools:text="가게 주소" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraint_reservation_store_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="24dp"
                     android:background="@color/warm_gray2"
                     android:paddingHorizontal="32dp"
                     android:paddingVertical="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_reservation_date">
+                    app:layout_constraintTop_toBottomOf="@id/tv_store_address">
+
+                    <TextView
+                        android:id="@+id/tv_reservation_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:reserveId="@{reservation.reserveId}"
+                        tools:text="16601023023" />
 
                     <TextView
                         android:id="@+id/tv_reservation_state"
@@ -109,28 +133,6 @@
                         app:reserveState="@{reservation.state}"
                         tools:text="대기" />
 
-                    <TextView
-                        android:id="@+id/tv_store_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{reservation.storeName}"
-                        android:textColor="@color/black"
-                        android:textSize="17sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="가게 이름" />
-
-                    <TextView
-                        android:id="@+id/tv_store_address"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="@{reservation.storeAddress}"
-                        android:textColor="@color/warm_gray3"
-                        android:textSize="13sp"
-                        app:layout_constraintStart_toStartOf="@id/tv_store_name"
-                        app:layout_constraintTop_toBottomOf="@id/tv_store_name"
-                        tools:text="가게 주소" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout

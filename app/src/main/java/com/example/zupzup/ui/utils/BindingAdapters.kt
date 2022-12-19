@@ -202,8 +202,8 @@ fun bindViewTypeToTextView(
         if (it == cartList.last()) {
             layout.setBackgroundResource(R.drawable.frame_rectangle_bottom_corner_12_gray0)
         }
-        tvName.text = it.itemName
-        tvItemPrice.text = "${it.salesPrice}원x${it.amount}개 "
+        tvName.text = "${it.itemName} ${it.amount}개"
+        tvItemPrice.text = "${it.salesPrice * it.amount}원 "
         linearLayout.addView(layout)
     }
 }

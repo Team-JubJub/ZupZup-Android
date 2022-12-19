@@ -1,11 +1,9 @@
 package com.example.zupzup.ui.utils
 
-import android.annotation.SuppressLint
 import android.util.Log
 import java.text.DateFormat
-import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.math.log
+import kotlin.time.Duration.Companion.hours
 
 
 fun Int.toTimeString(): String {
@@ -21,7 +19,6 @@ fun Int.toTimeString(): String {
     } else {
         "${text.substring(0, 2)}:${text.substring(2, 4)}"
     }
-
     return timeString
 }
 
@@ -37,6 +34,8 @@ fun String.toPhoneNumberStringFormat(): String {
 }
 
 
-fun Long.toDateFormat() : String {
-    return  DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.SHORT,Locale.KOREA).format(Date(this))
+fun Long.toDateFormat(): String {
+    val dateTime = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, Locale.JAPAN)
+        .format(Date(this))
+    return dateTime.substring(2)
 }
