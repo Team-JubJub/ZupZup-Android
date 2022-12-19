@@ -101,7 +101,7 @@ class ReservationRepositoryImpl @Inject constructor(
                         myReservationEntityList.find { entity -> entity.reserveId == it.reserveId }
                     it.toMyReservationModel(reservation!!.storeName, reservation!!.storeAddress)
                 }
-            Result.success(myReservationList)
+            Result.success(myReservationList.reversed())
         } catch (e: Exception) {
             Result.failure(e)
         }
