@@ -1,9 +1,8 @@
 package com.example.zupzup.ui.utils
 
-import android.util.Log
 import java.text.DateFormat
 import java.util.*
-import kotlin.time.Duration.Companion.hours
+import java.util.Locale.KOREA
 
 
 fun Int.toTimeString(): String {
@@ -33,9 +32,24 @@ fun String.toPhoneNumberStringFormat(): String {
     return ""
 }
 
-
+// 22. 12. 19. 오후 3:07
+// 22/12/20 오후 3:21
 fun Long.toDateFormat(): String {
-    val dateTime = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, Locale.JAPAN)
+    val dateTime = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, KOREA)
         .format(Date(this))
-    return dateTime.substring(2)
+    return try {
+        val idx = dateTime.indexOf("오후")
+        if (idx == -1) {
+            dateTime.replace("오전 ", "")
+        } else {
+            dateTime.substring(0, idx - 1) + " " + (dateTime.substring(
+                idx + 3,
+                dateTime.indexOf(":")
+            )
+                .toInt() + 12).toString() + dateTime.substring(dateTime.indexOf(":"))
+
+        }
+    } catch (e: Exception) {
+        dateTime
+    }
 }
